@@ -84,6 +84,7 @@
 <li><a class="reference internal" href="#http-status-code-summary">HTTP status code summary</a></li>
 <li><a class="reference internal" href="#error-types">Error Types</a></li>
 <li><a class="reference internal" href="#handling-errors">Handling Errors</a></li>
+<li><a class="reference internal" href="#error-codes">Error Codes</a></li>
 </ul>
 </li>
 </ul>
@@ -226,8 +227,8 @@
 <td>Failure to connect to ATLMT’s API.</td>
 </tr>
 <tr class="row-odd"><td>api_error</td>
-<td>API errors cover any other type of problem (e.g., a temporary
-problem with ATLMT’s or 3rd Party’s servers), and are extremely uncommon.</td>
+<td>-API errors cover any other type of problem (e.g., a temporary
+-problem with ATLMT’s or 3rd Party’s servers), and are extremely uncommon.</td>
 </tr>
 <tr class="row-even"><td>authentication_error</td>
 <td>Failure to properly authenticate yourself in the request.</td>
@@ -244,6 +245,37 @@ problem with ATLMT’s or 3rd Party’s servers), and are extremely uncommon.</t
 <div class="section" id="handling-errors">
 <h2>Handling Errors<a class="headerlink" href="#handling-errors" title="Permalink to this headline">¶</a></h2>
 <p>Our API raise exceptions for many reasons, such as a failed transfer, invalid parameters, authentication errors, and network unavailability. We recommend writing code that gracefully handles all possible API exceptions.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Attribute</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>type</td>
+<td>Failure to connect to ATLMT’s API.</td>
+</tr>
+<tr class="row-odd"><td>code</td>
+<td>-For some errors that could be handled programmatically, a short string
+-indicating the error code reported. See Error Codes section</td>
+</tr>
+<tr class="row-even"><td>message</td>
+<td>A human-readable message providing more details about the error.</td>
+</tr>
+<tr class="row-odd"><td>param</td>
+<td>-If the error is parameter-specific, the parameter related to the error. For
+-example, you can use this to display a message near the correct form field.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="error-codes">
+<h2>Error Codes<a class="headerlink" href="#error-codes" title="Permalink to this headline">¶</a></h2>
+<p>Some 4xx errors that could be handled programmatically (e.g., request contains invalid parameter) include an error code—a short string with a brief explanation—as a value for code. Below is a list of possible error codes that can be returned.</p>
 </div>
 </div>
 
