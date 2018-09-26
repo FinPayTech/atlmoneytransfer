@@ -238,8 +238,8 @@
 <p>Our API raise exceptions for many reasons, such as a failed transfer, invalid parameters, authentication errors, and network unavailability. We recommend writing code that gracefully handles all possible API exceptions.</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="23%" />
-<col width="77%" />
+<col width="22%" />
+<col width="78%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Attribute</th>
@@ -252,8 +252,8 @@
 </tr>
 <tr class="row-odd"><td>code</td>
 <td><ul class="first last simple">
-<li>For some errors that could be handled programmatically, a short string</li>
-<li>indicating the error code reported. See Error Codes section</li>
+<li>For some errors that could be handled programmatically.</li>
+<li>A short string indicating the error code reported. See Error Codes section.</li>
 </ul>
 </td>
 </tr>
@@ -262,8 +262,8 @@
 </tr>
 <tr class="row-odd"><td>param</td>
 <td><ul class="first last simple">
-<li>If the error is parameter-specific, the parameter related to the error. For</li>
-<li>example, you can use this to display a message near the correct form field.</li>
+<li>If the error is parameter-specific, the parameter related to the error.</li>
+<li>For example, you can use this to display a message near the correct form field.</li>
 </ul>
 </td>
 </tr>
@@ -272,7 +272,75 @@
 </div>
 <div class="section" id="error-codes">
 <h2>Error Codes<a class="headerlink" href="#error-codes" title="Permalink to this headline">¶</a></h2>
-<p>Some 4xx errors that could be handled programmatically (e.g., request contains invalid parameter) include an error code—a short string with a brief explanation—as a value for code. Below is a list of possible error codes that can be returned.</p>
+<p>Some <cite>4xx</cite> errors that could be handled programmatically (e.g., request contains invalid parameter) include an error code—a short string with a brief explanation—as a value for code. Below is a list of possible error codes that can be returned.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="30%" />
+<col width="70%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Code</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>parameter_missing</td>
+<td>One or more required parameters are missing.</td>
+</tr>
+<tr class="row-odd"><td>parameter_empty</td>
+<td>One or more required fields contain empty value.</td>
+</tr>
+<tr class="row-even"><td>parameter_invalid</td>
+<td>One or more required values are invalid.</td>
+</tr>
+<tr class="row-odd"><td>amount_too_large</td>
+<td><ul class="first last simple">
+<li>The specified amount is greater than the maximum amount allowed.</li>
+<li>Use a lower amount and try again.</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td>amount_too_small</td>
+<td><ul class="first last simple">
+<li>The specified amount is less than the minimum amount allowed.</li>
+<li>Use a higher amount and try again.</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td>transaction_already_cancelled</td>
+<td>Transaction is already in Cancelled state.</td>
+</tr>
+<tr class="row-even"><td>transaction_already_paid</td>
+<td>Transaction is already in Paid state.</td>
+</tr>
+<tr class="row-odd"><td>transaction_cancel_not_allowed</td>
+<td>Transaction cancellation is not allowed.</td>
+</tr>
+<tr class="row-even"><td>country_unsupported</td>
+<td>Provided country is not supported.</td>
+</tr>
+<tr class="row-odd"><td>currency_unsupported</td>
+<td>Provided currency is not supported.</td>
+</tr>
+<tr class="row-even"><td>processing_error</td>
+<td>An error occurred while processing the request.</td>
+</tr>
+<tr class="row-odd"><td>sandbox_transactions_only</td>
+<td><ul class="first last simple">
+<li>Your account has not been activated for live transactions.</li>
+<li>Contact your account manager.</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td>tls_version_unsupported</td>
+<td><ul class="first last simple">
+<li>Your integration is using an older version of TLS that is unsupported.</li>
+<li>You must be using TLS 1.2 or above.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 
