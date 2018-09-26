@@ -12,9 +12,9 @@ The ATL Money Transfer API referred here as ATLMT API is organized around REST. 
 
 To make the API as explorable as possible, accounts have test mode and live mode API keys. There is no "switch" for changing between modes, just use the appropriate key to perform a live or test transaction. Requests made with test mode credentials never hit the banking networks and incur no cost.
 
-Indices and tables
-==================
+Authentication
+==============
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+Authentication to the API is performed via bearer auth (e.g., for a cross-origin request), use -H "Authorization: Bearer sandbox_5ba22ce43aa945ba22ce43ab3b"
+
+All API requests must be made over HTTPS. Calls made over plain HTTP will fail. API requests without authentication will also fail.
