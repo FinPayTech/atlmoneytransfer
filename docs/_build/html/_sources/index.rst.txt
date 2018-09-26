@@ -51,3 +51,26 @@ HTTP status code summary
 +------------------+---------------------------------------------------------------------------+
 | 500              | Something went wrong on ATLMT’s end. (These are rare.)                    |
 +------------------+---------------------------------------------------------------------------+
+
+Error Types
+-----------
+
++-----------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
+| Type                  | Description                                                                                                                             |
++=======================+=========================================================================================================================================+
+| api_connection_error  | Failure to connect to ATLMT's API.                                                                                                      |
++-----------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
+| api_error             | API errors cover any other type of problem (e.g., a temporary problem with ATLMT’s or 3rd Party’s servers), and are extremely uncommon. |
++-----------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
+| authentication_error  | Failure to properly authenticate yourself in the request.                                                                               |
++-----------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
+| authorization_error   | Trying to access restricted resource.                                                                                                   |
++-----------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
+| invalid_request_error | Invalid request errors arise when your request has invalid parameters.                                                                  |
++-----------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
+
+
+Handling Errors
+---------------
+
+Our API raise exceptions for many reasons, such as a failed transfer, invalid parameters, authentication errors, and network unavailability. We recommend writing code that gracefully handles all possible API exceptions.

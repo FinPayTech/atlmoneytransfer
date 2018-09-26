@@ -82,6 +82,8 @@
 <li><a class="reference internal" href="#authentication">Authentication</a></li>
 <li><a class="reference internal" href="#errors">Errors</a><ul>
 <li><a class="reference internal" href="#http-status-code-summary">HTTP status code summary</a></li>
+<li><a class="reference internal" href="#error-types">Error Types</a></li>
+<li><a class="reference internal" href="#handling-errors">Handling Errors</a></li>
 </ul>
 </li>
 </ul>
@@ -206,6 +208,41 @@
 </tr>
 </tbody>
 </table>
+</div>
+<div class="section" id="error-types">
+<h2>Error Types<a class="headerlink" href="#error-types" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="86%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>api_connection_error</td>
+<td>Failure to connect to ATLMT’s API.</td>
+</tr>
+<tr class="row-odd"><td>api_error</td>
+<td>API errors cover any other type of problem (e.g., a temporary problem with ATLMT’s or 3rd Party’s servers), and are extremely uncommon.</td>
+</tr>
+<tr class="row-even"><td>authentication_error</td>
+<td>Failure to properly authenticate yourself in the request.</td>
+</tr>
+<tr class="row-odd"><td>authorization_error</td>
+<td>Trying to access restricted resource.</td>
+</tr>
+<tr class="row-even"><td>invalid_request_error</td>
+<td>Invalid request errors arise when your request has invalid parameters.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="handling-errors">
+<h2>Handling Errors<a class="headerlink" href="#handling-errors" title="Permalink to this headline">¶</a></h2>
+<p>Our API raise exceptions for many reasons, such as a failed transfer, invalid parameters, authentication errors, and network unavailability. We recommend writing code that gracefully handles all possible API exceptions.</p>
 </div>
 </div>
 
