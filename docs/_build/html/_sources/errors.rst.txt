@@ -38,8 +38,8 @@ Error Types
 +=======================+=============================================================================+
 | api_connection_error  | Failure to connect to ATLMT's API.                                          |
 +-----------------------+-----------------------------------------------------------------------------+
-| api_error             | - API errors cover any other type of problem (e.g., a temporary             |
-|                       | - problem with ATLMT’s or 3rd Party’s servers), and are extremely uncommon. |
+| api_error             | | API errors cover any other type of problem (e.g., a temporary             |
+|                       | | problem with ATLMT’s or 3rd Party’s servers), and are extremely uncommon. |
 +-----------------------+-----------------------------------------------------------------------------+
 | authentication_error  | Failure to properly authenticate yourself in the request.                   |
 +-----------------------+-----------------------------------------------------------------------------+
@@ -59,13 +59,13 @@ Our API raise exceptions for many reasons, such as a failed transfer, invalid pa
 +=======================+===================================================================================+
 | type                  | Failure to connect to ATLMT's API.                                                |
 +-----------------------+-----------------------------------------------------------------------------------+
-| code                  | - For some errors that could be handled programmatically.                         |
-|                       | - A short string indicating the error code reported. See Error Codes section.     |
+| code                  | | For some errors that could be handled programmatically.                         |
+|                       | | A short string indicating the error code reported. See Error Codes section.     |
 +-----------------------+-----------------------------------------------------------------------------------+
 | message               | A human-readable message providing more details about the error.                  |
 +-----------------------+-----------------------------------------------------------------------------------+
-| param                 | - If the error is parameter-specific, the parameter related to the error.         |
-|                       | - For example, you can use this to display a message near the correct form field. |
+| param                 | | If the error is parameter-specific, the parameter related to the error.         |
+|                       | | For example, you can use this to display a message near the correct form field. |
 +-----------------------+-----------------------------------------------------------------------------------+
 
 
@@ -83,11 +83,11 @@ Some `4xx` errors that could be handled programmatically (e.g., request contains
 +-----------------------------------+-----------------------------------------------------------------------------------+
 | parameter_invalid                 | One or more required values are invalid.                                          |
 +-----------------------------------+-----------------------------------------------------------------------------------+
-| amount_too_large                  | - The specified amount is greater than the maximum amount allowed.                |
-|                                   | - Use a lower amount and try again.                                               |
+| amount_too_large                  | | The specified amount is greater than the maximum amount allowed.                |
+|                                   | | Use a lower amount and try again.                                               |
 +-----------------------------------+-----------------------------------------------------------------------------------+
-| amount_too_small                  | - The specified amount is less than the minimum amount allowed.                   |
-|                                   | - Use a higher amount and try again.                                              |
+| amount_too_small                  | | The specified amount is less than the minimum amount allowed.                   |
+|                                   | | Use a higher amount and try again.                                              |
 +-----------------------------------+-----------------------------------------------------------------------------------+
 | transaction_already_cancelled     | Transaction is already in Cancelled state.                                        |
 +-----------------------------------+-----------------------------------------------------------------------------------+
@@ -101,9 +101,9 @@ Some `4xx` errors that could be handled programmatically (e.g., request contains
 +-----------------------------------+-----------------------------------------------------------------------------------+
 | processing_error                  | An error occurred while processing the request.                                   |
 +-----------------------------------+-----------------------------------------------------------------------------------+
-| sandbox_transactions_only         | - Your account has not been activated for live transactions.                      |
-|                                   | - Contact your account manager.                                                   |
+| sandbox_transactions_only         | | Your account has not been activated for live transactions.                      |
+|                                   | | Contact your account manager.                                                   |
 +-----------------------------------+-----------------------------------------------------------------------------------+
-| tls_version_unsupported           | - Your integration is using an older version of TLS that is unsupported.          |
-|                                   | - You must be using TLS 1.2 or above.                                             |
+| tls_version_unsupported           | | Your integration is using an older version of TLS that is unsupported.          |
+|                                   | | You must be using TLS 1.2 or above.                                             |
 +-----------------------------------+-----------------------------------------------------------------------------------+
