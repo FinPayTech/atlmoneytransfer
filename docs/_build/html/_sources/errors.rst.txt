@@ -1,9 +1,12 @@
+.. role:: red
+.. role:: green
+
 Errors
 ======
 
-ATLMT uses conventional HTTP response codes to indicate the success or failure of an API request. In general: Codes in the `2xx` range indicate success. Codes in the `4xx` range indicate an error that failed given the information provided (e.g., a required parameter was omitted, a transaction failed, etc.). Codes in the `5xx` range indicate an error with ATLMT's servers (these are rare).
+ATLMT uses conventional HTTP response codes to indicate the success or failure of an API request. In general: Codes in the :green:`2xx` range indicate success. Codes in the :red:`4xx` range indicate an error that failed given the information provided (e.g., a required parameter was omitted, a transaction failed, etc.). Codes in the :red:`5xx` range indicate an error with ATLMT's servers (these are rare).
 
-Some `4xx` errors that could be handled programmatically (e.g., an invalid account number) include an error code that briefly explains the error reported.
+Some :red:`4xx` errors that could be handled programmatically (e.g., an invalid account number) include an error code that briefly explains the error reported.
 
 HTTP status code summary
 ------------------------
@@ -72,7 +75,7 @@ Our API raise exceptions for many reasons, such as a failed transfer, invalid pa
 Error Codes
 -----------
 
-Some `4xx` errors that could be handled programmatically (e.g., request contains invalid parameter) include an error code—a short string with a brief explanation—as a value for code. Below is a list of possible error codes that can be returned.
+Some :red:`4xx` errors that could be handled programmatically (e.g., request contains invalid parameter) include an error code—a short string with a brief explanation—as a value for code. Below is a list of possible error codes that can be returned.
 
 +-----------------------------------+-----------------------------------------------------------------------------------+
 | Code                              | Description                                                                       |

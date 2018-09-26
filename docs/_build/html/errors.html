@@ -153,8 +153,8 @@
             
   <div class="section" id="errors">
 <h1>Errors<a class="headerlink" href="#errors" title="Permalink to this headline">¶</a></h1>
-<p>ATLMT uses conventional HTTP response codes to indicate the success or failure of an API request. In general: Codes in the <cite>2xx</cite> range indicate success. Codes in the <cite>4xx</cite> range indicate an error that failed given the information provided (e.g., a required parameter was omitted, a transaction failed, etc.). Codes in the <cite>5xx</cite> range indicate an error with ATLMT’s servers (these are rare).</p>
-<p>Some <cite>4xx</cite> errors that could be handled programmatically (e.g., an invalid account number) include an error code that briefly explains the error reported.</p>
+<p>ATLMT uses conventional HTTP response codes to indicate the success or failure of an API request. In general: Codes in the <span class="green">2xx</span> range indicate success. Codes in the <span class="red">4xx</span> range indicate an error that failed given the information provided (e.g., a required parameter was omitted, a transaction failed, etc.). Codes in the <span class="red">5xx</span> range indicate an error with ATLMT’s servers (these are rare).</p>
+<p>Some <span class="red">4xx</span> errors that could be handled programmatically (e.g., an invalid account number) include an error code that briefly explains the error reported.</p>
 <div class="section" id="http-status-code-summary">
 <h2>HTTP status code summary<a class="headerlink" href="#http-status-code-summary" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
@@ -272,7 +272,7 @@
 </div>
 <div class="section" id="error-codes">
 <h2>Error Codes<a class="headerlink" href="#error-codes" title="Permalink to this headline">¶</a></h2>
-<p>Some <cite>4xx</cite> errors that could be handled programmatically (e.g., request contains invalid parameter) include an error code—a short string with a brief explanation—as a value for code. Below is a list of possible error codes that can be returned.</p>
+<p>Some <span class="red">4xx</span> errors that could be handled programmatically (e.g., request contains invalid parameter) include an error code—a short string with a brief explanation—as a value for code. Below is a list of possible error codes that can be returned.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="30%" />
