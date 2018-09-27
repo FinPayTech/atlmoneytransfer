@@ -1,7 +1,7 @@
 Customer Object
 ===============
 
-Customer objects allow you to perform transactions easily. It is highly recommended that partner should store customer id returned from ATL Money Transfer and should use customer id for all future transactions from the same client.
+Customer objects allow you to perform transactions easily. It is highly recommended that partner should store customer id returned from ATL Money Transfer and should use customer id for all future transactions from the same customer.
 
 +--------------------------+-------------------------------------------------------------------------+
 | Parameter                | Description                                                             |
