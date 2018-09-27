@@ -6,6 +6,7 @@
    getting_started
    authentication
    errors
+   rates
    balances
    delivery_methods
    banks
