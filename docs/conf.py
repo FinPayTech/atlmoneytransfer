@@ -20,7 +20,7 @@
 # -- Project information -----------------------------------------------------
 
 project = u'ATL Money Transfer'
-copyright = u'2018, Dhruv Patel'
+copyright = u'2018, ATL Money Transfer'
 author = u'Dhruv Patel'
 
 # The short X.Y version
