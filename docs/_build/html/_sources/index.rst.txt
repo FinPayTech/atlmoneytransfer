@@ -1,3 +1,7 @@
+.. WARNING::
+
+  | This project is still into ``development mode``, things might change during development cycle. If you're interested about our apis please email us at support@atlmoneytransfer.com. We will notify you once we go live.
+
 .. toctree::
    :maxdepth: 2
    :caption: Table of Contents:
