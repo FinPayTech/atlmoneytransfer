@@ -40,6 +40,13 @@ Customer objects allow you to perform transactions easily. It is highly recommen
 +--------------------------+-------------------------------------------------------------------------+
 | email_address            | Email address of the customer.                                          |
 +--------------------------+-------------------------------------------------------------------------+
+| blocked                  | | 1 if customer is blocked for sending, else 0. Contact support         |
+|                          | | for more information.                                                 |
++--------------------------+-------------------------------------------------------------------------+
+| temporary_blocked        | | 1 if customer is blocked for sending on temporary basis. This         |
+|                          | | usually happens due to compliance issue or suspicious activity.       |
+|                          | | Contact support for more information.                                 |
++--------------------------+-------------------------------------------------------------------------+
 | created_on               | Customer creation date of the customer on ATL Money Transfer.           |
 +--------------------------+-------------------------------------------------------------------------+
 | updated_on               | Date when customer was last updated.                                    |
@@ -106,6 +113,8 @@ Method: ``GET``
               "mobile_number": "1234567890",
               "phone_number": "",
               "email_address": "",
+              "blocked": 0,
+              "temporary_blocked": 0,
               "created_on": "2018-09-12T07:57:57+00:00",
               "updated_on": "2018-09-27T13:44:18+00:00"
           }
@@ -115,6 +124,62 @@ Method: ``GET``
       "page": 1,
       "total_pages": 1
   }
+
+**Response Description**
+
++----------------------------------+-------------------------------------------------------------------+
+| Parameter                        | Description                                                       |
++==================================+===================================================================+
+| customers.{n}.id                 | Global unique identifier for customer.                            |
++----------------------------------+-------------------------------------------------------------------+
+| customers.{n}.first_name         | First name of the customer.                                       |
++----------------------------------+-------------------------------------------------------------------+
+| customers.{n}.middle_name        | Middle name of the customer.                                      |
++----------------------------------+-------------------------------------------------------------------+
+| customers.{n}.last_name          | Last name of the customer.                                        |
++----------------------------------+-------------------------------------------------------------------+
+| customers.{n}.date_of_birth      | Date of birth of the customer.                                    |
++----------------------------------+-------------------------------------------------------------------+
+| customers.{n}.birth_city         | Birth city of the customer.                                       |
++----------------------------------+-------------------------------------------------------------------+
+| customers.{n}.birth_country      | Birth country of the customer.                                    |
++----------------------------------+-------------------------------------------------------------------+
+| customers.{n}.nationality        | Current nationality of the customer.                              |
++----------------------------------+-------------------------------------------------------------------+
+| customers.{n}.birth_nationality  | Nationality of the customer at the time of birth.                 |
++----------------------------------+-------------------------------------------------------------------+
+| customers.{n}.address            | Address of the customer.                                          |
++----------------------------------+-------------------------------------------------------------------+
+| customers.{n}.city               | City where the customer is located.                               |
++----------------------------------+-------------------------------------------------------------------+
+| customers.{n}.region             | State/Province/Region where the customer is located.              |
++----------------------------------+-------------------------------------------------------------------+
+| customers.{n}.postcode           | Postcode of the area where the customer is located.               |
++----------------------------------+-------------------------------------------------------------------+
+| customers.{n}.country            | Country where the customer is located.                            |
++----------------------------------+-------------------------------------------------------------------+
+| customers.{n}.phone_number       | Phone number of the customer.                                     |
++----------------------------------+-------------------------------------------------------------------+
+| customers.{n}.mobile_number      | Mobile number of the customer.                                    |
++----------------------------------+-------------------------------------------------------------------+
+| customers.{n}.email_address      | Email address of the customer.                                    |
++----------------------------------+-------------------------------------------------------------------+
+| customers.{n}.blocked            | 1 if customer is blocked for sending, else 0                      |
++----------------------------------+-------------------------------------------------------------------+
+| customers.{n}.temporary_blocked  | 1 if customer is blocked for sending on temporary basis, else 0   |
++----------------------------------+-------------------------------------------------------------------+
+| customers.{n}.created_on         | Customer creation date of the customer on ATL Money Transfer.     |
++----------------------------------+-------------------------------------------------------------------+
+| customers.{n}.updated_on         | Date when customer was last updated.                              |
++----------------------------------+-------------------------------------------------------------------+
+| current_customers                | Number of customer results on current page.                       |
++----------------------------------+-------------------------------------------------------------------+
+| total_customers                  | Total number of customers on ATL Money Transfer Platform.         |
++----------------------------------+-------------------------------------------------------------------+
+| page                             | Current page number.                                              |
++----------------------------------+-------------------------------------------------------------------+
+| total_pages                      | Total number of pages.                                            |
++----------------------------------+-------------------------------------------------------------------+
 
 Get Single Customer
 -------------------
@@ -155,31 +220,18 @@ Method: ``GET``
           "mobile_number": "1234567890",
           "phone_number": "",
           "email_address": "",
+          "blocked": 0,
+          "temporary_blocked": 0,
           "created_on": "2018-09-12T07:57:57+00:00",
-          "updated_on": "2018-09-27T13:44:18+00:00",
-          "documents": [
-              {
-                  "type": "POI",
-                  "document": "PAS",
-                  "id_number": "123456",
-                  "valid_from": "2017-01-01",
-                  "valid_to": "2037-12-31",
-                  "verified": 1
-              },
-              {
-                  "type": "POA",
-                  "document": "BAS",
-                  "id_number": "142536",
-                  "valid_from": null,
-                  "valid_to": null,
-                  "verified": 0
-              }
-          ]
+          "updated_on": "2018-09-27T13:44:18+00:00"
       }
   }
 
 Update Customer Object
 ----------------------
+
+Get Customer KYC Documents
+--------------------------
 
 Upload KYC
 ----------

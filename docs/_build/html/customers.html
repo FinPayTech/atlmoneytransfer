@@ -94,6 +94,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#get-list-of-all-customers">Get List of all Customers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#get-single-customer">Get Single Customer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#update-customer-object">Update Customer Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#get-customer-kyc-documents">Get Customer KYC Documents</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#upload-kyc">Upload KYC</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#get-recipients-of-customer">Get Recipients of Customer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#get-customer-transaction-list">Get Customer Transaction List</a></li>
@@ -231,6 +232,21 @@
 <tr class="row-even"><td>email_address</td>
 <td>Email address of the customer.</td>
 </tr>
+<tr class="row-odd"><td>blocked</td>
+<td><div class="first last line-block">
+<div class="line">1 if customer is blocked for sending, else 0. Contact support</div>
+<div class="line">for more information.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>temporary_blocked</td>
+<td><div class="first last line-block">
+<div class="line">1 if customer is blocked for sending on temporary basis. This</div>
+<div class="line">usually happens due to compliance issue or suspicious activity.</div>
+<div class="line">Contact support for more information.</div>
+</div>
+</td>
+</tr>
 <tr class="row-odd"><td>created_on</td>
 <td>Customer creation date of the customer on ATL Money Transfer.</td>
 </tr>
@@ -311,6 +327,8 @@
             <span class="nt">&quot;mobile_number&quot;</span><span class="p">:</span> <span class="s2">&quot;1234567890&quot;</span><span class="p">,</span>
             <span class="nt">&quot;phone_number&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
             <span class="nt">&quot;email_address&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;blocked&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="nt">&quot;temporary_blocked&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
             <span class="nt">&quot;created_on&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-09-12T07:57:57+00:00&quot;</span><span class="p">,</span>
             <span class="nt">&quot;updated_on&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-09-27T13:44:18+00:00&quot;</span>
         <span class="p">}</span>
@@ -322,6 +340,95 @@
 <span class="p">}</span>
 </pre></div>
 </div>
+<p><strong>Response Description</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="66%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>customers.{n}.id</td>
+<td>Global unique identifier for customer.</td>
+</tr>
+<tr class="row-odd"><td>customers.{n}.first_name</td>
+<td>First name of the customer.</td>
+</tr>
+<tr class="row-even"><td>customers.{n}.middle_name</td>
+<td>Middle name of the customer.</td>
+</tr>
+<tr class="row-odd"><td>customers.{n}.last_name</td>
+<td>Last name of the customer.</td>
+</tr>
+<tr class="row-even"><td>customers.{n}.date_of_birth</td>
+<td>Date of birth of the customer.</td>
+</tr>
+<tr class="row-odd"><td>customers.{n}.birth_city</td>
+<td>Birth city of the customer.</td>
+</tr>
+<tr class="row-even"><td>customers.{n}.birth_country</td>
+<td>Birth country of the customer.</td>
+</tr>
+<tr class="row-odd"><td>customers.{n}.nationality</td>
+<td>Current nationality of the customer.</td>
+</tr>
+<tr class="row-even"><td>customers.{n}.birth_nationality</td>
+<td>Nationality of the customer at the time of birth.</td>
+</tr>
+<tr class="row-odd"><td>customers.{n}.address</td>
+<td>Address of the customer.</td>
+</tr>
+<tr class="row-even"><td>customers.{n}.city</td>
+<td>City where the customer is located.</td>
+</tr>
+<tr class="row-odd"><td>customers.{n}.region</td>
+<td>State/Province/Region where the customer is located.</td>
+</tr>
+<tr class="row-even"><td>customers.{n}.postcode</td>
+<td>Postcode of the area where the customer is located.</td>
+</tr>
+<tr class="row-odd"><td>customers.{n}.country</td>
+<td>Country where the customer is located.</td>
+</tr>
+<tr class="row-even"><td>customers.{n}.phone_number</td>
+<td>Phone number of the customer.</td>
+</tr>
+<tr class="row-odd"><td>customers.{n}.mobile_number</td>
+<td>Mobile number of the customer.</td>
+</tr>
+<tr class="row-even"><td>customers.{n}.email_address</td>
+<td>Email address of the customer.</td>
+</tr>
+<tr class="row-odd"><td>customers.{n}.blocked</td>
+<td>1 if customer is blocked for sending, else 0</td>
+</tr>
+<tr class="row-even"><td>customers.{n}.temporary_blocked</td>
+<td>1 if customer is blocked for sending on temporary basis, else 0</td>
+</tr>
+<tr class="row-odd"><td>customers.{n}.created_on</td>
+<td>Customer creation date of the customer on ATL Money Transfer.</td>
+</tr>
+<tr class="row-even"><td>customers.{n}.updated_on</td>
+<td>Date when customer was last updated.</td>
+</tr>
+<tr class="row-odd"><td>current_customers</td>
+<td>Number of customer results on current page.</td>
+</tr>
+<tr class="row-even"><td>total_customers</td>
+<td>Total number of customers on ATL Money Transfer Platform.</td>
+</tr>
+<tr class="row-odd"><td>page</td>
+<td>Current page number.</td>
+</tr>
+<tr class="row-even"><td>total_pages</td>
+<td>Total number of pages.</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="get-single-customer">
 <h2>Get Single Customer<a class="headerlink" href="#get-single-customer" title="Permalink to this headline">¶</a></h2>
@@ -354,26 +461,10 @@
         <span class="nt">&quot;mobile_number&quot;</span><span class="p">:</span> <span class="s2">&quot;1234567890&quot;</span><span class="p">,</span>
         <span class="nt">&quot;phone_number&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
         <span class="nt">&quot;email_address&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;blocked&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="nt">&quot;temporary_blocked&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
         <span class="nt">&quot;created_on&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-09-12T07:57:57+00:00&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;updated_on&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-09-27T13:44:18+00:00&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;documents&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="p">{</span>
-                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;POI&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;document&quot;</span><span class="p">:</span> <span class="s2">&quot;PAS&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;id_number&quot;</span><span class="p">:</span> <span class="s2">&quot;123456&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;valid_from&quot;</span><span class="p">:</span> <span class="s2">&quot;2017-01-01&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;valid_to&quot;</span><span class="p">:</span> <span class="s2">&quot;2037-12-31&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;verified&quot;</span><span class="p">:</span> <span class="mi">1</span>
-            <span class="p">},</span>
-            <span class="p">{</span>
-                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;POA&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;document&quot;</span><span class="p">:</span> <span class="s2">&quot;BAS&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;id_number&quot;</span><span class="p">:</span> <span class="s2">&quot;142536&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;valid_from&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-                <span class="nt">&quot;valid_to&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-                <span class="nt">&quot;verified&quot;</span><span class="p">:</span> <span class="mi">0</span>
-            <span class="p">}</span>
-        <span class="p">]</span>
+        <span class="nt">&quot;updated_on&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-09-27T13:44:18+00:00&quot;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -381,6 +472,9 @@
 </div>
 <div class="section" id="update-customer-object">
 <h2>Update Customer Object<a class="headerlink" href="#update-customer-object" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="get-customer-kyc-documents">
+<h2>Get Customer KYC Documents<a class="headerlink" href="#get-customer-kyc-documents" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="upload-kyc">
 <h2>Upload KYC<a class="headerlink" href="#upload-kyc" title="Permalink to this headline">¶</a></h2>
