@@ -92,6 +92,7 @@
 <li class="toctree-l1"><a class="reference internal" href="statuses.html">Transaction Statuses</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Resources</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#get-list-of-countries">Get list of Countries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#get-list-of-nationalities">Get list of Nationalities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#get-list-of-currencies">Get list of Currencies</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#validate-mobile-number-for-instant-pay-in-ghana">Validate mobile number for Instant Pay in Ghana</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#validate-account-number-for-instant-pay-in-ghana">Validate account number for Instant Pay in Ghana</a></li>
@@ -212,6 +213,49 @@
 </pre></div>
 </div>
 </div>
+<div class="section" id="get-list-of-nationalities">
+<h2>Get list of Nationalities<a class="headerlink" href="#get-list-of-nationalities" title="Permalink to this headline">¶</a></h2>
+<p>Endpoint: <code class="docutils literal notranslate"><span class="pre">https://www.atlmoneytransfer.com/api/resources/nationalities</span></code></p>
+<p>Method: <code class="docutils literal notranslate"><span class="pre">GET</span></code></p>
+<p><strong>Request</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">GET /api/resources/nationalities HTTP/1.1</span>
+<span class="go">Host: www.atlmoneytransfer.com</span>
+<span class="go">Authorization: Bearer sandbox_5ba9df637e1cd5baxxxxxxxxxx</span>
+</pre></div>
+</div>
+<p><strong>Response</strong></p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;success&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;nationalities&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+          <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="s2">&quot;AF&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Afghan&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+          <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="s2">&quot;AL&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Albanian&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+          <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="s2">&quot;DZ&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Algerian&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+          <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="s2">&quot;US&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;American&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+          <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="s2">&quot;UM&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;American&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+          <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="s2">&quot;AS&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;American Samoan&quot;</span>
+      <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="get-list-of-currencies">
 <h2>Get list of Currencies<a class="headerlink" href="#get-list-of-currencies" title="Permalink to this headline">¶</a></h2>
 <p>Endpoint: <code class="docutils literal notranslate"><span class="pre">https://www.atlmoneytransfer.com/api/resources/currencies</span></code></p>
@@ -265,9 +309,87 @@
 </div>
 <div class="section" id="validate-mobile-number-for-instant-pay-in-ghana">
 <h2>Validate mobile number for Instant Pay in Ghana<a class="headerlink" href="#validate-mobile-number-for-instant-pay-in-ghana" title="Permalink to this headline">¶</a></h2>
+<p>Endpoint: <code class="docutils literal notranslate"><span class="pre">https://www.atlmoneytransfer.com/api/resources/check-gh-mw-instant-pay-eligibility</span></code></p>
+<p>Method: <code class="docutils literal notranslate"><span class="pre">GET</span></code></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="16%" />
+<col width="63%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Param</th>
+<th class="head">Mandatory</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>operator</td>
+<td>Yes</td>
+<td>Mobile operator code.</td>
+</tr>
+<tr class="row-odd"><td>mobile_number</td>
+<td>Yes</td>
+<td>Mobile number to check.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Request</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">GET /api/resources/check-gh-mw-instant-pay-eligibility?operator=20e22bc1-50f5-11e7-9651-0ac5f86965eb&amp;amp;mobile_number=24740XXXX HTTP/1.1</span>
+<span class="go">Host: www.atlmoneytransfer.com</span>
+<span class="go">Authorization: Bearer sandbox_5ba9df637e1cd5baxxxxxxxxxx</span>
+</pre></div>
+</div>
+<p><strong>Response</strong></p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;success&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;recipient_name&quot;</span><span class="p">:</span> <span class="s2">&quot;FIRST LAST&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;eligible_for_instant_pay&quot;</span><span class="p">:</span> <span class="mi">1</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="validate-account-number-for-instant-pay-in-ghana">
 <h2>Validate account number for Instant Pay in Ghana<a class="headerlink" href="#validate-account-number-for-instant-pay-in-ghana" title="Permalink to this headline">¶</a></h2>
+<p>Endpoint: <code class="docutils literal notranslate"><span class="pre">https://www.atlmoneytransfer.com/api/resources/check-gh-ac-instant-pay-eligibility</span></code></p>
+<p>Method: <code class="docutils literal notranslate"><span class="pre">GET</span></code></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="16%" />
+<col width="63%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Param</th>
+<th class="head">Mandatory</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>bank</td>
+<td>Yes</td>
+<td>Bank code.</td>
+</tr>
+<tr class="row-odd"><td>account_number</td>
+<td>Yes</td>
+<td>Account number to check.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Request</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">GET /api/resources/check-gh-ac-instant-pay-eligibility?bank=15184286-3ecc-46ab-872d-740f32e11d9c&amp;amp;account_number=1126054XXXXXX HTTP/1.1</span>
+<span class="go">Host: www.atlmoneytransfer.com</span>
+<span class="go">Authorization: Bearer sandbox_5ba9df637e1cd5baxxxxxxxxxx</span>
+</pre></div>
+</div>
+<p><strong>Response</strong></p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;success&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;recipient_name&quot;</span><span class="p">:</span> <span class="s2">&quot;FIRST LAST&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;eligible_for_instant_pay&quot;</span><span class="p">:</span> <span class="mi">1</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </div>
 </div>
 
@@ -289,7 +411,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Dhruv Patel.
+        &copy; Copyright 2018, ATL Money Transfer.
 
     </p>
   </div>
