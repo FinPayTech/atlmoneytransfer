@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Introduction &mdash; ATL Money Transfer 1.0 documentation</title>
+  <title>&lt;no title&gt; &mdash; ATL Money Transfer 1.0 documentation</title>
   
 
   
@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Authentication" href="authentication.html" /> 
+    <link rel="next" title="Getting Started" href="getting_started.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -79,8 +79,11 @@
             
               <p class="caption"><span class="caption-text">Table of Contents:</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authentication.html">Authentication</a></li>
 <li class="toctree-l1"><a class="reference internal" href="errors.html">Errors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statuses.html">Transaction Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resources.html">Resources</a></li>
 </ul>
 
             
@@ -126,7 +129,7 @@
     
       <li><a href="#">Docs</a> &raquo;</li>
         
-      <li>Introduction</li>
+      <li>&lt;no title&gt;</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -148,6 +151,7 @@
   <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">Table of Contents:</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authentication.html">Authentication</a></li>
 <li class="toctree-l1"><a class="reference internal" href="errors.html">Errors</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="errors.html#http-status-code-summary">HTTP status code summary</a></li>
@@ -156,12 +160,15 @@
 <li class="toctree-l2"><a class="reference internal" href="errors.html#error-codes">Error Codes</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="statuses.html">Transaction Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resources.html">Resources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#get-list-of-countries">Get list of Countries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#get-list-of-currencies">Get list of Currencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#validate-mobile-number-for-instant-pay-in-ghana">Validate mobile number for Instant Pay in Ghana</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#validate-account-number-for-instant-pay-in-ghana">Validate account number for Instant Pay in Ghana</a></li>
 </ul>
-</div>
-<div class="section" id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
-<p>The ATL Money Transfer API referred here as ATLMT API is organized around REST. Our API has predictable, resource-oriented URLs, and uses HTTP response codes to indicate API errors. We use built-in HTTP features, like HTTP authentication and HTTP verbs, which are understood by off-the-shelf HTTP clients. We support cross-origin resource sharing, allowing you to interact securely with our API from a client-side web application (though you should never expose your secret API key in any public website’s client-side code). JSON is returned by all API responses, including errors, although our API libraries convert responses to appropriate language-specific objects.</p>
-<p>To make the API as explorable as possible, accounts have test mode and live mode API keys. There is no “switch” for changing between modes, just use the appropriate key to perform a live or test transaction. Requests made with test mode credentials never hit the banking networks and incur no cost.</p>
+</li>
+</ul>
 </div>
 
 
@@ -172,7 +179,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="authentication.html" class="btn btn-neutral float-right" title="Authentication" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="getting_started.html" class="btn btn-neutral float-right" title="Getting Started" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
     </div>

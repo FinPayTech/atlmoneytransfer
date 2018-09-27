@@ -28,6 +28,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Transaction Status" href="statuses.html" />
     <link rel="prev" title="Authentication" href="authentication.html" /> 
 
   
@@ -79,6 +80,7 @@
             
               <p class="caption"><span class="caption-text">Table of Contents:</span></p>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authentication.html">Authentication</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Errors</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#http-status-code-summary">HTTP status code summary</a></li>
@@ -87,6 +89,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#error-codes">Error Codes</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="statuses.html">Transaction Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resources.html">Resources</a></li>
 </ul>
 
             
@@ -151,7 +155,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="errors">
+  <style> .red {color:red} .green{color:green}</style><div class="section" id="errors">
 <h1>Errors<a class="headerlink" href="#errors" title="Permalink to this headline">¶</a></h1>
 <p>ATLMT uses conventional HTTP response codes to indicate the success or failure of an API request. In general: Codes in the <span class="green">2xx</span> range indicate success. Codes in the <span class="red">4xx</span> range indicate an error that failed given the information provided (e.g., a required parameter was omitted, a transaction failed, etc.). Codes in the <span class="red">5xx</span> range indicate an error with ATLMT’s servers (these are rare).</p>
 <p>Some <span class="red">4xx</span> errors that could be handled programmatically (e.g., an invalid account number) include an error code that briefly explains the error reported.</p>
@@ -351,6 +355,8 @@
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="statuses.html" class="btn btn-neutral float-right" title="Transaction Status" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="authentication.html" class="btn btn-neutral" title="Authentication" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

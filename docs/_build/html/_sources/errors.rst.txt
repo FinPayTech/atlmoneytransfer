@@ -1,3 +1,8 @@
+.. raw:: html
+
+    <style> .red {color:red} .green{color:green}</style>
+
+
 .. role:: red
 .. role:: green
 
