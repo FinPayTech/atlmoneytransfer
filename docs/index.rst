@@ -10,5 +10,8 @@
    delivery_methods
    banks
    collection_points
+   delivery_options
+   customers
+   recipients
    statuses
    resources
