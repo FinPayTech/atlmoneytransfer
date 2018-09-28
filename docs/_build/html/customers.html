@@ -751,8 +751,59 @@
 </tr>
 </tbody>
 </table>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p class="last">Since a resource is being created, HTTP response code <code class="docutils literal notranslate"><span class="pre">201</span></code> will be returned if the kyc is successfully uploaded.</p>
+</div>
 <p><strong>Request</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">POST /api/upload-kyc/9963210701 HTTP/1.1</span>
+<span class="go">Host: www.atlmoneytransfer.com</span>
+<span class="go">Authorization: Bearer sandbox_5ba9df637e1cd5baxxxxxxxxxx</span>
+<span class="go">Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW</span>
+
+<span class="go">------WebKitFormBoundary7MA4YWxkTrZu0gW</span>
+<span class="go">Content-Disposition: form-data; name=&quot;type&quot;</span>
+
+<span class="go">POI</span>
+<span class="go">------WebKitFormBoundary7MA4YWxkTrZu0gW</span>
+<span class="go">Content-Disposition: form-data; name=&quot;document&quot;</span>
+
+<span class="go">PAS</span>
+<span class="go">------WebKitFormBoundary7MA4YWxkTrZu0gW</span>
+<span class="go">Content-Disposition: form-data; name=&quot;id_number&quot;</span>
+
+<span class="go">P123456</span>
+<span class="go">------WebKitFormBoundary7MA4YWxkTrZu0gW</span>
+<span class="go">Content-Disposition: form-data; name=&quot;valid_from&quot;</span>
+
+<span class="go">2018-09-01</span>
+<span class="go">------WebKitFormBoundary7MA4YWxkTrZu0gW</span>
+<span class="go">Content-Disposition: form-data; name=&quot;expiry&quot;</span>
+
+<span class="go">2028-08-31</span>
+<span class="go">------WebKitFormBoundary7MA4YWxkTrZu0gW</span>
+<span class="go">Content-Disposition: form-data; name=&quot;file&quot;; filename=&quot;Passport.jpg&quot;</span>
+<span class="go">Content-Type: image/jpeg</span>
+
+
+<span class="go">------WebKitFormBoundary7MA4YWxkTrZu0gW--</span>
+</pre></div>
+</div>
 <p><strong>Response</strong></p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;success&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;document&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;POI&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;document&quot;</span><span class="p">:</span> <span class="s2">&quot;PAS&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;id_number&quot;</span><span class="p">:</span> <span class="s2">&quot;P123456&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;valid_from&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-09-01&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;expiry&quot;</span><span class="p">:</span> <span class="s2">&quot;2028-08-31&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;verified&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="nt">&quot;uploaded_on&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-09-28T12:24:34+00:00&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </div>
 </div>
 

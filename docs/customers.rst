@@ -463,6 +463,58 @@ Method: ``POST``
 | file        | Yes       | File to be uploaded. Only images and pdf are accepted.      |
 +-------------+-----------+-------------------------------------------------------------+
 
+.. HINT::
+   Since a resource is being created, HTTP response code ``201`` will be returned if the kyc is successfully uploaded.
+
 **Request**
 
+.. code-block:: console
+
+  POST /api/upload-kyc/9963210701 HTTP/1.1
+  Host: www.atlmoneytransfer.com
+  Authorization: Bearer sandbox_5ba9df637e1cd5baxxxxxxxxxx
+  Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+  ------WebKitFormBoundary7MA4YWxkTrZu0gW
+  Content-Disposition: form-data; name="type"
+
+  POI
+  ------WebKitFormBoundary7MA4YWxkTrZu0gW
+  Content-Disposition: form-data; name="document"
+
+  PAS
+  ------WebKitFormBoundary7MA4YWxkTrZu0gW
+  Content-Disposition: form-data; name="id_number"
+
+  P123456
+  ------WebKitFormBoundary7MA4YWxkTrZu0gW
+  Content-Disposition: form-data; name="valid_from"
+
+  2018-09-01
+  ------WebKitFormBoundary7MA4YWxkTrZu0gW
+  Content-Disposition: form-data; name="expiry"
+
+  2028-08-31
+  ------WebKitFormBoundary7MA4YWxkTrZu0gW
+  Content-Disposition: form-data; name="file"; filename="Passport.jpg"
+  Content-Type: image/jpeg
+
+
+  ------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
 **Response**
+
+.. code-block:: JSON
+
+  {
+    "message": "success",
+    "document": {
+        "type": "POI",
+        "document": "PAS",
+        "id_number": "P123456",
+        "valid_from": "2018-09-01",
+        "expiry": "2028-08-31",
+        "verified": 0,
+        "uploaded_on": "2018-09-28T12:24:34+00:00"
+    }
+  }
