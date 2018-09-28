@@ -138,30 +138,30 @@ Method: ``POST``
 .. code-block:: JSON
 
   {
-      "message": "success",
-      "customer": {
-          "id": 9444411811,
-          "first_name": "Dhruv",
-          "middle_name": "",
-          "last_name": "Patel",
-          "date_of_birth": "1989-11-04",
-          "birth_city": "London",
-          "birth_country": "GB",
-          "nationality": "GB",
-          "birth_nationality": "GB",
-          "address": "ATL House, 128 Peckham Hill Street",
-          "city": "London",
-          "region": "England",
-          "postcode": "SE15 5JT",
-          "country": "GB",
-          "mobile_number": "9876543210",
-          "phone_number": "1234567890",
-          "email_address": "support@atlmoneytransfer.com",
-          "blocked": 0,
-          "temporary_blocked": 0,
-          "created_on": "2018-09-28T08:22:02+00:00",
-          "updated_on": "2018-09-28T08:22:02+00:00"
-      }
+    "message": "success",
+    "customer": {
+        "id": 9963210701,
+        "first_name": "Dhruv",
+        "middle_name": "",
+        "last_name": "Patel",
+        "date_of_birth": "1989-11-04",
+        "birth_city": "London",
+        "birth_country": "GB",
+        "nationality": "GB",
+        "birth_nationality": "GB",
+        "address": "ATL House, 128 Peckham Hill Street",
+        "city": "London",
+        "region": "England",
+        "postcode": "SE15 5JT",
+        "country": "GB",
+        "mobile_number": "9876543210",
+        "phone_number": "1234567890",
+        "email_address": "support@atlmoneytransfer.com",
+        "blocked": 0,
+        "temporary_blocked": 0,
+        "created_on": "2018-09-28T08:40:11+00:00",
+        "updated_on": "2018-09-28T08:40:11+00:00"
+    }
   }
 
 Get List of all Customers
@@ -193,27 +193,27 @@ Method: ``GET``
       "message": "success",
       "customers": [
           {
-              "id": 2618602080,
+              "id": 9963210701,
               "first_name": "Dhruv",
               "middle_name": "",
-              "last_name": "Tester",
-              "date_of_birth": "2000-09-02",
+              "last_name": "Patel",
+              "date_of_birth": "1989-11-04",
               "birth_city": "London",
               "birth_country": "GB",
               "nationality": "GB",
               "birth_nationality": "GB",
-              "address": "128 Peckham Hill Street",
+              "address": "ATL House, 128 Peckham Hill Street",
               "city": "London",
-              "region": "",
+              "region": "England",
               "postcode": "SE15 5JT",
               "country": "GB",
-              "mobile_number": "1234567890",
-              "phone_number": "",
-              "email_address": "",
+              "mobile_number": "9876543210",
+              "phone_number": "1234567890",
+              "email_address": "support@atlmoneytransfer.com",
               "blocked": 0,
               "temporary_blocked": 0,
-              "created_on": "2018-09-12T07:57:57+00:00",
-              "updated_on": "2018-09-27T13:44:18+00:00"
+              "created_on": "2018-09-28T08:40:11+00:00",
+              "updated_on": "2018-09-28T08:40:11+00:00"
           }
       ],
       "current_customers": 1,
@@ -300,27 +300,27 @@ Method: ``GET``
   {
       "message": "success",
       "customer": {
-          "id": 2618602080,
+          "id": 9963210701,
           "first_name": "Dhruv",
           "middle_name": "",
-          "last_name": "Tester",
-          "date_of_birth": "2000-09-02",
+          "last_name": "Patel",
+          "date_of_birth": "1989-11-04",
           "birth_city": "London",
           "birth_country": "GB",
           "nationality": "GB",
           "birth_nationality": "GB",
-          "address": "128 Peckham Hill Street",
+          "address": "ATL House, 128 Peckham Hill Street",
           "city": "London",
-          "region": "",
+          "region": "England",
           "postcode": "SE15 5JT",
           "country": "GB",
-          "mobile_number": "1234567890",
-          "phone_number": "",
-          "email_address": "",
+          "mobile_number": "9876543210",
+          "phone_number": "1234567890",
+          "email_address": "support@atlmoneytransfer.com",
           "blocked": 0,
           "temporary_blocked": 0,
-          "created_on": "2018-09-12T07:57:57+00:00",
-          "updated_on": "2018-09-27T13:44:18+00:00"
+          "created_on": "2018-09-28T08:40:11+00:00",
+          "updated_on": "2018-09-28T08:40:11+00:00"
       }
   }
 
@@ -374,73 +374,6 @@ Method: ``POST``
   POST /api/customers HTTP/1.1
   Host: www.atlmoneytransfer.com
   Authorization: Bearer sandbox_5ba9df637e1cd5baxxxxxxxxxx
-  Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
-
-  ------WebKitFormBoundary7MA4YWxkTrZu0gW
-  Content-Disposition: form-data; name="first_name"
-
-  Cress
-  ------WebKitFormBoundary7MA4YWxkTrZu0gW
-  Content-Disposition: form-data; name="middle_name"
-
-  Richard
-  ------WebKitFormBoundary7MA4YWxkTrZu0gW
-  Content-Disposition: form-data; name="last_name"
-
-  AMOAH
-  ------WebKitFormBoundary7MA4YWxkTrZu0gW
-  Content-Disposition: form-data; name="date_of_birth"
-
-  2000-01-01
-  ------WebKitFormBoundary7MA4YWxkTrZu0gW
-  Content-Disposition: form-data; name="birth_city"
-
-  London
-  ------WebKitFormBoundary7MA4YWxkTrZu0gW
-  Content-Disposition: form-data; name="birth_country"
-
-  GB
-  ------WebKitFormBoundary7MA4YWxkTrZu0gW
-  Content-Disposition: form-data; name="nationality"
-
-  GB
-  ------WebKitFormBoundary7MA4YWxkTrZu0gW
-  Content-Disposition: form-data; name="birth_nationality"
-
-  GB
-  ------WebKitFormBoundary7MA4YWxkTrZu0gW
-  Content-Disposition: form-data; name="address	"
-
-  128 Peckham Hill Street
-  ------WebKitFormBoundary7MA4YWxkTrZu0gW
-  Content-Disposition: form-data; name="city"
-
-  London
-  ------WebKitFormBoundary7MA4YWxkTrZu0gW
-  Content-Disposition: form-data; name="region"
-
-  England
-  ------WebKitFormBoundary7MA4YWxkTrZu0gW
-  Content-Disposition: form-data; name="postcode"
-
-  SE15 5JT
-  ------WebKitFormBoundary7MA4YWxkTrZu0gW
-  Content-Disposition: form-data; name="country"
-
-  GB
-  ------WebKitFormBoundary7MA4YWxkTrZu0gW
-  Content-Disposition: form-data; name="phone_number"
-
-  1234567890
-  ------WebKitFormBoundary7MA4YWxkTrZu0gW
-  Content-Disposition: form-data; name="mobile_number"
-
-  0987654321
-  ------WebKitFormBoundary7MA4YWxkTrZu0gW
-  Content-Disposition: form-data; name="email_address"
-
-  systems@atlantiquemt.co.uk
-  ------WebKitFormBoundary7MA4YWxkTrZu0gW--
 
 
 Customer KYC Document Object
