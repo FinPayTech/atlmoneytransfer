@@ -1,7 +1,7 @@
 Authentication
 ==============
 
-Authentication to the API is performed via bearer auth (e.g., for a cross-origin request), use
+Authentication to the API is performed via bearer auth (e.g., for a cross-origin request), use header
 
 .. code-block:: console
 
