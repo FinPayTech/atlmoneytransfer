@@ -96,7 +96,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#update-customer-object">Update Customer Object</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#customer-kyc-document-object">Customer KYC Document Object</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#get-customer-kyc-documents">Get Customer KYC Documents</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#upload-kyc">Upload KYC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#upload-kyc-for-customer">Upload KYC for Customer</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="recipients.html">Recipient Object</a></li>
@@ -660,7 +660,7 @@
 <td>Document valid from date of the uploaded KYC.</td>
 </tr>
 <tr class="row-even"><td>expiry</td>
-<td>Document valid through date of the uploaded KYC.</td>
+<td>Document expiry date of the uploaded KYC.</td>
 </tr>
 <tr class="row-odd"><td>verified</td>
 <td>1, if document is verfied by ATL Money Transfer, else 0</td>
@@ -708,10 +708,51 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="upload-kyc">
-<h2>Upload KYC<a class="headerlink" href="#upload-kyc" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="upload-kyc-for-customer">
+<h2>Upload KYC for Customer<a class="headerlink" href="#upload-kyc-for-customer" title="Permalink to this headline">¶</a></h2>
 <p>Endpoint: <code class="docutils literal notranslate"><span class="pre">https://www.atlmoneytransfer.com/api/kyc-upload/:id</span></code></p>
 <p>Method: <code class="docutils literal notranslate"><span class="pre">POST</span></code></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="13%" />
+<col width="72%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Mandatory</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>type</td>
+<td>Yes</td>
+<td>Document type of the uploaded KYC. Any of POI, POA, SOF</td>
+</tr>
+<tr class="row-odd"><td>document</td>
+<td>Yes</td>
+<td>Document of the uploaded KYC. Eg. PAS or DRV etc.</td>
+</tr>
+<tr class="row-even"><td>id_number</td>
+<td>Yes</td>
+<td>Document ID Number of uploaded KYC.</td>
+</tr>
+<tr class="row-odd"><td>valid_from</td>
+<td>No</td>
+<td>Document valid from date of the uploaded KYC.</td>
+</tr>
+<tr class="row-even"><td>expiry</td>
+<td>No</td>
+<td>Document expiry date of the uploaded KYC.</td>
+</tr>
+<tr class="row-odd"><td>file</td>
+<td>Yes</td>
+<td>File to be uploaded. Only images and pdf are accepted.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Request</strong></p>
+<p><strong>Response</strong></p>
 </div>
 </div>
 

@@ -389,7 +389,7 @@ Customer KYC Document Object
 +-------------+-------------------------------------------------------------------------+
 | valid_from  | Document valid from date of the uploaded KYC.                           |
 +-------------+-------------------------------------------------------------------------+
-| expiry      | Document valid through date of the uploaded KYC.                        |
+| expiry      | Document expiry date of the uploaded KYC.                               |
 +-------------+-------------------------------------------------------------------------+
 | verified    | 1, if document is verfied by ATL Money Transfer, else 0                 |
 +-------------+-------------------------------------------------------------------------+
@@ -440,9 +440,29 @@ Method: ``GET``
   }
 
 
-Upload KYC
-----------
+Upload KYC for Customer
+-----------------------
 
 Endpoint: ``https://www.atlmoneytransfer.com/api/kyc-upload/:id``
 
 Method: ``POST``
+
++-------------+-----------+-------------------------------------------------------------+
+| Parameter   | Mandatory | Description                                                 |
++=============+===========+=============================================================+
+| type        | Yes       | Document type of the uploaded KYC. Any of POI, POA, SOF     |
++-------------+-----------+-------------------------------------------------------------+
+| document    | Yes       | Document of the uploaded KYC. Eg. PAS or DRV etc.           |
++-------------+-----------+-------------------------------------------------------------+
+| id_number   | Yes       | Document ID Number of uploaded KYC.                         |
++-------------+-----------+-------------------------------------------------------------+
+| valid_from  | No        | Document valid from date of the uploaded KYC.               |
++-------------+-----------+-------------------------------------------------------------+
+| expiry      | No        | Document expiry date of the uploaded KYC.                   |
++-------------+-----------+-------------------------------------------------------------+
+| file        | Yes       | File to be uploaded. Only images and pdf are accepted.      |
++-------------+-----------+-------------------------------------------------------------+
+
+**Request**
+
+**Response**
