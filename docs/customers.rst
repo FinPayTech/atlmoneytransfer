@@ -331,50 +331,49 @@ Endpoint: ``https://www.atlmoneytransfer.com/api/customers/:id``
 
 Method: ``POST``
 
-+---------------------+------------+-------------------------------------------------------------------------+
-| Parameter           | Mandatory  | Description                                                             |
-+=====================+============+=========================================================================+
-| first_name          | Yes        | First name of the customer as it appears on their Proof of Identity.    |
-+---------------------+------------+-------------------------------------------------------------------------+
-| middle_name         | No         | Middle name of the customer as it appears on their Proof of Identity.   |
-+---------------------+------------+-------------------------------------------------------------------------+
-| last_name           | Yes        | Last name of the customer as it appears on their Proof of Identity.     |
-+---------------------+------------+-------------------------------------------------------------------------+
-| date_of_birth       | Yes        | Date of birth of the customer as it appears on their Proof of Identity. |
-+---------------------+------------+-------------------------------------------------------------------------+
-| birth_city          | No         | Birth city of the customer.                                             |
-+---------------------+------------+-------------------------------------------------------------------------+
-| birth_country       | No         | Birth country of the customer.                                          |
-+---------------------+------------+-------------------------------------------------------------------------+
-| nationality         | Yes        | Current nationality of the customer.                                    |
-+---------------------+------------+-------------------------------------------------------------------------+
-| birth_nationality   | No         | Nationality of the customer at the time of birth.                       |
-+---------------------+------------+-------------------------------------------------------------------------+
-| address             | Yes        | Address of the customer.                                                |
-+---------------------+------------+-------------------------------------------------------------------------+
-| city                | Yes        | City where the customer is located.                                     |
-+---------------------+------------+-------------------------------------------------------------------------+
-| region              | No         | State/Province/Region where the customer is located.                    |
-+---------------------+------------+-------------------------------------------------------------------------+
-| postcode            | No         | Postcode of the area where the customer is located.                     |
-+---------------------+------------+-------------------------------------------------------------------------+
-| country             | Yes        | Country where the customer is located.                                  |
-+---------------------+------------+-------------------------------------------------------------------------+
-| phone_number        | No         | Phone number of the customer.                                           |
-+---------------------+------------+-------------------------------------------------------------------------+
-| mobile_number       | Yes        | Mobile number of the customer.                                          |
-+---------------------+------------+-------------------------------------------------------------------------+
-| email_address       | No         | Email address of the customer.                                          |
-+---------------------+------------+-------------------------------------------------------------------------+
-
 **Request**
 
 .. code-block:: console
 
-  POST /api/customers HTTP/1.1
+  POST /api/customers/9963210701 HTTP/1.1
   Host: www.atlmoneytransfer.com
   Authorization: Bearer sandbox_5ba9df637e1cd5baxxxxxxxxxx
+  Content-Type: application/x-www-form-urlencoded
 
+  last_name=Tester
+  &date_of_birth=1990-12-04
+  &postcode=SE15+5JT
+
+**Response**
+
+.. code-block:: JSON
+
+  {
+      "message": "success",
+      "customer": {
+          "id": 9963210701,
+          "first_name": "Dhruv",
+          "middle_name": "",
+          "last_name": "Tester",
+          "date_of_birth": "1990-12-04",
+          "birth_city": "London",
+          "birth_country": "GB",
+          "nationality": "GB",
+          "birth_nationality": "GB",
+          "address": "ATL House, 128 Peckham Hill Street",
+          "city": "London",
+          "region": "England",
+          "postcode": "SE15 5JT",
+          "country": "GB",
+          "mobile_number": "9876543210",
+          "phone_number": "1234567890",
+          "email_address": "support@atlmoneytransfer.com",
+          "blocked": 0,
+          "temporary_blocked": 0,
+          "created_on": "2018-09-28T08:40:11+00:00",
+          "updated_on": "2018-09-28T09:40:35+00:00"
+      }
+  }
 
 Customer KYC Document Object
 ----------------------------
@@ -454,11 +453,3 @@ Get Recipients of Customer
 Endpoint: ``https://www.atlmoneytransfer.com/api/customers/recipients/:id``
 
 Method: ``GET``
-
-
-Get Customer Transaction List
------------------------------
-
-Endpoint: ``https://www.atlmoneytransfer.com/api/customers/transactions/:id``
-
-Method: ``POST``
