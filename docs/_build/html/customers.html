@@ -1,0 +1,877 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Customer Object &mdash; ATL Money Transfer 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Recipient Object" href="recipients.html" />
+    <link rel="prev" title="Delivery Options" href="delivery_options.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ATL Money Transfer
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Table of Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authentication.html">Authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="errors.html">Errors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rates.html">Settlement Rates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="balances.html">Balance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="delivery_methods.html">Payout Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="banks.html">Banks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collection_points.html">Cash Collection Points</a></li>
+<li class="toctree-l1"><a class="reference internal" href="delivery_options.html">Delivery Options</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Customer Object</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#create-a-customer">Create a Customer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#get-list-of-all-customers">Get List of all Customers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#get-single-customer">Get Single Customer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#update-customer-object">Update Customer Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#customer-kyc-document-object">Customer KYC Document Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#get-customer-kyc-documents">Get Customer KYC Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#upload-kyc-for-customer">Upload KYC for Customer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="recipients.html">Recipient Object</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transactions.html">Transactions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statuses.html">Transaction Statuses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resources.html">Resources</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ATL Money Transfer</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Customer Object</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/customers.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <style> .red {color:red} .green{color:green}</style><div class="section" id="customer-object">
+<h1>Customer Object<a class="headerlink" href="#customer-object" title="Permalink to this headline">¶</a></h1>
+<p>Customer objects allow you to perform transactions easily. It is highly recommended that partner should store customer id returned from ATL Money Transfer and should use customer id for all future transactions from the same customer.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>id</td>
+<td>Global unique identifier for customer.</td>
+</tr>
+<tr class="row-odd"><td>first_name</td>
+<td>First name of the customer as it appears on their Proof of Identity.</td>
+</tr>
+<tr class="row-even"><td>middle_name</td>
+<td>Middle name of the customer as it appears on their Proof of Identity.</td>
+</tr>
+<tr class="row-odd"><td>last_name</td>
+<td>Last name of the customer as it appears on their Proof of Identity.</td>
+</tr>
+<tr class="row-even"><td>date_of_birth</td>
+<td>Date of birth of the customer as it appears on their Proof of Identity.</td>
+</tr>
+<tr class="row-odd"><td>birth_city</td>
+<td>Birth city of the customer.</td>
+</tr>
+<tr class="row-even"><td>birth_country</td>
+<td>Birth country of the customer.</td>
+</tr>
+<tr class="row-odd"><td>nationality</td>
+<td>Current nationality of the customer.</td>
+</tr>
+<tr class="row-even"><td>birth_nationality</td>
+<td>Nationality of the customer at the time of birth.</td>
+</tr>
+<tr class="row-odd"><td>address</td>
+<td>Address of the customer.</td>
+</tr>
+<tr class="row-even"><td>city</td>
+<td>City where the customer is located.</td>
+</tr>
+<tr class="row-odd"><td>region</td>
+<td>State/Province/Region where the customer is located.</td>
+</tr>
+<tr class="row-even"><td>postcode</td>
+<td>Postcode of the area where the customer is located.</td>
+</tr>
+<tr class="row-odd"><td>country</td>
+<td>Country where the customer is located.</td>
+</tr>
+<tr class="row-even"><td>phone_number</td>
+<td>Phone number of the customer.</td>
+</tr>
+<tr class="row-odd"><td>mobile_number</td>
+<td>Mobile number of the customer.</td>
+</tr>
+<tr class="row-even"><td>email_address</td>
+<td>Email address of the customer.</td>
+</tr>
+<tr class="row-odd"><td>blocked</td>
+<td><div class="first last line-block">
+<div class="line">1 if customer is blocked for sending, else 0. Contact support</div>
+<div class="line">for more information.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>temporary_blocked</td>
+<td><div class="first last line-block">
+<div class="line">1 if customer is blocked for sending on temporary basis. This</div>
+<div class="line">usually happens due to compliance issue or suspicious activity.</div>
+<div class="line">Contact support for more information.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>created_on</td>
+<td>Customer creation date of the customer on ATL Money Transfer.</td>
+</tr>
+<tr class="row-even"><td>updated_on</td>
+<td>Date when customer was last updated.</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="create-a-customer">
+<h2>Create a Customer<a class="headerlink" href="#create-a-customer" title="Permalink to this headline">¶</a></h2>
+<p>Endpoint: <code class="docutils literal notranslate"><span class="pre">https://www.atlmoneytransfer.com/api/customers</span></code></p>
+<p>Method: <code class="docutils literal notranslate"><span class="pre">POST</span></code></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="11%" />
+<col width="69%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Mandatory</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>first_name</td>
+<td>Yes</td>
+<td>First name of the customer as it appears on their Proof of Identity.</td>
+</tr>
+<tr class="row-odd"><td>middle_name</td>
+<td>No</td>
+<td>Middle name of the customer as it appears on their Proof of Identity.</td>
+</tr>
+<tr class="row-even"><td>last_name</td>
+<td>Yes</td>
+<td>Last name of the customer as it appears on their Proof of Identity.</td>
+</tr>
+<tr class="row-odd"><td>date_of_birth</td>
+<td>Yes</td>
+<td>Date of birth of the customer as it appears on their Proof of Identity.</td>
+</tr>
+<tr class="row-even"><td>birth_city</td>
+<td>No</td>
+<td>Birth city of the customer.</td>
+</tr>
+<tr class="row-odd"><td>birth_country</td>
+<td>No</td>
+<td>Birth country of the customer.</td>
+</tr>
+<tr class="row-even"><td>nationality</td>
+<td>Yes</td>
+<td>Current nationality of the customer.</td>
+</tr>
+<tr class="row-odd"><td>birth_nationality</td>
+<td>No</td>
+<td>Nationality of the customer at the time of birth.</td>
+</tr>
+<tr class="row-even"><td>address</td>
+<td>Yes</td>
+<td>Address of the customer.</td>
+</tr>
+<tr class="row-odd"><td>city</td>
+<td>Yes</td>
+<td>City where the customer is located.</td>
+</tr>
+<tr class="row-even"><td>region</td>
+<td>No</td>
+<td>State/Province/Region where the customer is located.</td>
+</tr>
+<tr class="row-odd"><td>postcode</td>
+<td>No</td>
+<td>Postcode of the area where the customer is located.</td>
+</tr>
+<tr class="row-even"><td>country</td>
+<td>Yes</td>
+<td>Country where the customer is located.</td>
+</tr>
+<tr class="row-odd"><td>phone_number</td>
+<td>No</td>
+<td>Phone number of the customer.</td>
+</tr>
+<tr class="row-even"><td>mobile_number</td>
+<td>Yes</td>
+<td>Mobile number of the customer.</td>
+</tr>
+<tr class="row-odd"><td>email_address</td>
+<td>No</td>
+<td>Email address of the customer.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p class="last">Since a resource is being created, HTTP response code <code class="docutils literal notranslate"><span class="pre">201</span></code> will be returned if the customer is successfully created.</p>
+</div>
+<p><strong>Request</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">POST /api/customers HTTP/1.1</span>
+<span class="go">Host: www.atlmoneytransfer.com</span>
+<span class="go">Authorization: Bearer sandbox_5ba9df637e1cd5baxxxxxxxxxx</span>
+<span class="go">Content-Type: application/x-www-form-urlencoded</span>
+
+<span class="go">first_name=Dhruv</span>
+<span class="go">&amp;middle_name=</span>
+<span class="go">&amp;last_name=Patel</span>
+<span class="go">&amp;date_of_birth=1989-11-04</span>
+<span class="go">&amp;birth_city=London</span>
+<span class="go">&amp;birth_country=GB</span>
+<span class="go">&amp;nationality=GB</span>
+<span class="go">&amp;birth_nationality=GB</span>
+<span class="go">&amp;address=ATL+House%2C+128+Peckham+Hill+Street</span>
+<span class="go">&amp;city=London</span>
+<span class="go">&amp;region=England</span>
+<span class="go">&amp;postcode=SE15+5JT</span>
+<span class="go">&amp;country=GB</span>
+<span class="go">&amp;phone_number=1234567890</span>
+<span class="go">&amp;mobile_number=9876543210</span>
+<span class="go">&amp;email_address=support%40atlmoneytransfer.com</span>
+</pre></div>
+</div>
+<p><strong>Response</strong></p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;success&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;customer&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">9963210701</span><span class="p">,</span>
+      <span class="nt">&quot;first_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Dhruv&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;middle_name&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;last_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Patel&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;date_of_birth&quot;</span><span class="p">:</span> <span class="s2">&quot;1989-11-04&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;birth_city&quot;</span><span class="p">:</span> <span class="s2">&quot;London&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;birth_country&quot;</span><span class="p">:</span> <span class="s2">&quot;GB&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;nationality&quot;</span><span class="p">:</span> <span class="s2">&quot;GB&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;birth_nationality&quot;</span><span class="p">:</span> <span class="s2">&quot;GB&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;address&quot;</span><span class="p">:</span> <span class="s2">&quot;ATL House, 128 Peckham Hill Street&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;city&quot;</span><span class="p">:</span> <span class="s2">&quot;London&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;region&quot;</span><span class="p">:</span> <span class="s2">&quot;England&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;postcode&quot;</span><span class="p">:</span> <span class="s2">&quot;SE15 5JT&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;GB&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;mobile_number&quot;</span><span class="p">:</span> <span class="s2">&quot;9876543210&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;phone_number&quot;</span><span class="p">:</span> <span class="s2">&quot;1234567890&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;email_address&quot;</span><span class="p">:</span> <span class="s2">&quot;support@atlmoneytransfer.com&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;blocked&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="nt">&quot;temporary_blocked&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="nt">&quot;created_on&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-09-28T08:40:11+00:00&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;updated_on&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-09-28T08:40:11+00:00&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="get-list-of-all-customers">
+<h2>Get List of all Customers<a class="headerlink" href="#get-list-of-all-customers" title="Permalink to this headline">¶</a></h2>
+<p>Endpoint: <code class="docutils literal notranslate"><span class="pre">https://www.atlmoneytransfer.com/api/customers</span></code></p>
+<p>Method: <code class="docutils literal notranslate"><span class="pre">GET</span></code></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="18%" />
+<col width="59%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Param</th>
+<th class="head">Mandatory</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>page</td>
+<td>No</td>
+<td>Page number of result set.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Request</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">GET /api/customers HTTP/1.1</span>
+<span class="go">Host: www.atlmoneytransfer.com</span>
+<span class="go">Authorization: Bearer sandbox_5ba9df637e1cd5baxxxxxxxxxx</span>
+</pre></div>
+</div>
+<p><strong>Response</strong></p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;success&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;customers&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">9963210701</span><span class="p">,</span>
+            <span class="nt">&quot;first_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Dhruv&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;middle_name&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;last_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Patel&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;date_of_birth&quot;</span><span class="p">:</span> <span class="s2">&quot;1989-11-04&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;birth_city&quot;</span><span class="p">:</span> <span class="s2">&quot;London&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;birth_country&quot;</span><span class="p">:</span> <span class="s2">&quot;GB&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;nationality&quot;</span><span class="p">:</span> <span class="s2">&quot;GB&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;birth_nationality&quot;</span><span class="p">:</span> <span class="s2">&quot;GB&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;address&quot;</span><span class="p">:</span> <span class="s2">&quot;ATL House, 128 Peckham Hill Street&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;city&quot;</span><span class="p">:</span> <span class="s2">&quot;London&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;region&quot;</span><span class="p">:</span> <span class="s2">&quot;England&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;postcode&quot;</span><span class="p">:</span> <span class="s2">&quot;SE15 5JT&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;GB&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;mobile_number&quot;</span><span class="p">:</span> <span class="s2">&quot;9876543210&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;phone_number&quot;</span><span class="p">:</span> <span class="s2">&quot;1234567890&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;email_address&quot;</span><span class="p">:</span> <span class="s2">&quot;support@atlmoneytransfer.com&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;blocked&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="nt">&quot;temporary_blocked&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="nt">&quot;created_on&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-09-28T08:40:11+00:00&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;updated_on&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-09-28T08:40:11+00:00&quot;</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;current_customers&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nt">&quot;total_customers&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nt">&quot;page&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nt">&quot;total_pages&quot;</span><span class="p">:</span> <span class="mi">1</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Response Description</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="66%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>customers.{n}.id</td>
+<td>Global unique identifier for customer.</td>
+</tr>
+<tr class="row-odd"><td>customers.{n}.first_name</td>
+<td>First name of the customer.</td>
+</tr>
+<tr class="row-even"><td>customers.{n}.middle_name</td>
+<td>Middle name of the customer.</td>
+</tr>
+<tr class="row-odd"><td>customers.{n}.last_name</td>
+<td>Last name of the customer.</td>
+</tr>
+<tr class="row-even"><td>customers.{n}.date_of_birth</td>
+<td>Date of birth of the customer.</td>
+</tr>
+<tr class="row-odd"><td>customers.{n}.birth_city</td>
+<td>Birth city of the customer.</td>
+</tr>
+<tr class="row-even"><td>customers.{n}.birth_country</td>
+<td>Birth country of the customer.</td>
+</tr>
+<tr class="row-odd"><td>customers.{n}.nationality</td>
+<td>Current nationality of the customer.</td>
+</tr>
+<tr class="row-even"><td>customers.{n}.birth_nationality</td>
+<td>Nationality of the customer at the time of birth.</td>
+</tr>
+<tr class="row-odd"><td>customers.{n}.address</td>
+<td>Address of the customer.</td>
+</tr>
+<tr class="row-even"><td>customers.{n}.city</td>
+<td>City where the customer is located.</td>
+</tr>
+<tr class="row-odd"><td>customers.{n}.region</td>
+<td>State/Province/Region where the customer is located.</td>
+</tr>
+<tr class="row-even"><td>customers.{n}.postcode</td>
+<td>Postcode of the area where the customer is located.</td>
+</tr>
+<tr class="row-odd"><td>customers.{n}.country</td>
+<td>Country where the customer is located.</td>
+</tr>
+<tr class="row-even"><td>customers.{n}.phone_number</td>
+<td>Phone number of the customer.</td>
+</tr>
+<tr class="row-odd"><td>customers.{n}.mobile_number</td>
+<td>Mobile number of the customer.</td>
+</tr>
+<tr class="row-even"><td>customers.{n}.email_address</td>
+<td>Email address of the customer.</td>
+</tr>
+<tr class="row-odd"><td>customers.{n}.blocked</td>
+<td>1 if customer is blocked for sending, else 0</td>
+</tr>
+<tr class="row-even"><td>customers.{n}.temporary_blocked</td>
+<td>1 if customer is blocked for sending on temporary basis, else 0</td>
+</tr>
+<tr class="row-odd"><td>customers.{n}.created_on</td>
+<td>Customer creation date of the customer on ATL Money Transfer.</td>
+</tr>
+<tr class="row-even"><td>customers.{n}.updated_on</td>
+<td>Date when customer was last updated.</td>
+</tr>
+<tr class="row-odd"><td>current_customers</td>
+<td>Number of customer results on current page.</td>
+</tr>
+<tr class="row-even"><td>total_customers</td>
+<td>Total number of customers on ATL Money Transfer Platform.</td>
+</tr>
+<tr class="row-odd"><td>page</td>
+<td>Current page number.</td>
+</tr>
+<tr class="row-even"><td>total_pages</td>
+<td>Total number of pages.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="get-single-customer">
+<h2>Get Single Customer<a class="headerlink" href="#get-single-customer" title="Permalink to this headline">¶</a></h2>
+<p>Endpoint: <code class="docutils literal notranslate"><span class="pre">https://www.atlmoneytransfer.com/api/customers/:id</span></code></p>
+<p>Method: <code class="docutils literal notranslate"><span class="pre">GET</span></code></p>
+<p><strong>Request</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">GET /api/customers/2618602080 HTTP/1.1</span>
+<span class="go">Host: www.atlmoneytransfer.com</span>
+<span class="go">Authorization: Bearer sandbox_5ba9df637e1cd5baxxxxxxxxxx</span>
+</pre></div>
+</div>
+<p><strong>Response</strong></p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;success&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;customer&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">9963210701</span><span class="p">,</span>
+        <span class="nt">&quot;first_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Dhruv&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;middle_name&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;last_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Patel&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;date_of_birth&quot;</span><span class="p">:</span> <span class="s2">&quot;1989-11-04&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;birth_city&quot;</span><span class="p">:</span> <span class="s2">&quot;London&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;birth_country&quot;</span><span class="p">:</span> <span class="s2">&quot;GB&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;nationality&quot;</span><span class="p">:</span> <span class="s2">&quot;GB&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;birth_nationality&quot;</span><span class="p">:</span> <span class="s2">&quot;GB&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;address&quot;</span><span class="p">:</span> <span class="s2">&quot;ATL House, 128 Peckham Hill Street&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;city&quot;</span><span class="p">:</span> <span class="s2">&quot;London&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;region&quot;</span><span class="p">:</span> <span class="s2">&quot;England&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;postcode&quot;</span><span class="p">:</span> <span class="s2">&quot;SE15 5JT&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;GB&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;mobile_number&quot;</span><span class="p">:</span> <span class="s2">&quot;9876543210&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;phone_number&quot;</span><span class="p">:</span> <span class="s2">&quot;1234567890&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;email_address&quot;</span><span class="p">:</span> <span class="s2">&quot;support@atlmoneytransfer.com&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;blocked&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="nt">&quot;temporary_blocked&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="nt">&quot;created_on&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-09-28T08:40:11+00:00&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;updated_on&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-09-28T08:40:11+00:00&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="update-customer-object">
+<h2>Update Customer Object<a class="headerlink" href="#update-customer-object" title="Permalink to this headline">¶</a></h2>
+<p>Endpoint: <code class="docutils literal notranslate"><span class="pre">https://www.atlmoneytransfer.com/api/customers/:id</span></code></p>
+<p>Method: <code class="docutils literal notranslate"><span class="pre">POST</span></code></p>
+<p><strong>Request</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">POST /api/customers/9963210701 HTTP/1.1</span>
+<span class="go">Host: www.atlmoneytransfer.com</span>
+<span class="go">Authorization: Bearer sandbox_5ba9df637e1cd5baxxxxxxxxxx</span>
+<span class="go">Content-Type: application/x-www-form-urlencoded</span>
+
+<span class="go">last_name=Tester</span>
+<span class="go">&amp;date_of_birth=1990-12-04</span>
+<span class="go">&amp;postcode=SE15+5JT</span>
+</pre></div>
+</div>
+<p><strong>Response</strong></p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;success&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;customer&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">9963210701</span><span class="p">,</span>
+        <span class="nt">&quot;first_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Dhruv&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;middle_name&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;last_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Tester&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;date_of_birth&quot;</span><span class="p">:</span> <span class="s2">&quot;1990-12-04&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;birth_city&quot;</span><span class="p">:</span> <span class="s2">&quot;London&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;birth_country&quot;</span><span class="p">:</span> <span class="s2">&quot;GB&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;nationality&quot;</span><span class="p">:</span> <span class="s2">&quot;GB&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;birth_nationality&quot;</span><span class="p">:</span> <span class="s2">&quot;GB&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;address&quot;</span><span class="p">:</span> <span class="s2">&quot;ATL House, 128 Peckham Hill Street&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;city&quot;</span><span class="p">:</span> <span class="s2">&quot;London&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;region&quot;</span><span class="p">:</span> <span class="s2">&quot;England&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;postcode&quot;</span><span class="p">:</span> <span class="s2">&quot;SE15 5JT&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;GB&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;mobile_number&quot;</span><span class="p">:</span> <span class="s2">&quot;9876543210&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;phone_number&quot;</span><span class="p">:</span> <span class="s2">&quot;1234567890&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;email_address&quot;</span><span class="p">:</span> <span class="s2">&quot;support@atlmoneytransfer.com&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;blocked&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="nt">&quot;temporary_blocked&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="nt">&quot;created_on&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-09-28T08:40:11+00:00&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;updated_on&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-09-28T09:40:35+00:00&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="customer-kyc-document-object">
+<h2>Customer KYC Document Object<a class="headerlink" href="#customer-kyc-document-object" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="85%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>type</td>
+<td>Document type of the uploaded KYC. Any of POI, POA, SOF</td>
+</tr>
+<tr class="row-odd"><td>document</td>
+<td>Document of the uploaded KYC. Eg. PAS or DRV etc.</td>
+</tr>
+<tr class="row-even"><td>id_number</td>
+<td>Document ID Number of uploaded KYC.</td>
+</tr>
+<tr class="row-odd"><td>valid_from</td>
+<td>Document valid from date of the uploaded KYC.</td>
+</tr>
+<tr class="row-even"><td>expiry</td>
+<td>Document expiry date of the uploaded KYC.</td>
+</tr>
+<tr class="row-odd"><td>verified</td>
+<td>1, if document is verfied by ATL Money Transfer, else 0</td>
+</tr>
+<tr class="row-even"><td>uploaded_on</td>
+<td>Date when the document was uploaded to ATL Money Transfer.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="get-customer-kyc-documents">
+<h2>Get Customer KYC Documents<a class="headerlink" href="#get-customer-kyc-documents" title="Permalink to this headline">¶</a></h2>
+<p>Endpoint: <code class="docutils literal notranslate"><span class="pre">https://www.atlmoneytransfer.com/api/kyc-documents/:id</span></code></p>
+<p>Method: <code class="docutils literal notranslate"><span class="pre">GET</span></code></p>
+<p><strong>Request</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">GET /api/kyc-documents/2618602080 HTTP/1.1</span>
+<span class="go">Host: www.atlmoneytransfer.com</span>
+<span class="go">Authorization: Bearer sandbox_5ba9df637e1cd5baxxxxxxxxxx</span>
+</pre></div>
+</div>
+<p><strong>Response</strong></p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;success&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;documents&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;POI&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;document&quot;</span><span class="p">:</span> <span class="s2">&quot;PAS&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;id_number&quot;</span><span class="p">:</span> <span class="s2">&quot;123456&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;valid_from&quot;</span><span class="p">:</span> <span class="s2">&quot;2017-01-01T00:00:00&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;expiry&quot;</span><span class="p">:</span> <span class="s2">&quot;2037-12-31T00:00:00&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;verified&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="nt">&quot;uploaded_on&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-09-27T13:43:34+00:00&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;POA&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;document&quot;</span><span class="p">:</span> <span class="s2">&quot;BAS&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;id_number&quot;</span><span class="p">:</span> <span class="s2">&quot;142536&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;valid_from&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+            <span class="nt">&quot;expiry&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+            <span class="nt">&quot;verified&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="nt">&quot;uploaded_on&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-09-27T13:43:11+00:00&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="upload-kyc-for-customer">
+<h2>Upload KYC for Customer<a class="headerlink" href="#upload-kyc-for-customer" title="Permalink to this headline">¶</a></h2>
+<p>Endpoint: <code class="docutils literal notranslate"><span class="pre">https://www.atlmoneytransfer.com/api/kyc-upload/:id</span></code></p>
+<p>Method: <code class="docutils literal notranslate"><span class="pre">POST</span></code></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="13%" />
+<col width="72%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Mandatory</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>type</td>
+<td>Yes</td>
+<td>Document type of the uploaded KYC. Any of POI, POA, SOF</td>
+</tr>
+<tr class="row-odd"><td>document</td>
+<td>Yes</td>
+<td>Document of the uploaded KYC. Eg. PAS or DRV etc.</td>
+</tr>
+<tr class="row-even"><td>id_number</td>
+<td>Yes</td>
+<td>Document ID Number of uploaded KYC.</td>
+</tr>
+<tr class="row-odd"><td>valid_from</td>
+<td>No</td>
+<td>Document valid from date of the uploaded KYC.</td>
+</tr>
+<tr class="row-even"><td>expiry</td>
+<td>No</td>
+<td>Document expiry date of the uploaded KYC.</td>
+</tr>
+<tr class="row-odd"><td>file</td>
+<td>Yes</td>
+<td>File to be uploaded. Only images and pdf are accepted.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p class="last">Since a resource is being created, HTTP response code <code class="docutils literal notranslate"><span class="pre">201</span></code> will be returned if the kyc is successfully uploaded.</p>
+</div>
+<p><strong>Request</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">POST /api/upload-kyc/9963210701 HTTP/1.1</span>
+<span class="go">Host: www.atlmoneytransfer.com</span>
+<span class="go">Authorization: Bearer sandbox_5ba9df637e1cd5baxxxxxxxxxx</span>
+<span class="go">Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW</span>
+
+<span class="go">------WebKitFormBoundary7MA4YWxkTrZu0gW</span>
+<span class="go">Content-Disposition: form-data; name=&quot;type&quot;</span>
+
+<span class="go">POI</span>
+<span class="go">------WebKitFormBoundary7MA4YWxkTrZu0gW</span>
+<span class="go">Content-Disposition: form-data; name=&quot;document&quot;</span>
+
+<span class="go">PAS</span>
+<span class="go">------WebKitFormBoundary7MA4YWxkTrZu0gW</span>
+<span class="go">Content-Disposition: form-data; name=&quot;id_number&quot;</span>
+
+<span class="go">P123456</span>
+<span class="go">------WebKitFormBoundary7MA4YWxkTrZu0gW</span>
+<span class="go">Content-Disposition: form-data; name=&quot;valid_from&quot;</span>
+
+<span class="go">2018-09-01</span>
+<span class="go">------WebKitFormBoundary7MA4YWxkTrZu0gW</span>
+<span class="go">Content-Disposition: form-data; name=&quot;expiry&quot;</span>
+
+<span class="go">2028-08-31</span>
+<span class="go">------WebKitFormBoundary7MA4YWxkTrZu0gW</span>
+<span class="go">Content-Disposition: form-data; name=&quot;file&quot;; filename=&quot;Passport.jpg&quot;</span>
+<span class="go">Content-Type: image/jpeg</span>
+
+
+<span class="go">------WebKitFormBoundary7MA4YWxkTrZu0gW--</span>
+</pre></div>
+</div>
+<p><strong>Response</strong></p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;success&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;document&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;POI&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;document&quot;</span><span class="p">:</span> <span class="s2">&quot;PAS&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;id_number&quot;</span><span class="p">:</span> <span class="s2">&quot;P123456&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;valid_from&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-09-01&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;expiry&quot;</span><span class="p">:</span> <span class="s2">&quot;2028-08-31&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;verified&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="nt">&quot;uploaded_on&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-09-28T12:24:34+00:00&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="recipients.html" class="btn btn-neutral float-right" title="Recipient Object" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="delivery_options.html" class="btn btn-neutral" title="Delivery Options" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, ATL Money Transfer.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

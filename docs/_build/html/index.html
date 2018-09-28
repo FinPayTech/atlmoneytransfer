@@ -1,0 +1,339 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Welcome &mdash; ATL Money Transfer 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Getting Started" href="getting_started.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="#" class="icon icon-home"> ATL Money Transfer
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Table of Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authentication.html">Authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="errors.html">Errors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rates.html">Settlement Rates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="balances.html">Balance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="delivery_methods.html">Payout Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="banks.html">Banks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collection_points.html">Cash Collection Points</a></li>
+<li class="toctree-l1"><a class="reference internal" href="delivery_options.html">Delivery Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customers.html">Customer Object</a></li>
+<li class="toctree-l1"><a class="reference internal" href="recipients.html">Recipient Object</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transactions.html">Transactions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statuses.html">Transaction Statuses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resources.html">Resources</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">ATL Money Transfer</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#">Docs</a> &raquo;</li>
+        
+      <li>Welcome</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="welcome">
+<h1>Welcome<a class="headerlink" href="#welcome" title="Permalink to this headline">¶</a></h1>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<div class="last line-block">
+<div class="line">This project is still into <code class="docutils literal notranslate"><span class="pre">development</span> <span class="pre">mode</span></code>, things might change during development cycle. If you’re interested about our apis please email us at <a class="reference external" href="mailto:support&#37;&#52;&#48;atlmoneytransfer&#46;com">support<span>&#64;</span>atlmoneytransfer<span>&#46;</span>com</a>. We will notify you once we go live.</div>
+</div>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Table of Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authentication.html">Authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="errors.html">Errors</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="errors.html#http-status-code-summary">HTTP status code summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="errors.html#error-types">Error Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="errors.html#handling-errors">Handling Errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="errors.html#error-codes">Error Codes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rates.html">Settlement Rates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="balances.html">Balance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="balances.html#get-balance-in-all-currencies">Get balance in all currencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="balances.html#get-balance-for-specific-currency">Get balance for specific currency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="balances.html#account-statement">Account Statement</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="delivery_methods.html">Payout Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="banks.html">Banks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collection_points.html">Cash Collection Points</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="collection_points.html#get-list-of-all-payout-partners-in-country">Get list of all payout partners in country</a></li>
+<li class="toctree-l2"><a class="reference internal" href="collection_points.html#get-list-of-all-collection-points-for-partner-in-country">Get list of all collection points for partner in country</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="delivery_options.html">Delivery Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customers.html">Customer Object</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="customers.html#create-a-customer">Create a Customer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="customers.html#get-list-of-all-customers">Get List of all Customers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="customers.html#get-single-customer">Get Single Customer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="customers.html#update-customer-object">Update Customer Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="customers.html#customer-kyc-document-object">Customer KYC Document Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="customers.html#get-customer-kyc-documents">Get Customer KYC Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="customers.html#upload-kyc-for-customer">Upload KYC for Customer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="recipients.html">Recipient Object</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="recipients.html#austria">Austria</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recipients.html#belgium">Belgium</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recipients.html#benin">Benin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recipients.html#burkina-faso">Burkina Faso</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recipients.html#cameroon">Cameroon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recipients.html#canada">Canada</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recipients.html#central-african-republic">Central African Republic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recipients.html#chad">Chad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recipients.html#congo">Congo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recipients.html#cote-d-ivoire">Côte d’Ivoire</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recipients.html#cyprus">Cyprus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recipients.html#democratic-republic-of-the-congo">Democratic Republic of the Congo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recipients.html#denmark">Denmark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recipients.html#equatorial-guinea">Equatorial Guinea</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recipients.html#estonia">Estonia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recipients.html#finland">Finland</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recipients.html#france">France</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recipients.html#gabon">Gabon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recipients.html#gambia">Gambia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recipients.html#germany">Germany</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recipients.html#ghana">Ghana</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recipients.html#greece">Greece</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recipients.html#guinea">Guinea</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recipients.html#guinea-bissau">Guinea-Bissau</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recipients.html#hungary">Hungary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recipients.html#ireland">Ireland</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recipients.html#italy">Italy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recipients.html#latvia">Latvia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recipients.html#lithuania">Lithuania</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recipients.html#luxembourg">Luxembourg</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recipients.html#mali">Mali</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recipients.html#malta">Malta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recipients.html#netherlands">Netherlands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recipients.html#niger">Niger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recipients.html#nigeria">Nigeria</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recipients.html#portugal">Portugal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recipients.html#senegal">Senegal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recipients.html#sierra-leone">Sierra Leone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recipients.html#slovakia">Slovakia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recipients.html#slovenia">Slovenia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recipients.html#spain">Spain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recipients.html#togo">Togo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recipients.html#united-kingdom">United Kingdom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recipients.html#united-states">United States</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="transactions.html">Transactions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="transactions.html#transaction-object">Transaction Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transactions.html#sending-new-transaction">Sending New Transaction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transactions.html#get-all-transactions">Get all Transactions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transactions.html#query-transaction">Query Transaction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transactions.html#cancel-transaction">Cancel Transaction</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="statuses.html">Transaction Statuses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resources.html">Resources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#kyc-document-types">KYC Document Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#accepted-kyc-documents">Accepted KYC Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#get-list-of-countries">Get list of Countries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#get-list-of-nationalities">Get list of Nationalities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#get-list-of-currencies">Get list of Currencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#validate-mobile-number-for-instant-pay-in-ghana">Validate mobile number for Instant Pay in Ghana</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#validate-account-number-for-instant-pay-in-ghana">Validate account number for Instant Pay in Ghana</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="getting_started.html" class="btn btn-neutral float-right" title="Getting Started" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, ATL Money Transfer.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
