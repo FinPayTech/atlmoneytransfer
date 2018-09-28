@@ -446,10 +446,3 @@ Upload KYC
 Endpoint: ``https://www.atlmoneytransfer.com/api/kyc-upload/:id``
 
 Method: ``POST``
-
-Get Recipients of Customer
---------------------------
-
-Endpoint: ``https://www.atlmoneytransfer.com/api/customers/recipients/:id``
-
-Method: ``GET``
