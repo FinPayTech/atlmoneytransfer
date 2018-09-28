@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Transaction Statuses" href="statuses.html" />
+    <link rel="next" title="Transactions" href="transactions.html" />
     <link rel="prev" title="Customer Object" href="customers.html" /> 
 
   
@@ -137,6 +137,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#united-states">United States</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="transactions.html">Transactions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="statuses.html">Transaction Statuses</a></li>
 <li class="toctree-l1"><a class="reference internal" href="resources.html">Resources</a></li>
 </ul>
@@ -205,9 +206,10 @@
             
   <div class="section" id="recipient-object">
 <h1>Recipient Object<a class="headerlink" href="#recipient-object" title="Permalink to this headline">¶</a></h1>
+<p>The recipient object varies for each corridor and payout method.</p>
 <div class="section" id="austria">
 <h2>Austria<a class="headerlink" href="#austria" title="Permalink to this headline">¶</a></h2>
-<p><strong>Account Transfer</strong></p>
+<p><strong>Account Transfer to Austria</strong></p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="27%" />
@@ -261,7 +263,7 @@
 </div>
 <div class="section" id="belgium">
 <h2>Belgium<a class="headerlink" href="#belgium" title="Permalink to this headline">¶</a></h2>
-<p><strong>Account Transfer</strong></p>
+<p><strong>Account Transfer to Belgium</strong></p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="27%" />
@@ -315,12 +317,12 @@
 </div>
 <div class="section" id="benin">
 <h2>Benin<a class="headerlink" href="#benin" title="Permalink to this headline">¶</a></h2>
-<p><strong>Account Transfer</strong></p>
+<p><strong>Account Transfer to Benin</strong></p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="32%" />
+<col width="27%" />
 <col width="12%" />
-<col width="56%" />
+<col width="61%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameter</th>
@@ -329,18 +331,61 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><td>first_name</td>
+<td>Conditional</td>
+<td>First name of the recipient as it appears of their bank account.</td>
+</tr>
+<tr class="row-odd"><td>last_name</td>
+<td>Conditional</td>
+<td>Last name of the recipient as it appears of their bank account.</td>
+</tr>
+<tr class="row-even"><td>business_name</td>
+<td>Conditional</td>
+<td><div class="first last line-block">
+<div class="line">If recipient is company, name of the business as it appears</div>
+<div class="line">on their bank account.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>bank</td>
+<td>Yes</td>
+<td>Bank code. See Banks section for codes.</td>
+</tr>
+<tr class="row-even"><td>branch_code</td>
+<td>Yes</td>
+<td>Account’s branch code.</td>
+</tr>
+<tr class="row-odd"><td>account_number</td>
+<td>Yes</td>
+<td>Account number of the recipient.</td>
+</tr>
+<tr class="row-even"><td>rib_key</td>
+<td>Yes</td>
+<td>RIB Key</td>
+</tr>
+<tr class="row-odd"><td>mobile_number</td>
+<td>No</td>
+<td>Mobile number of recipient, if available</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Cash Pickup</strong></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<div class="last line-block">
+<div class="line"><strong>first_name</strong> and <strong>last_name</strong> are required for <strong>individual</strong> recipients.</div>
+<div class="line"><strong>business_name</strong> is required when recipient is a <strong>company</strong> or an <strong>organization</strong>.</div>
+</div>
+</div>
+<p><strong>Cash Pickup to Benin</strong></p>
+<div class="admonition caution">
+<p class="first admonition-title">Caution</p>
+<p class="last"><strong>Cash Pickup</strong> service is only limited to individual recipients.</p>
+</div>
 <table border="1" class="docutils">
 <colgroup>
-<col width="32%" />
+<col width="27%" />
 <col width="12%" />
-<col width="56%" />
+<col width="61%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameter</th>
@@ -349,21 +394,49 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><td>first_name</td>
+<td>Yes</td>
+<td>First name of the recipient as it appears of recipient’s ID.</td>
+</tr>
+<tr class="row-odd"><td>last_name</td>
+<td>Yes</td>
+<td>Last name of the recipient as it appears of recipient’s ID.</td>
+</tr>
+<tr class="row-even"><td>address</td>
+<td>Yes</td>
+<td>Address of the recipient.</td>
+</tr>
+<tr class="row-odd"><td>city</td>
+<td>Yes</td>
+<td>City where recipient is located.</td>
+</tr>
+<tr class="row-even"><td>region</td>
+<td>No</td>
+<td>Province/County/State/Region where recipient is located.</td>
+</tr>
+<tr class="row-odd"><td>postcode</td>
+<td>No</td>
+<td>Postal code of area where recipient is located.</td>
+</tr>
+<tr class="row-even"><td>mobile_number</td>
+<td>Yes</td>
+<td>Mobile number of the recipient.</td>
+</tr>
+<tr class="row-odd"><td>email</td>
+<td>No</td>
+<td>Email address of recipient, if available.</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="burkina-faso">
 <h2>Burkina Faso<a class="headerlink" href="#burkina-faso" title="Permalink to this headline">¶</a></h2>
-<p><strong>Account Transfer</strong></p>
+<p><strong>Account Transfer to Burkina Faso</strong></p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="32%" />
+<col width="27%" />
 <col width="12%" />
-<col width="56%" />
+<col width="61%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameter</th>
@@ -372,18 +445,61 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><td>first_name</td>
+<td>Conditional</td>
+<td>First name of the recipient as it appears of their bank account.</td>
+</tr>
+<tr class="row-odd"><td>last_name</td>
+<td>Conditional</td>
+<td>Last name of the recipient as it appears of their bank account.</td>
+</tr>
+<tr class="row-even"><td>business_name</td>
+<td>Conditional</td>
+<td><div class="first last line-block">
+<div class="line">If recipient is company, name of the business as it appears</div>
+<div class="line">on their bank account.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>bank</td>
+<td>Yes</td>
+<td>Bank code. See Banks section for codes.</td>
+</tr>
+<tr class="row-even"><td>branch_code</td>
+<td>Yes</td>
+<td>Account’s branch code.</td>
+</tr>
+<tr class="row-odd"><td>account_number</td>
+<td>Yes</td>
+<td>Account number of the recipient.</td>
+</tr>
+<tr class="row-even"><td>rib_key</td>
+<td>Yes</td>
+<td>RIB Key</td>
+</tr>
+<tr class="row-odd"><td>mobile_number</td>
+<td>No</td>
+<td>Mobile number of recipient, if available</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Cash Pickup</strong></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<div class="last line-block">
+<div class="line"><strong>first_name</strong> and <strong>last_name</strong> are required for <strong>individual</strong> recipients.</div>
+<div class="line"><strong>business_name</strong> is required when recipient is a <strong>company</strong> or an <strong>organization</strong>.</div>
+</div>
+</div>
+<p><strong>Cash Pickup to Burkina Faso</strong></p>
+<div class="admonition caution">
+<p class="first admonition-title">Caution</p>
+<p class="last"><strong>Cash Pickup</strong> service is only limited to individual recipients.</p>
+</div>
 <table border="1" class="docutils">
 <colgroup>
-<col width="32%" />
+<col width="27%" />
 <col width="12%" />
-<col width="56%" />
+<col width="61%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameter</th>
@@ -392,21 +508,49 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><td>first_name</td>
+<td>Yes</td>
+<td>First name of the recipient as it appears of recipient’s ID.</td>
+</tr>
+<tr class="row-odd"><td>last_name</td>
+<td>Yes</td>
+<td>Last name of the recipient as it appears of recipient’s ID.</td>
+</tr>
+<tr class="row-even"><td>address</td>
+<td>Yes</td>
+<td>Address of the recipient.</td>
+</tr>
+<tr class="row-odd"><td>city</td>
+<td>Yes</td>
+<td>City where recipient is located.</td>
+</tr>
+<tr class="row-even"><td>region</td>
+<td>No</td>
+<td>Province/County/State/Region where recipient is located.</td>
+</tr>
+<tr class="row-odd"><td>postcode</td>
+<td>No</td>
+<td>Postal code of area where recipient is located.</td>
+</tr>
+<tr class="row-even"><td>mobile_number</td>
+<td>Yes</td>
+<td>Mobile number of the recipient.</td>
+</tr>
+<tr class="row-odd"><td>email</td>
+<td>No</td>
+<td>Email address of recipient, if available.</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="cameroon">
 <h2>Cameroon<a class="headerlink" href="#cameroon" title="Permalink to this headline">¶</a></h2>
-<p><strong>Account Transfer</strong></p>
+<p><strong>Account Transfer to Cameroon</strong></p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="32%" />
+<col width="27%" />
 <col width="12%" />
-<col width="56%" />
+<col width="61%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameter</th>
@@ -415,18 +559,65 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><td>first_name</td>
+<td>Conditional</td>
+<td>First name of the recipient as it appears of their bank account.</td>
+</tr>
+<tr class="row-odd"><td>last_name</td>
+<td>Conditional</td>
+<td>Last name of the recipient as it appears of their bank account.</td>
+</tr>
+<tr class="row-even"><td>business_name</td>
+<td>Conditional</td>
+<td><div class="first last line-block">
+<div class="line">If recipient is company, name of the business as it appears</div>
+<div class="line">on their bank account.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>bank</td>
+<td>Yes</td>
+<td>Complete bank name with no abbreviation.</td>
+</tr>
+<tr class="row-even"><td>bank_code</td>
+<td>Yes</td>
+<td>Bank’s code.</td>
+</tr>
+<tr class="row-odd"><td>branch_code</td>
+<td>Yes</td>
+<td>Account’s branch code.</td>
+</tr>
+<tr class="row-even"><td>account_number</td>
+<td>Yes</td>
+<td>Account number of the recipient.</td>
+</tr>
+<tr class="row-odd"><td>rib_key</td>
+<td>Yes</td>
+<td>RIB Key</td>
+</tr>
+<tr class="row-even"><td>mobile_number</td>
+<td>No</td>
+<td>Mobile number of recipient, if available</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Cash Pickup</strong></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<div class="last line-block">
+<div class="line"><strong>first_name</strong> and <strong>last_name</strong> are required for <strong>individual</strong> recipients.</div>
+<div class="line"><strong>business_name</strong> is required when recipient is a <strong>company</strong> or an <strong>organization</strong>.</div>
+</div>
+</div>
+<p><strong>Cash Pickup to Cameroon</strong></p>
+<div class="admonition caution">
+<p class="first admonition-title">Caution</p>
+<p class="last"><strong>Cash Pickup</strong> service is only limited to individual recipients.</p>
+</div>
 <table border="1" class="docutils">
 <colgroup>
-<col width="32%" />
+<col width="27%" />
 <col width="12%" />
-<col width="56%" />
+<col width="61%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameter</th>
@@ -435,21 +626,49 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><td>first_name</td>
+<td>Yes</td>
+<td>First name of the recipient as it appears of recipient’s ID.</td>
+</tr>
+<tr class="row-odd"><td>last_name</td>
+<td>Yes</td>
+<td>Last name of the recipient as it appears of recipient’s ID.</td>
+</tr>
+<tr class="row-even"><td>address</td>
+<td>Yes</td>
+<td>Address of the recipient.</td>
+</tr>
+<tr class="row-odd"><td>city</td>
+<td>Yes</td>
+<td>City where recipient is located.</td>
+</tr>
+<tr class="row-even"><td>region</td>
+<td>No</td>
+<td>Province/County/State/Region where recipient is located.</td>
+</tr>
+<tr class="row-odd"><td>postcode</td>
+<td>No</td>
+<td>Postal code of area where recipient is located.</td>
+</tr>
+<tr class="row-even"><td>mobile_number</td>
+<td>Yes</td>
+<td>Mobile number of the recipient.</td>
+</tr>
+<tr class="row-odd"><td>email</td>
+<td>No</td>
+<td>Email address of recipient, if available.</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="canada">
 <h2>Canada<a class="headerlink" href="#canada" title="Permalink to this headline">¶</a></h2>
-<p><strong>Account Transfer</strong></p>
+<p><strong>Account Transfer to Canada</strong></p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="32%" />
+<col width="27%" />
 <col width="12%" />
-<col width="56%" />
+<col width="61%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameter</th>
@@ -458,21 +677,64 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><td>first_name</td>
+<td>Conditional</td>
+<td>First name of the recipient as it appears of their bank account.</td>
+</tr>
+<tr class="row-odd"><td>last_name</td>
+<td>Conditional</td>
+<td>Last name of the recipient as it appears of their bank account.</td>
+</tr>
+<tr class="row-even"><td>business_name</td>
+<td>Conditional</td>
+<td><div class="first last line-block">
+<div class="line">If recipient is company, name of the business as it appears</div>
+<div class="line">on their bank account.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>bank</td>
+<td>Yes</td>
+<td>Complete bank name with no abbreviation.</td>
+</tr>
+<tr class="row-even"><td>institution_number</td>
+<td>Yes</td>
+<td>Institution number of account.</td>
+</tr>
+<tr class="row-odd"><td>transit_number</td>
+<td>Yes</td>
+<td>Transit number of account.</td>
+</tr>
+<tr class="row-even"><td>account_number</td>
+<td>Yes</td>
+<td>Account number of account.</td>
+</tr>
+<tr class="row-odd"><td>swift_code</td>
+<td>Yes</td>
+<td>SWIFT of account.</td>
+</tr>
+<tr class="row-even"><td>account_type</td>
+<td>Yes</td>
+<td>Either SAVINGS or CHECKING</td>
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<div class="last line-block">
+<div class="line"><strong>first_name</strong> and <strong>last_name</strong> are required for <strong>individual</strong> recipients.</div>
+<div class="line"><strong>business_name</strong> is required when recipient is a <strong>company</strong> or an <strong>organization</strong>.</div>
+</div>
+</div>
 </div>
 <div class="section" id="central-african-republic">
 <h2>Central African Republic<a class="headerlink" href="#central-african-republic" title="Permalink to this headline">¶</a></h2>
-<p><strong>Account Transfer</strong></p>
+<p><strong>Account Transfer to Central African Republic</strong></p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="32%" />
+<col width="27%" />
 <col width="12%" />
-<col width="56%" />
+<col width="61%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameter</th>
@@ -481,21 +743,64 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><td>first_name</td>
+<td>Conditional</td>
+<td>First name of the recipient as it appears of their bank account.</td>
+</tr>
+<tr class="row-odd"><td>last_name</td>
+<td>Conditional</td>
+<td>Last name of the recipient as it appears of their bank account.</td>
+</tr>
+<tr class="row-even"><td>business_name</td>
+<td>Conditional</td>
+<td><div class="first last line-block">
+<div class="line">If recipient is company, name of the business as it appears</div>
+<div class="line">on their bank account.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>bank</td>
+<td>Yes</td>
+<td>Complete bank name with no abbreviation.</td>
+</tr>
+<tr class="row-even"><td>bank_code</td>
+<td>Yes</td>
+<td>Bank’s code.</td>
+</tr>
+<tr class="row-odd"><td>branch_code</td>
+<td>Yes</td>
+<td>Account’s branch code.</td>
+</tr>
+<tr class="row-even"><td>account_number</td>
+<td>Yes</td>
+<td>Account number of the recipient.</td>
+</tr>
+<tr class="row-odd"><td>rib_key</td>
+<td>Yes</td>
+<td>RIB Key</td>
+</tr>
+<tr class="row-even"><td>mobile_number</td>
+<td>No</td>
+<td>Mobile number of recipient, if available</td>
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<div class="last line-block">
+<div class="line"><strong>first_name</strong> and <strong>last_name</strong> are required for <strong>individual</strong> recipients.</div>
+<div class="line"><strong>business_name</strong> is required when recipient is a <strong>company</strong> or an <strong>organization</strong>.</div>
+</div>
+</div>
 </div>
 <div class="section" id="chad">
 <h2>Chad<a class="headerlink" href="#chad" title="Permalink to this headline">¶</a></h2>
-<p><strong>Account Transfer</strong></p>
+<p><strong>Account Transfer to Chad</strong></p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="32%" />
+<col width="27%" />
 <col width="12%" />
-<col width="56%" />
+<col width="61%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameter</th>
@@ -504,18 +809,65 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><td>first_name</td>
+<td>Conditional</td>
+<td>First name of the recipient as it appears of their bank account.</td>
+</tr>
+<tr class="row-odd"><td>last_name</td>
+<td>Conditional</td>
+<td>Last name of the recipient as it appears of their bank account.</td>
+</tr>
+<tr class="row-even"><td>business_name</td>
+<td>Conditional</td>
+<td><div class="first last line-block">
+<div class="line">If recipient is company, name of the business as it appears</div>
+<div class="line">on their bank account.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>bank</td>
+<td>Yes</td>
+<td>Complete bank name with no abbreviation.</td>
+</tr>
+<tr class="row-even"><td>bank_code</td>
+<td>Yes</td>
+<td>Bank’s code.</td>
+</tr>
+<tr class="row-odd"><td>branch_code</td>
+<td>Yes</td>
+<td>Account’s branch code.</td>
+</tr>
+<tr class="row-even"><td>account_number</td>
+<td>Yes</td>
+<td>Account number of the recipient.</td>
+</tr>
+<tr class="row-odd"><td>rib_key</td>
+<td>Yes</td>
+<td>RIB Key</td>
+</tr>
+<tr class="row-even"><td>mobile_number</td>
+<td>No</td>
+<td>Mobile number of recipient, if available</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Cash Pickup</strong></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<div class="last line-block">
+<div class="line"><strong>first_name</strong> and <strong>last_name</strong> are required for <strong>individual</strong> recipients.</div>
+<div class="line"><strong>business_name</strong> is required when recipient is a <strong>company</strong> or an <strong>organization</strong>.</div>
+</div>
+</div>
+<p><strong>Cash Pickup to Chad</strong></p>
+<div class="admonition caution">
+<p class="first admonition-title">Caution</p>
+<p class="last"><strong>Cash Pickup</strong> service is only limited to individual recipients.</p>
+</div>
 <table border="1" class="docutils">
 <colgroup>
-<col width="32%" />
+<col width="27%" />
 <col width="12%" />
-<col width="56%" />
+<col width="61%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameter</th>
@@ -524,21 +876,49 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><td>first_name</td>
+<td>Yes</td>
+<td>First name of the recipient as it appears of recipient’s ID.</td>
+</tr>
+<tr class="row-odd"><td>last_name</td>
+<td>Yes</td>
+<td>Last name of the recipient as it appears of recipient’s ID.</td>
+</tr>
+<tr class="row-even"><td>address</td>
+<td>Yes</td>
+<td>Address of the recipient.</td>
+</tr>
+<tr class="row-odd"><td>city</td>
+<td>Yes</td>
+<td>City where recipient is located.</td>
+</tr>
+<tr class="row-even"><td>region</td>
+<td>No</td>
+<td>Province/County/State/Region where recipient is located.</td>
+</tr>
+<tr class="row-odd"><td>postcode</td>
+<td>No</td>
+<td>Postal code of area where recipient is located.</td>
+</tr>
+<tr class="row-even"><td>mobile_number</td>
+<td>Yes</td>
+<td>Mobile number of the recipient.</td>
+</tr>
+<tr class="row-odd"><td>email</td>
+<td>No</td>
+<td>Email address of recipient, if available.</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="congo">
 <h2>Congo<a class="headerlink" href="#congo" title="Permalink to this headline">¶</a></h2>
-<p><strong>Account Transfer</strong></p>
+<p><strong>Account Transfer to Congo</strong></p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="32%" />
+<col width="27%" />
 <col width="12%" />
-<col width="56%" />
+<col width="61%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameter</th>
@@ -547,12 +927,55 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><td>first_name</td>
+<td>Conditional</td>
+<td>First name of the recipient as it appears of their bank account.</td>
+</tr>
+<tr class="row-odd"><td>last_name</td>
+<td>Conditional</td>
+<td>Last name of the recipient as it appears of their bank account.</td>
+</tr>
+<tr class="row-even"><td>business_name</td>
+<td>Conditional</td>
+<td><div class="first last line-block">
+<div class="line">If recipient is company, name of the business as it appears</div>
+<div class="line">on their bank account.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>bank</td>
+<td>Yes</td>
+<td>Complete bank name with no abbreviation.</td>
+</tr>
+<tr class="row-even"><td>bank_code</td>
+<td>Yes</td>
+<td>Bank’s code.</td>
+</tr>
+<tr class="row-odd"><td>branch_code</td>
+<td>Yes</td>
+<td>Account’s branch code.</td>
+</tr>
+<tr class="row-even"><td>account_number</td>
+<td>Yes</td>
+<td>Account number of the recipient.</td>
+</tr>
+<tr class="row-odd"><td>rib_key</td>
+<td>Yes</td>
+<td>RIB Key</td>
+</tr>
+<tr class="row-even"><td>mobile_number</td>
+<td>No</td>
+<td>Mobile number of recipient, if available</td>
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<div class="last line-block">
+<div class="line"><strong>first_name</strong> and <strong>last_name</strong> are required for <strong>individual</strong> recipients.</div>
+<div class="line"><strong>business_name</strong> is required when recipient is a <strong>company</strong> or an <strong>organization</strong>.</div>
+</div>
+</div>
 </div>
 <div class="section" id="cote-d-ivoire">
 <h2>Côte d’Ivoire<a class="headerlink" href="#cote-d-ivoire" title="Permalink to this headline">¶</a></h2>
@@ -576,12 +999,16 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Cash Pickup</strong></p>
+<p><strong>Cash Pickup to Côte d’Ivoire</strong></p>
+<div class="admonition caution">
+<p class="first admonition-title">Caution</p>
+<p class="last"><strong>Cash Pickup</strong> service is only limited to individual recipients.</p>
+</div>
 <table border="1" class="docutils">
 <colgroup>
-<col width="32%" />
+<col width="27%" />
 <col width="12%" />
-<col width="56%" />
+<col width="61%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameter</th>
@@ -590,9 +1017,37 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><td>first_name</td>
+<td>Yes</td>
+<td>First name of the recipient as it appears of recipient’s ID.</td>
+</tr>
+<tr class="row-odd"><td>last_name</td>
+<td>Yes</td>
+<td>Last name of the recipient as it appears of recipient’s ID.</td>
+</tr>
+<tr class="row-even"><td>address</td>
+<td>Yes</td>
+<td>Address of the recipient.</td>
+</tr>
+<tr class="row-odd"><td>city</td>
+<td>Yes</td>
+<td>City where recipient is located.</td>
+</tr>
+<tr class="row-even"><td>region</td>
+<td>No</td>
+<td>Province/County/State/Region where recipient is located.</td>
+</tr>
+<tr class="row-odd"><td>postcode</td>
+<td>No</td>
+<td>Postal code of area where recipient is located.</td>
+</tr>
+<tr class="row-even"><td>mobile_number</td>
+<td>Yes</td>
+<td>Mobile number of the recipient.</td>
+</tr>
+<tr class="row-odd"><td>email</td>
+<td>No</td>
+<td>Email address of recipient, if available.</td>
 </tr>
 </tbody>
 </table>
@@ -642,12 +1097,16 @@
 </div>
 <div class="section" id="democratic-republic-of-the-congo">
 <h2>Democratic Republic of the Congo<a class="headerlink" href="#democratic-republic-of-the-congo" title="Permalink to this headline">¶</a></h2>
-<p><strong>Cash Pickup</strong></p>
+<p><strong>Cash Pickup to Democratic Republic of the Congo</strong></p>
+<div class="admonition caution">
+<p class="first admonition-title">Caution</p>
+<p class="last"><strong>Cash Pickup</strong> service is only limited to individual recipients.</p>
+</div>
 <table border="1" class="docutils">
 <colgroup>
-<col width="32%" />
+<col width="27%" />
 <col width="12%" />
-<col width="56%" />
+<col width="61%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameter</th>
@@ -656,9 +1115,37 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><td>first_name</td>
+<td>Yes</td>
+<td>First name of the recipient as it appears of recipient’s ID.</td>
+</tr>
+<tr class="row-odd"><td>last_name</td>
+<td>Yes</td>
+<td>Last name of the recipient as it appears of recipient’s ID.</td>
+</tr>
+<tr class="row-even"><td>address</td>
+<td>Yes</td>
+<td>Address of the recipient.</td>
+</tr>
+<tr class="row-odd"><td>city</td>
+<td>Yes</td>
+<td>City where recipient is located.</td>
+</tr>
+<tr class="row-even"><td>region</td>
+<td>No</td>
+<td>Province/County/State/Region where recipient is located.</td>
+</tr>
+<tr class="row-odd"><td>postcode</td>
+<td>No</td>
+<td>Postal code of area where recipient is located.</td>
+</tr>
+<tr class="row-even"><td>mobile_number</td>
+<td>Yes</td>
+<td>Mobile number of the recipient.</td>
+</tr>
+<tr class="row-odd"><td>email</td>
+<td>No</td>
+<td>Email address of recipient, if available.</td>
 </tr>
 </tbody>
 </table>
@@ -685,12 +1172,16 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Cash Pickup</strong></p>
+<p><strong>Cash Pickup to Denmark</strong></p>
+<div class="admonition caution">
+<p class="first admonition-title">Caution</p>
+<p class="last"><strong>Cash Pickup</strong> service is only limited to individual recipients.</p>
+</div>
 <table border="1" class="docutils">
 <colgroup>
-<col width="32%" />
+<col width="27%" />
 <col width="12%" />
-<col width="56%" />
+<col width="61%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameter</th>
@@ -699,9 +1190,37 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><td>first_name</td>
+<td>Yes</td>
+<td>First name of the recipient as it appears of recipient’s ID.</td>
+</tr>
+<tr class="row-odd"><td>last_name</td>
+<td>Yes</td>
+<td>Last name of the recipient as it appears of recipient’s ID.</td>
+</tr>
+<tr class="row-even"><td>address</td>
+<td>Yes</td>
+<td>Address of the recipient.</td>
+</tr>
+<tr class="row-odd"><td>city</td>
+<td>Yes</td>
+<td>City where recipient is located.</td>
+</tr>
+<tr class="row-even"><td>region</td>
+<td>No</td>
+<td>Province/County/State/Region where recipient is located.</td>
+</tr>
+<tr class="row-odd"><td>postcode</td>
+<td>No</td>
+<td>Postal code of area where recipient is located.</td>
+</tr>
+<tr class="row-even"><td>mobile_number</td>
+<td>Yes</td>
+<td>Mobile number of the recipient.</td>
+</tr>
+<tr class="row-odd"><td>email</td>
+<td>No</td>
+<td>Email address of recipient, if available.</td>
 </tr>
 </tbody>
 </table>
@@ -797,12 +1316,16 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Cash Pickup</strong></p>
+<p><strong>Cash Pickup to France</strong></p>
+<div class="admonition caution">
+<p class="first admonition-title">Caution</p>
+<p class="last"><strong>Cash Pickup</strong> service is only limited to individual recipients.</p>
+</div>
 <table border="1" class="docutils">
 <colgroup>
-<col width="32%" />
+<col width="27%" />
 <col width="12%" />
-<col width="56%" />
+<col width="61%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameter</th>
@@ -811,9 +1334,37 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><td>first_name</td>
+<td>Yes</td>
+<td>First name of the recipient as it appears of recipient’s ID.</td>
+</tr>
+<tr class="row-odd"><td>last_name</td>
+<td>Yes</td>
+<td>Last name of the recipient as it appears of recipient’s ID.</td>
+</tr>
+<tr class="row-even"><td>address</td>
+<td>Yes</td>
+<td>Address of the recipient.</td>
+</tr>
+<tr class="row-odd"><td>city</td>
+<td>Yes</td>
+<td>City where recipient is located.</td>
+</tr>
+<tr class="row-even"><td>region</td>
+<td>No</td>
+<td>Province/County/State/Region where recipient is located.</td>
+</tr>
+<tr class="row-odd"><td>postcode</td>
+<td>No</td>
+<td>Postal code of area where recipient is located.</td>
+</tr>
+<tr class="row-even"><td>mobile_number</td>
+<td>Yes</td>
+<td>Mobile number of the recipient.</td>
+</tr>
+<tr class="row-odd"><td>email</td>
+<td>No</td>
+<td>Email address of recipient, if available.</td>
 </tr>
 </tbody>
 </table>
@@ -840,12 +1391,16 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Cash Pickup</strong></p>
+<p><strong>Cash Pickup to Gabon</strong></p>
+<div class="admonition caution">
+<p class="first admonition-title">Caution</p>
+<p class="last"><strong>Cash Pickup</strong> service is only limited to individual recipients.</p>
+</div>
 <table border="1" class="docutils">
 <colgroup>
-<col width="32%" />
+<col width="27%" />
 <col width="12%" />
-<col width="56%" />
+<col width="61%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameter</th>
@@ -854,21 +1409,53 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><td>first_name</td>
+<td>Yes</td>
+<td>First name of the recipient as it appears of recipient’s ID.</td>
+</tr>
+<tr class="row-odd"><td>last_name</td>
+<td>Yes</td>
+<td>Last name of the recipient as it appears of recipient’s ID.</td>
+</tr>
+<tr class="row-even"><td>address</td>
+<td>Yes</td>
+<td>Address of the recipient.</td>
+</tr>
+<tr class="row-odd"><td>city</td>
+<td>Yes</td>
+<td>City where recipient is located.</td>
+</tr>
+<tr class="row-even"><td>region</td>
+<td>No</td>
+<td>Province/County/State/Region where recipient is located.</td>
+</tr>
+<tr class="row-odd"><td>postcode</td>
+<td>No</td>
+<td>Postal code of area where recipient is located.</td>
+</tr>
+<tr class="row-even"><td>mobile_number</td>
+<td>Yes</td>
+<td>Mobile number of the recipient.</td>
+</tr>
+<tr class="row-odd"><td>email</td>
+<td>No</td>
+<td>Email address of recipient, if available.</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="gambia">
 <h2>Gambia<a class="headerlink" href="#gambia" title="Permalink to this headline">¶</a></h2>
-<p><strong>Cash Pickup</strong></p>
+<p><strong>Cash Pickup to Gambia</strong></p>
+<div class="admonition caution">
+<p class="first admonition-title">Caution</p>
+<p class="last"><strong>Cash Pickup</strong> service is only limited to individual recipients.</p>
+</div>
 <table border="1" class="docutils">
 <colgroup>
-<col width="32%" />
+<col width="27%" />
 <col width="12%" />
-<col width="56%" />
+<col width="61%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameter</th>
@@ -877,9 +1464,37 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><td>first_name</td>
+<td>Yes</td>
+<td>First name of the recipient as it appears of recipient’s ID.</td>
+</tr>
+<tr class="row-odd"><td>last_name</td>
+<td>Yes</td>
+<td>Last name of the recipient as it appears of recipient’s ID.</td>
+</tr>
+<tr class="row-even"><td>address</td>
+<td>Yes</td>
+<td>Address of the recipient.</td>
+</tr>
+<tr class="row-odd"><td>city</td>
+<td>Yes</td>
+<td>City where recipient is located.</td>
+</tr>
+<tr class="row-even"><td>region</td>
+<td>No</td>
+<td>Province/County/State/Region where recipient is located.</td>
+</tr>
+<tr class="row-odd"><td>postcode</td>
+<td>No</td>
+<td>Postal code of area where recipient is located.</td>
+</tr>
+<tr class="row-even"><td>mobile_number</td>
+<td>Yes</td>
+<td>Mobile number of the recipient.</td>
+</tr>
+<tr class="row-odd"><td>email</td>
+<td>No</td>
+<td>Email address of recipient, if available.</td>
 </tr>
 </tbody>
 </table>
@@ -929,12 +1544,16 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Cash Pickup</strong></p>
+<p><strong>Cash Pickup to Ghana</strong></p>
+<div class="admonition caution">
+<p class="first admonition-title">Caution</p>
+<p class="last"><strong>Cash Pickup</strong> service is only limited to individual recipients.</p>
+</div>
 <table border="1" class="docutils">
 <colgroup>
-<col width="32%" />
+<col width="27%" />
 <col width="12%" />
-<col width="56%" />
+<col width="61%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameter</th>
@@ -943,9 +1562,37 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><td>first_name</td>
+<td>Yes</td>
+<td>First name of the recipient as it appears of recipient’s ID.</td>
+</tr>
+<tr class="row-odd"><td>last_name</td>
+<td>Yes</td>
+<td>Last name of the recipient as it appears of recipient’s ID.</td>
+</tr>
+<tr class="row-even"><td>address</td>
+<td>Yes</td>
+<td>Address of the recipient.</td>
+</tr>
+<tr class="row-odd"><td>city</td>
+<td>Yes</td>
+<td>City where recipient is located.</td>
+</tr>
+<tr class="row-even"><td>region</td>
+<td>No</td>
+<td>Province/County/State/Region where recipient is located.</td>
+</tr>
+<tr class="row-odd"><td>postcode</td>
+<td>No</td>
+<td>Postal code of area where recipient is located.</td>
+</tr>
+<tr class="row-even"><td>mobile_number</td>
+<td>Yes</td>
+<td>Mobile number of the recipient.</td>
+</tr>
+<tr class="row-odd"><td>email</td>
+<td>No</td>
+<td>Email address of recipient, if available.</td>
 </tr>
 </tbody>
 </table>
@@ -995,12 +1642,16 @@
 </div>
 <div class="section" id="guinea">
 <h2>Guinea<a class="headerlink" href="#guinea" title="Permalink to this headline">¶</a></h2>
-<p><strong>Cash Pickup</strong></p>
+<p><strong>Cash Pickup to Guinea</strong></p>
+<div class="admonition caution">
+<p class="first admonition-title">Caution</p>
+<p class="last"><strong>Cash Pickup</strong> service is only limited to individual recipients.</p>
+</div>
 <table border="1" class="docutils">
 <colgroup>
-<col width="32%" />
+<col width="27%" />
 <col width="12%" />
-<col width="56%" />
+<col width="61%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameter</th>
@@ -1009,9 +1660,37 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><td>first_name</td>
+<td>Yes</td>
+<td>First name of the recipient as it appears of recipient’s ID.</td>
+</tr>
+<tr class="row-odd"><td>last_name</td>
+<td>Yes</td>
+<td>Last name of the recipient as it appears of recipient’s ID.</td>
+</tr>
+<tr class="row-even"><td>address</td>
+<td>Yes</td>
+<td>Address of the recipient.</td>
+</tr>
+<tr class="row-odd"><td>city</td>
+<td>Yes</td>
+<td>City where recipient is located.</td>
+</tr>
+<tr class="row-even"><td>region</td>
+<td>No</td>
+<td>Province/County/State/Region where recipient is located.</td>
+</tr>
+<tr class="row-odd"><td>postcode</td>
+<td>No</td>
+<td>Postal code of area where recipient is located.</td>
+</tr>
+<tr class="row-even"><td>mobile_number</td>
+<td>Yes</td>
+<td>Mobile number of the recipient.</td>
+</tr>
+<tr class="row-odd"><td>email</td>
+<td>No</td>
+<td>Email address of recipient, if available.</td>
 </tr>
 </tbody>
 </table>
@@ -1038,12 +1717,16 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Cash Pickup</strong></p>
+<p><strong>Cash Pickup to Guinea-Bissau</strong></p>
+<div class="admonition caution">
+<p class="first admonition-title">Caution</p>
+<p class="last"><strong>Cash Pickup</strong> service is only limited to individual recipients.</p>
+</div>
 <table border="1" class="docutils">
 <colgroup>
-<col width="32%" />
+<col width="27%" />
 <col width="12%" />
-<col width="56%" />
+<col width="61%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameter</th>
@@ -1052,9 +1735,37 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><td>first_name</td>
+<td>Yes</td>
+<td>First name of the recipient as it appears of recipient’s ID.</td>
+</tr>
+<tr class="row-odd"><td>last_name</td>
+<td>Yes</td>
+<td>Last name of the recipient as it appears of recipient’s ID.</td>
+</tr>
+<tr class="row-even"><td>address</td>
+<td>Yes</td>
+<td>Address of the recipient.</td>
+</tr>
+<tr class="row-odd"><td>city</td>
+<td>Yes</td>
+<td>City where recipient is located.</td>
+</tr>
+<tr class="row-even"><td>region</td>
+<td>No</td>
+<td>Province/County/State/Region where recipient is located.</td>
+</tr>
+<tr class="row-odd"><td>postcode</td>
+<td>No</td>
+<td>Postal code of area where recipient is located.</td>
+</tr>
+<tr class="row-even"><td>mobile_number</td>
+<td>Yes</td>
+<td>Mobile number of the recipient.</td>
+</tr>
+<tr class="row-odd"><td>email</td>
+<td>No</td>
+<td>Email address of recipient, if available.</td>
 </tr>
 </tbody>
 </table>
@@ -1219,12 +1930,16 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Cash Pickup</strong></p>
+<p><strong>Cash Pickup to Mali</strong></p>
+<div class="admonition caution">
+<p class="first admonition-title">Caution</p>
+<p class="last"><strong>Cash Pickup</strong> service is only limited to individual recipients.</p>
+</div>
 <table border="1" class="docutils">
 <colgroup>
-<col width="32%" />
+<col width="27%" />
 <col width="12%" />
-<col width="56%" />
+<col width="61%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameter</th>
@@ -1233,9 +1948,37 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><td>first_name</td>
+<td>Yes</td>
+<td>First name of the recipient as it appears of recipient’s ID.</td>
+</tr>
+<tr class="row-odd"><td>last_name</td>
+<td>Yes</td>
+<td>Last name of the recipient as it appears of recipient’s ID.</td>
+</tr>
+<tr class="row-even"><td>address</td>
+<td>Yes</td>
+<td>Address of the recipient.</td>
+</tr>
+<tr class="row-odd"><td>city</td>
+<td>Yes</td>
+<td>City where recipient is located.</td>
+</tr>
+<tr class="row-even"><td>region</td>
+<td>No</td>
+<td>Province/County/State/Region where recipient is located.</td>
+</tr>
+<tr class="row-odd"><td>postcode</td>
+<td>No</td>
+<td>Postal code of area where recipient is located.</td>
+</tr>
+<tr class="row-even"><td>mobile_number</td>
+<td>Yes</td>
+<td>Mobile number of the recipient.</td>
+</tr>
+<tr class="row-odd"><td>email</td>
+<td>No</td>
+<td>Email address of recipient, if available.</td>
 </tr>
 </tbody>
 </table>
@@ -1308,12 +2051,16 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Cash Pickup</strong></p>
+<p><strong>Cash Pickup to Niger</strong></p>
+<div class="admonition caution">
+<p class="first admonition-title">Caution</p>
+<p class="last"><strong>Cash Pickup</strong> service is only limited to individual recipients.</p>
+</div>
 <table border="1" class="docutils">
 <colgroup>
-<col width="32%" />
+<col width="27%" />
 <col width="12%" />
-<col width="56%" />
+<col width="61%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameter</th>
@@ -1322,9 +2069,37 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><td>first_name</td>
+<td>Yes</td>
+<td>First name of the recipient as it appears of recipient’s ID.</td>
+</tr>
+<tr class="row-odd"><td>last_name</td>
+<td>Yes</td>
+<td>Last name of the recipient as it appears of recipient’s ID.</td>
+</tr>
+<tr class="row-even"><td>address</td>
+<td>Yes</td>
+<td>Address of the recipient.</td>
+</tr>
+<tr class="row-odd"><td>city</td>
+<td>Yes</td>
+<td>City where recipient is located.</td>
+</tr>
+<tr class="row-even"><td>region</td>
+<td>No</td>
+<td>Province/County/State/Region where recipient is located.</td>
+</tr>
+<tr class="row-odd"><td>postcode</td>
+<td>No</td>
+<td>Postal code of area where recipient is located.</td>
+</tr>
+<tr class="row-even"><td>mobile_number</td>
+<td>Yes</td>
+<td>Mobile number of the recipient.</td>
+</tr>
+<tr class="row-odd"><td>email</td>
+<td>No</td>
+<td>Email address of recipient, if available.</td>
 </tr>
 </tbody>
 </table>
@@ -1397,12 +2172,16 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Cash Pickup</strong></p>
+<p><strong>Cash Pickup to Senegal</strong></p>
+<div class="admonition caution">
+<p class="first admonition-title">Caution</p>
+<p class="last"><strong>Cash Pickup</strong> service is only limited to individual recipients.</p>
+</div>
 <table border="1" class="docutils">
 <colgroup>
-<col width="32%" />
+<col width="27%" />
 <col width="12%" />
-<col width="56%" />
+<col width="61%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameter</th>
@@ -1411,9 +2190,37 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><td>first_name</td>
+<td>Yes</td>
+<td>First name of the recipient as it appears of recipient’s ID.</td>
+</tr>
+<tr class="row-odd"><td>last_name</td>
+<td>Yes</td>
+<td>Last name of the recipient as it appears of recipient’s ID.</td>
+</tr>
+<tr class="row-even"><td>address</td>
+<td>Yes</td>
+<td>Address of the recipient.</td>
+</tr>
+<tr class="row-odd"><td>city</td>
+<td>Yes</td>
+<td>City where recipient is located.</td>
+</tr>
+<tr class="row-even"><td>region</td>
+<td>No</td>
+<td>Province/County/State/Region where recipient is located.</td>
+</tr>
+<tr class="row-odd"><td>postcode</td>
+<td>No</td>
+<td>Postal code of area where recipient is located.</td>
+</tr>
+<tr class="row-even"><td>mobile_number</td>
+<td>Yes</td>
+<td>Mobile number of the recipient.</td>
+</tr>
+<tr class="row-odd"><td>email</td>
+<td>No</td>
+<td>Email address of recipient, if available.</td>
 </tr>
 </tbody>
 </table>
@@ -1440,12 +2247,16 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Cash Pickup</strong></p>
+<p><strong>Cash Pickup to Sierra Leone</strong></p>
+<div class="admonition caution">
+<p class="first admonition-title">Caution</p>
+<p class="last"><strong>Cash Pickup</strong> service is only limited to individual recipients.</p>
+</div>
 <table border="1" class="docutils">
 <colgroup>
-<col width="32%" />
+<col width="27%" />
 <col width="12%" />
-<col width="56%" />
+<col width="61%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameter</th>
@@ -1454,9 +2265,37 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><td>first_name</td>
+<td>Yes</td>
+<td>First name of the recipient as it appears of recipient’s ID.</td>
+</tr>
+<tr class="row-odd"><td>last_name</td>
+<td>Yes</td>
+<td>Last name of the recipient as it appears of recipient’s ID.</td>
+</tr>
+<tr class="row-even"><td>address</td>
+<td>Yes</td>
+<td>Address of the recipient.</td>
+</tr>
+<tr class="row-odd"><td>city</td>
+<td>Yes</td>
+<td>City where recipient is located.</td>
+</tr>
+<tr class="row-even"><td>region</td>
+<td>No</td>
+<td>Province/County/State/Region where recipient is located.</td>
+</tr>
+<tr class="row-odd"><td>postcode</td>
+<td>No</td>
+<td>Postal code of area where recipient is located.</td>
+</tr>
+<tr class="row-even"><td>mobile_number</td>
+<td>Yes</td>
+<td>Mobile number of the recipient.</td>
+</tr>
+<tr class="row-odd"><td>email</td>
+<td>No</td>
+<td>Email address of recipient, if available.</td>
 </tr>
 </tbody>
 </table>
@@ -1552,12 +2391,16 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Cash Pickup</strong></p>
+<p><strong>Cash Pickup to Togo</strong></p>
+<div class="admonition caution">
+<p class="first admonition-title">Caution</p>
+<p class="last"><strong>Cash Pickup</strong> service is only limited to individual recipients.</p>
+</div>
 <table border="1" class="docutils">
 <colgroup>
-<col width="32%" />
+<col width="27%" />
 <col width="12%" />
-<col width="56%" />
+<col width="61%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameter</th>
@@ -1566,9 +2409,37 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><td>first_name</td>
+<td>Yes</td>
+<td>First name of the recipient as it appears of recipient’s ID.</td>
+</tr>
+<tr class="row-odd"><td>last_name</td>
+<td>Yes</td>
+<td>Last name of the recipient as it appears of recipient’s ID.</td>
+</tr>
+<tr class="row-even"><td>address</td>
+<td>Yes</td>
+<td>Address of the recipient.</td>
+</tr>
+<tr class="row-odd"><td>city</td>
+<td>Yes</td>
+<td>City where recipient is located.</td>
+</tr>
+<tr class="row-even"><td>region</td>
+<td>No</td>
+<td>Province/County/State/Region where recipient is located.</td>
+</tr>
+<tr class="row-odd"><td>postcode</td>
+<td>No</td>
+<td>Postal code of area where recipient is located.</td>
+</tr>
+<tr class="row-even"><td>mobile_number</td>
+<td>Yes</td>
+<td>Mobile number of the recipient.</td>
+</tr>
+<tr class="row-odd"><td>email</td>
+<td>No</td>
+<td>Email address of recipient, if available.</td>
 </tr>
 </tbody>
 </table>
@@ -1595,12 +2466,16 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Cash Pickup</strong></p>
+<p><strong>Cash Pickup to United Kingdom</strong></p>
+<div class="admonition caution">
+<p class="first admonition-title">Caution</p>
+<p class="last"><strong>Cash Pickup</strong> service is only limited to individual recipients.</p>
+</div>
 <table border="1" class="docutils">
 <colgroup>
-<col width="32%" />
+<col width="27%" />
 <col width="12%" />
-<col width="56%" />
+<col width="61%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameter</th>
@@ -1609,9 +2484,37 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><td>first_name</td>
+<td>Yes</td>
+<td>First name of the recipient as it appears of recipient’s ID.</td>
+</tr>
+<tr class="row-odd"><td>last_name</td>
+<td>Yes</td>
+<td>Last name of the recipient as it appears of recipient’s ID.</td>
+</tr>
+<tr class="row-even"><td>address</td>
+<td>Yes</td>
+<td>Address of the recipient.</td>
+</tr>
+<tr class="row-odd"><td>city</td>
+<td>Yes</td>
+<td>City where recipient is located.</td>
+</tr>
+<tr class="row-even"><td>region</td>
+<td>No</td>
+<td>Province/County/State/Region where recipient is located.</td>
+</tr>
+<tr class="row-odd"><td>postcode</td>
+<td>No</td>
+<td>Postal code of area where recipient is located.</td>
+</tr>
+<tr class="row-even"><td>mobile_number</td>
+<td>Yes</td>
+<td>Mobile number of the recipient.</td>
+</tr>
+<tr class="row-odd"><td>email</td>
+<td>No</td>
+<td>Email address of recipient, if available.</td>
 </tr>
 </tbody>
 </table>
@@ -1649,7 +2552,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="statuses.html" class="btn btn-neutral float-right" title="Transaction Statuses" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="transactions.html" class="btn btn-neutral float-right" title="Transactions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="customers.html" class="btn btn-neutral" title="Customer Object" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

@@ -20,5 +20,6 @@ Welcome
    delivery_options
    customers
    recipients
+   transactions
    statuses
    resources
