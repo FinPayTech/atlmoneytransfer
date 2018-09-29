@@ -95,6 +95,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Recipient Object</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#creating-new-recipient">Creating New Recipient</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#get-all-recipients">Get all Recipients</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#get-single-recipient">Get Single Recipient</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#update-recipient">Update Recipient</a></li>
 </ul>
 </li>
@@ -170,8 +171,8 @@
 <p>The recipient object varies for each corridor and payout method.</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="31%" />
-<col width="69%" />
+<col width="28%" />
+<col width="72%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameter</th>
@@ -180,13 +181,19 @@
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>id</td>
-<td>Unique identifier for recipient on ATL Money Transfer platform.</td>
+<td>Unique Identification Number for recipient on ATL Money Transfer platform.</td>
 </tr>
 <tr class="row-odd"><td>full_name</td>
 <td>Full name of the recipient.</td>
 </tr>
-<tr class="row-even"><td>recipient_type</td>
+<tr class="row-even"><td>type</td>
 <td>IND for Individual Recipient and BIZ for Business Recipient.</td>
+</tr>
+<tr class="row-odd"><td>payout_method</td>
+<td>Payout method for the recipient.</td>
+</tr>
+<tr class="row-even"><td>country</td>
+<td>Country of the recipient.</td>
 </tr>
 <tr class="row-odd"><td>param_1</td>
 <td>Please see Country Payout Configuration.</td>
@@ -197,22 +204,247 @@
 <tr class="row-odd"><td>param_n</td>
 <td>Please see Country Payout Configuration.</td>
 </tr>
-<tr class="row-even"><td>created_on</td>
+<tr class="row-even"><td>relation</td>
+<td>Relation with recipient. See Resources &gt; Relation Types</td>
+</tr>
+<tr class="row-odd"><td>created_on</td>
 <td>Date when the recipient record was created.</td>
 </tr>
-<tr class="row-odd"><td>updated_on</td>
+<tr class="row-even"><td>updated_on</td>
 <td>Date when the recipient record was last modified.</td>
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Please review <strong>Country Payout Configuration</strong> for replacement of parameters starting with <code class="docutils literal notranslate"><span class="pre">param_</span></code>.</p>
+</div>
 <div class="section" id="creating-new-recipient">
 <h2>Creating New Recipient<a class="headerlink" href="#creating-new-recipient" title="Permalink to this headline">¶</a></h2>
+<p>Create a new recipient under a customer.</p>
+<p>Endpoint: <code class="docutils literal notranslate"><span class="pre">https://www.atlmoneytransfer.com/api/recipients/:customerId/:type/:country/:payoutMethod</span></code></p>
+<p>Method: <code class="docutils literal notranslate"><span class="pre">POST</span></code></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="11%" />
+<col width="69%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Mandatory</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>customer</td>
+<td>Yes</td>
+<td>Unique ID of customer the recipient belongs to.</td>
+</tr>
+<tr class="row-odd"><td>type</td>
+<td>Yes</td>
+<td>IND for Individual Recipient and BIZ for Business Recipient.</td>
+</tr>
+<tr class="row-even"><td>country</td>
+<td>Yes</td>
+<td>Country code of destination.</td>
+</tr>
+<tr class="row-odd"><td>payout_method</td>
+<td>Yes</td>
+<td>Payout method code for recipient.</td>
+</tr>
+<tr class="row-even"><td>relation</td>
+<td>No</td>
+<td>Relation with recipient. See Resources &gt; Relation Types</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p class="last">Since a resource is being created, HTTP response code <code class="docutils literal notranslate"><span class="pre">201</span></code> will be returned if the recipient is successfully created.</p>
+</div>
+<p><strong>Eg. Creating an Individual recipient for Bank Transfer in Austria</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">POST /api/recipients HTTP/1.1</span>
+<span class="go">Host: www.atlmoneytransfer.com</span>
+<span class="go">Authorization: Bearer sandbox_5ba9df637e1cd5baxxxxxxxxxx</span>
+<span class="go">Content-Type: application/x-www-form-urlencoded</span>
+
+<span class="go">customer=9963210701</span>
+<span class="go">&amp;type=IND</span>
+<span class="go">&amp;country=AT</span>
+<span class="go">&amp;payout_method=AC</span>
+<span class="go">&amp;first_name=Richard</span>
+<span class="go">&amp;last_name=AMOAH</span>
+<span class="go">&amp;bank=American+Express+Bank+Ltd</span>
+<span class="go">&amp;iban=AT611904300234573201</span>
+<span class="go">&amp;mobile_number=</span>
+<span class="go">&amp;relation=BIZ</span>
+</pre></div>
+</div>
+<p><strong>Response</strong></p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;success&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;recipient&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">9221768696</span><span class="p">,</span>
+        <span class="nt">&quot;full_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Richard AMOAH&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;IND&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;payout_method&quot;</span><span class="p">:</span> <span class="s2">&quot;AC&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;AT&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;customer&quot;</span><span class="p">:</span> <span class="mi">9963210701</span><span class="p">,</span>
+        <span class="nt">&quot;first_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Richard&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;iban&quot;</span><span class="p">:</span> <span class="s2">&quot;AT611904300234573201&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;last_name&quot;</span><span class="p">:</span> <span class="s2">&quot;AMOAH&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;bank&quot;</span><span class="p">:</span> <span class="s2">&quot;American Express Bank Ltd&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;mobile_number&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;relation&quot;</span><span class="p">:</span> <span class="s2">&quot;BIZ&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;created_on&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-09-29T13:16:52+00:00&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;updated_on&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-09-29T13:16:52+00:00&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="get-all-recipients">
 <h2>Get all Recipients<a class="headerlink" href="#get-all-recipients" title="Permalink to this headline">¶</a></h2>
+<p>Get all recipients for a customer.</p>
+<p>Endpoint: <code class="docutils literal notranslate"><span class="pre">https://www.atlmoneytransfer.com/api/recipients/:customerId</span></code></p>
+<p>Method: <code class="docutils literal notranslate"><span class="pre">POST</span></code></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="18%" />
+<col width="59%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Param</th>
+<th class="head">Mandatory</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>page</td>
+<td>No</td>
+<td>Page number of result set.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Request</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">GET /api/recipients/9963210701 HTTP/1.1</span>
+<span class="go">Host: www.atlmoneytransfer.com</span>
+<span class="go">Authorization: Bearer sandbox_5ba9df637e1cd5baxxxxxxxxxx</span>
+</pre></div>
+</div>
+<p><strong>Response</strong></p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;success&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;recipients&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+          <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2665701193</span><span class="p">,</span>
+          <span class="nt">&quot;full_name&quot;</span><span class="p">:</span> <span class="s2">&quot;AGPAYTECH Ltd&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;BIZ&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;payout_method&quot;</span><span class="p">:</span> <span class="s2">&quot;AC&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;AT&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;customer&quot;</span><span class="p">:</span> <span class="mi">9963210701</span><span class="p">,</span>
+          <span class="nt">&quot;iban&quot;</span><span class="p">:</span> <span class="s2">&quot;AT611904300234573201&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;business_name&quot;</span><span class="p">:</span> <span class="s2">&quot;AGPAYTECH Ltd&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;mobile_number&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;bank&quot;</span><span class="p">:</span> <span class="s2">&quot;American Express Bank Ltd&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;relation&quot;</span><span class="p">:</span> <span class="s2">&quot;BIZ&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;created_on&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-09-29T13:26:35+00:00&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;updated_on&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-09-29T13:26:35+00:00&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+          <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">9221768696</span><span class="p">,</span>
+          <span class="nt">&quot;full_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Richard AMOAH&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;IND&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;payout_method&quot;</span><span class="p">:</span> <span class="s2">&quot;AC&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;AT&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;customer&quot;</span><span class="p">:</span> <span class="mi">9963210701</span><span class="p">,</span>
+          <span class="nt">&quot;first_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Richard&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;iban&quot;</span><span class="p">:</span> <span class="s2">&quot;AT611904300234573201&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;last_name&quot;</span><span class="p">:</span> <span class="s2">&quot;AMOAH&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;bank&quot;</span><span class="p">:</span> <span class="s2">&quot;American Express Bank Ltd&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;mobile_number&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;relation&quot;</span><span class="p">:</span> <span class="s2">&quot;BIZ&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;created_on&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-09-29T13:16:52+00:00&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;updated_on&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-09-29T13:16:52+00:00&quot;</span>
+      <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;current_recipients&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+  <span class="nt">&quot;total_recipients&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+  <span class="nt">&quot;page&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="nt">&quot;total_pages&quot;</span><span class="p">:</span> <span class="mi">1</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="get-single-recipient">
+<h2>Get Single Recipient<a class="headerlink" href="#get-single-recipient" title="Permalink to this headline">¶</a></h2>
+<p>Endpoint: <code class="docutils literal notranslate"><span class="pre">https://www.atlmoneytransfer.com/api/recipient/:recipientId</span></code></p>
+<p>Method: <code class="docutils literal notranslate"><span class="pre">GET</span></code></p>
+<p><strong>Request</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">GET /api/recipient/2665701193 HTTP/1.1</span>
+<span class="go">Host: www.atlmoneytransfer.com</span>
+<span class="go">Authorization: Bearer sandbox_5ba9df637e1cd5baxxxxxxxxxx</span>
+</pre></div>
+</div>
+<p><strong>Response</strong></p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;success&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;recipient&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2665701193</span><span class="p">,</span>
+      <span class="nt">&quot;full_name&quot;</span><span class="p">:</span> <span class="s2">&quot;AGPAYTECH Ltd&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;BIZ&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;payout_method&quot;</span><span class="p">:</span> <span class="s2">&quot;AC&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;AT&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;customer&quot;</span><span class="p">:</span> <span class="mi">9963210701</span><span class="p">,</span>
+      <span class="nt">&quot;iban&quot;</span><span class="p">:</span> <span class="s2">&quot;AT611904300234573201&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;business_name&quot;</span><span class="p">:</span> <span class="s2">&quot;AGPAYTECH Ltd&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;mobile_number&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;bank&quot;</span><span class="p">:</span> <span class="s2">&quot;American Express Bank Ltd&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;relation&quot;</span><span class="p">:</span> <span class="s2">&quot;BIZ&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;created_on&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-09-29T13:26:35+00:00&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;updated_on&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-09-29T13:26:35+00:00&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="update-recipient">
 <h2>Update Recipient<a class="headerlink" href="#update-recipient" title="Permalink to this headline">¶</a></h2>
+<p>Endpoint: <code class="docutils literal notranslate"><span class="pre">https://www.atlmoneytransfer.com/api/recipient/:recipientId</span></code></p>
+<p>Method: <code class="docutils literal notranslate"><span class="pre">POST</span></code></p>
+<p><strong>Request</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">POST /api/recipient/2665701193 HTTP/1.1</span>
+<span class="go">Host: www.atlmoneytransfer.com</span>
+<span class="go">Authorization: Bearer sandbox_5ba9df637e1cd5baxxxxxxxxxx</span>
+<span class="go">Content-Type: application/x-www-form-urlencoded</span>
+
+<span class="go">iban=AT611904300234573202</span>
+<span class="go">&amp;bank=Deutsche+Bank</span>
+</pre></div>
+</div>
+<p><strong>Response</strong></p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;success&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;recipient&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2665701193</span><span class="p">,</span>
+      <span class="nt">&quot;full_name&quot;</span><span class="p">:</span> <span class="s2">&quot;AGPAYTECH Ltd&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;BIZ&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;payout_method&quot;</span><span class="p">:</span> <span class="s2">&quot;AC&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;AT&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;customer&quot;</span><span class="p">:</span> <span class="mi">9963210701</span><span class="p">,</span>
+      <span class="nt">&quot;iban&quot;</span><span class="p">:</span> <span class="s2">&quot;AT611904300234573202&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;business_name&quot;</span><span class="p">:</span> <span class="s2">&quot;AGPAYTECH Ltd&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;mobile_number&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;bank&quot;</span><span class="p">:</span> <span class="s2">&quot;Deutsche Bank&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;relation&quot;</span><span class="p">:</span> <span class="s2">&quot;BIZ&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;created_on&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-09-29T13:26:35+00:00&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;updated_on&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-09-29T13:58:49+00:00&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </div>
 </div>
 
