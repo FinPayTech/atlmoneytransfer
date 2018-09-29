@@ -29,7 +29,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Transactions" href="transactions.html" />
-    <link rel="prev" title="Customer Object" href="customers.html" /> 
+    <link rel="prev" title="Network" href="network.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -90,6 +90,7 @@
 <li class="toctree-l1"><a class="reference internal" href="collection_points.html">Cash Collection Points</a></li>
 <li class="toctree-l1"><a class="reference internal" href="delivery_options.html">Delivery Options</a></li>
 <li class="toctree-l1"><a class="reference internal" href="customers.html">Customer Object</a></li>
+<li class="toctree-l1"><a class="reference internal" href="network.html">Network</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Recipient Object</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#austria">Austria</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#belgium">Belgium</a></li>
@@ -115,7 +116,6 @@
 <li class="toctree-l2"><a class="reference internal" href="#greece">Greece</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#guinea">Guinea</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#guinea-bissau">Guinea-Bissau</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#hungary">Hungary</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#ireland">Ireland</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#italy">Italy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#latvia">Latvia</a></li>
@@ -2214,37 +2214,14 @@
 </tbody>
 </table>
 </div>
-<div class="section" id="hungary">
-<h2>Hungary<a class="headerlink" href="#hungary" title="Permalink to this headline">¶</a></h2>
-<p><strong>Account Transfer</strong></p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="32%" />
-<col width="12%" />
-<col width="56%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Parameter</th>
-<th class="head">Mandatory</th>
-<th class="head">Description</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
-</tr>
-</tbody>
-</table>
-</div>
 <div class="section" id="ireland">
 <h2>Ireland<a class="headerlink" href="#ireland" title="Permalink to this headline">¶</a></h2>
-<p><strong>Account Transfer</strong></p>
+<p><strong>Account Transfer to Ireland</strong></p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="32%" />
+<col width="27%" />
 <col width="12%" />
-<col width="56%" />
+<col width="61%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameter</th>
@@ -2253,21 +2230,52 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><td>first_name</td>
+<td>Conditional</td>
+<td>First name of the recipient as it appears of their bank account.</td>
+</tr>
+<tr class="row-odd"><td>last_name</td>
+<td>Conditional</td>
+<td>Last name of the recipient as it appears of their bank account.</td>
+</tr>
+<tr class="row-even"><td>business_name</td>
+<td>Conditional</td>
+<td><div class="first last line-block">
+<div class="line">If recipient is company, name of the business as it appears</div>
+<div class="line">on their bank account.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>bank</td>
+<td>Yes</td>
+<td>Complete bank name with no abbreviation.</td>
+</tr>
+<tr class="row-even"><td>iban</td>
+<td>Yes</td>
+<td>IBAN of the bank account.</td>
+</tr>
+<tr class="row-odd"><td>mobile_number</td>
+<td>No</td>
+<td>Mobile number of the recipient if available.</td>
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<div class="last line-block">
+<div class="line"><strong>first_name</strong> and <strong>last_name</strong> are required for <strong>individual</strong> recipients.</div>
+<div class="line"><strong>business_name</strong> is required when recipient is a <strong>company</strong> or an <strong>organization</strong>.</div>
+</div>
+</div>
 </div>
 <div class="section" id="italy">
 <h2>Italy<a class="headerlink" href="#italy" title="Permalink to this headline">¶</a></h2>
-<p><strong>Account Transfer</strong></p>
+<p><strong>Account Transfer to Italy</strong></p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="32%" />
+<col width="27%" />
 <col width="12%" />
-<col width="56%" />
+<col width="61%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameter</th>
@@ -2276,21 +2284,52 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><td>first_name</td>
+<td>Conditional</td>
+<td>First name of the recipient as it appears of their bank account.</td>
+</tr>
+<tr class="row-odd"><td>last_name</td>
+<td>Conditional</td>
+<td>Last name of the recipient as it appears of their bank account.</td>
+</tr>
+<tr class="row-even"><td>business_name</td>
+<td>Conditional</td>
+<td><div class="first last line-block">
+<div class="line">If recipient is company, name of the business as it appears</div>
+<div class="line">on their bank account.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>bank</td>
+<td>Yes</td>
+<td>Complete bank name with no abbreviation.</td>
+</tr>
+<tr class="row-even"><td>iban</td>
+<td>Yes</td>
+<td>IBAN of the bank account.</td>
+</tr>
+<tr class="row-odd"><td>mobile_number</td>
+<td>No</td>
+<td>Mobile number of the recipient if available.</td>
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<div class="last line-block">
+<div class="line"><strong>first_name</strong> and <strong>last_name</strong> are required for <strong>individual</strong> recipients.</div>
+<div class="line"><strong>business_name</strong> is required when recipient is a <strong>company</strong> or an <strong>organization</strong>.</div>
+</div>
+</div>
 </div>
 <div class="section" id="latvia">
 <h2>Latvia<a class="headerlink" href="#latvia" title="Permalink to this headline">¶</a></h2>
-<p><strong>Account Transfer</strong></p>
+<p><strong>Account Transfer in Latvia</strong></p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="32%" />
+<col width="27%" />
 <col width="12%" />
-<col width="56%" />
+<col width="61%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameter</th>
@@ -2299,21 +2338,52 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><td>first_name</td>
+<td>Conditional</td>
+<td>First name of the recipient as it appears of their bank account.</td>
+</tr>
+<tr class="row-odd"><td>last_name</td>
+<td>Conditional</td>
+<td>Last name of the recipient as it appears of their bank account.</td>
+</tr>
+<tr class="row-even"><td>business_name</td>
+<td>Conditional</td>
+<td><div class="first last line-block">
+<div class="line">If recipient is company, name of the business as it appears</div>
+<div class="line">on their bank account.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>bank</td>
+<td>Yes</td>
+<td>Complete bank name with no abbreviation.</td>
+</tr>
+<tr class="row-even"><td>iban</td>
+<td>Yes</td>
+<td>IBAN of the bank account.</td>
+</tr>
+<tr class="row-odd"><td>mobile_number</td>
+<td>No</td>
+<td>Mobile number of the recipient if available.</td>
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<div class="last line-block">
+<div class="line"><strong>first_name</strong> and <strong>last_name</strong> are required for <strong>individual</strong> recipients.</div>
+<div class="line"><strong>business_name</strong> is required when recipient is a <strong>company</strong> or an <strong>organization</strong>.</div>
+</div>
+</div>
 </div>
 <div class="section" id="lithuania">
 <h2>Lithuania<a class="headerlink" href="#lithuania" title="Permalink to this headline">¶</a></h2>
-<p><strong>Account Transfer</strong></p>
+<p><strong>Account Transfer in Lithuania</strong></p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="32%" />
+<col width="27%" />
 <col width="12%" />
-<col width="56%" />
+<col width="61%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameter</th>
@@ -2322,21 +2392,52 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><td>first_name</td>
+<td>Conditional</td>
+<td>First name of the recipient as it appears of their bank account.</td>
+</tr>
+<tr class="row-odd"><td>last_name</td>
+<td>Conditional</td>
+<td>Last name of the recipient as it appears of their bank account.</td>
+</tr>
+<tr class="row-even"><td>business_name</td>
+<td>Conditional</td>
+<td><div class="first last line-block">
+<div class="line">If recipient is company, name of the business as it appears</div>
+<div class="line">on their bank account.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>bank</td>
+<td>Yes</td>
+<td>Complete bank name with no abbreviation.</td>
+</tr>
+<tr class="row-even"><td>iban</td>
+<td>Yes</td>
+<td>IBAN of the bank account.</td>
+</tr>
+<tr class="row-odd"><td>mobile_number</td>
+<td>No</td>
+<td>Mobile number of the recipient if available.</td>
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<div class="last line-block">
+<div class="line"><strong>first_name</strong> and <strong>last_name</strong> are required for <strong>individual</strong> recipients.</div>
+<div class="line"><strong>business_name</strong> is required when recipient is a <strong>company</strong> or an <strong>organization</strong>.</div>
+</div>
+</div>
 </div>
 <div class="section" id="luxembourg">
 <h2>Luxembourg<a class="headerlink" href="#luxembourg" title="Permalink to this headline">¶</a></h2>
-<p><strong>Account Transfer</strong></p>
+<p><strong>Account Transfer in Luxembourg</strong></p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="32%" />
+<col width="27%" />
 <col width="12%" />
-<col width="56%" />
+<col width="61%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameter</th>
@@ -2345,21 +2446,52 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><td>first_name</td>
+<td>Conditional</td>
+<td>First name of the recipient as it appears of their bank account.</td>
+</tr>
+<tr class="row-odd"><td>last_name</td>
+<td>Conditional</td>
+<td>Last name of the recipient as it appears of their bank account.</td>
+</tr>
+<tr class="row-even"><td>business_name</td>
+<td>Conditional</td>
+<td><div class="first last line-block">
+<div class="line">If recipient is company, name of the business as it appears</div>
+<div class="line">on their bank account.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>bank</td>
+<td>Yes</td>
+<td>Complete bank name with no abbreviation.</td>
+</tr>
+<tr class="row-even"><td>iban</td>
+<td>Yes</td>
+<td>IBAN of the bank account.</td>
+</tr>
+<tr class="row-odd"><td>mobile_number</td>
+<td>No</td>
+<td>Mobile number of the recipient if available.</td>
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<div class="last line-block">
+<div class="line"><strong>first_name</strong> and <strong>last_name</strong> are required for <strong>individual</strong> recipients.</div>
+<div class="line"><strong>business_name</strong> is required when recipient is a <strong>company</strong> or an <strong>organization</strong>.</div>
+</div>
+</div>
 </div>
 <div class="section" id="mali">
 <h2>Mali<a class="headerlink" href="#mali" title="Permalink to this headline">¶</a></h2>
-<p><strong>Account Transfer</strong></p>
+<p><strong>Account Transfer to Mali</strong></p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="32%" />
+<col width="27%" />
 <col width="12%" />
-<col width="56%" />
+<col width="61%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameter</th>
@@ -2368,12 +2500,51 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><td>first_name</td>
+<td>Conditional</td>
+<td>First name of the recipient as it appears of their bank account.</td>
+</tr>
+<tr class="row-odd"><td>last_name</td>
+<td>Conditional</td>
+<td>Last name of the recipient as it appears of their bank account.</td>
+</tr>
+<tr class="row-even"><td>business_name</td>
+<td>Conditional</td>
+<td><div class="first last line-block">
+<div class="line">If recipient is company, name of the business as it appears</div>
+<div class="line">on their bank account.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>bank</td>
+<td>Yes</td>
+<td>Bank code. See Banks section for codes.</td>
+</tr>
+<tr class="row-even"><td>branch_code</td>
+<td>Yes</td>
+<td>Account’s branch code.</td>
+</tr>
+<tr class="row-odd"><td>account_number</td>
+<td>Yes</td>
+<td>Account number of the recipient.</td>
+</tr>
+<tr class="row-even"><td>rib_key</td>
+<td>Yes</td>
+<td>RIB Key</td>
+</tr>
+<tr class="row-odd"><td>mobile_number</td>
+<td>No</td>
+<td>Mobile number of recipient, if available</td>
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<div class="last line-block">
+<div class="line"><strong>first_name</strong> and <strong>last_name</strong> are required for <strong>individual</strong> recipients.</div>
+<div class="line"><strong>business_name</strong> is required when recipient is a <strong>company</strong> or an <strong>organization</strong>.</div>
+</div>
+</div>
 <p><strong>Cash Pickup to Mali</strong></p>
 <div class="admonition caution">
 <p class="first admonition-title">Caution</p>
@@ -2429,12 +2600,12 @@
 </div>
 <div class="section" id="malta">
 <h2>Malta<a class="headerlink" href="#malta" title="Permalink to this headline">¶</a></h2>
-<p><strong>Account Transfer</strong></p>
+<p><strong>Account Transfer in Malta</strong></p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="32%" />
+<col width="27%" />
 <col width="12%" />
-<col width="56%" />
+<col width="61%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameter</th>
@@ -2443,21 +2614,52 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><td>first_name</td>
+<td>Conditional</td>
+<td>First name of the recipient as it appears of their bank account.</td>
+</tr>
+<tr class="row-odd"><td>last_name</td>
+<td>Conditional</td>
+<td>Last name of the recipient as it appears of their bank account.</td>
+</tr>
+<tr class="row-even"><td>business_name</td>
+<td>Conditional</td>
+<td><div class="first last line-block">
+<div class="line">If recipient is company, name of the business as it appears</div>
+<div class="line">on their bank account.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>bank</td>
+<td>Yes</td>
+<td>Complete bank name with no abbreviation.</td>
+</tr>
+<tr class="row-even"><td>iban</td>
+<td>Yes</td>
+<td>IBAN of the bank account.</td>
+</tr>
+<tr class="row-odd"><td>mobile_number</td>
+<td>No</td>
+<td>Mobile number of the recipient if available.</td>
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<div class="last line-block">
+<div class="line"><strong>first_name</strong> and <strong>last_name</strong> are required for <strong>individual</strong> recipients.</div>
+<div class="line"><strong>business_name</strong> is required when recipient is a <strong>company</strong> or an <strong>organization</strong>.</div>
+</div>
+</div>
 </div>
 <div class="section" id="netherlands">
 <h2>Netherlands<a class="headerlink" href="#netherlands" title="Permalink to this headline">¶</a></h2>
-<p><strong>Account Transfer</strong></p>
+<p><strong>Account Transfer in Netherlands</strong></p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="32%" />
+<col width="27%" />
 <col width="12%" />
-<col width="56%" />
+<col width="61%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameter</th>
@@ -2466,21 +2668,52 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><td>first_name</td>
+<td>Conditional</td>
+<td>First name of the recipient as it appears of their bank account.</td>
+</tr>
+<tr class="row-odd"><td>last_name</td>
+<td>Conditional</td>
+<td>Last name of the recipient as it appears of their bank account.</td>
+</tr>
+<tr class="row-even"><td>business_name</td>
+<td>Conditional</td>
+<td><div class="first last line-block">
+<div class="line">If recipient is company, name of the business as it appears</div>
+<div class="line">on their bank account.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>bank</td>
+<td>Yes</td>
+<td>Complete bank name with no abbreviation.</td>
+</tr>
+<tr class="row-even"><td>iban</td>
+<td>Yes</td>
+<td>IBAN of the bank account.</td>
+</tr>
+<tr class="row-odd"><td>mobile_number</td>
+<td>No</td>
+<td>Mobile number of the recipient if available.</td>
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<div class="last line-block">
+<div class="line"><strong>first_name</strong> and <strong>last_name</strong> are required for <strong>individual</strong> recipients.</div>
+<div class="line"><strong>business_name</strong> is required when recipient is a <strong>company</strong> or an <strong>organization</strong>.</div>
+</div>
+</div>
 </div>
 <div class="section" id="niger">
 <h2>Niger<a class="headerlink" href="#niger" title="Permalink to this headline">¶</a></h2>
-<p><strong>Account Transfer</strong></p>
+<p><strong>Account Transfer to Niger</strong></p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="32%" />
+<col width="27%" />
 <col width="12%" />
-<col width="56%" />
+<col width="61%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameter</th>
@@ -2489,12 +2722,51 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><td>first_name</td>
+<td>Conditional</td>
+<td>First name of the recipient as it appears of their bank account.</td>
+</tr>
+<tr class="row-odd"><td>last_name</td>
+<td>Conditional</td>
+<td>Last name of the recipient as it appears of their bank account.</td>
+</tr>
+<tr class="row-even"><td>business_name</td>
+<td>Conditional</td>
+<td><div class="first last line-block">
+<div class="line">If recipient is company, name of the business as it appears</div>
+<div class="line">on their bank account.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>bank</td>
+<td>Yes</td>
+<td>Bank code. See Banks section for codes.</td>
+</tr>
+<tr class="row-even"><td>branch_code</td>
+<td>Yes</td>
+<td>Account’s branch code.</td>
+</tr>
+<tr class="row-odd"><td>account_number</td>
+<td>Yes</td>
+<td>Account number of the recipient.</td>
+</tr>
+<tr class="row-even"><td>rib_key</td>
+<td>Yes</td>
+<td>RIB Key</td>
+</tr>
+<tr class="row-odd"><td>mobile_number</td>
+<td>No</td>
+<td>Mobile number of recipient, if available</td>
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<div class="last line-block">
+<div class="line"><strong>first_name</strong> and <strong>last_name</strong> are required for <strong>individual</strong> recipients.</div>
+<div class="line"><strong>business_name</strong> is required when recipient is a <strong>company</strong> or an <strong>organization</strong>.</div>
+</div>
+</div>
 <p><strong>Cash Pickup to Niger</strong></p>
 <div class="admonition caution">
 <p class="first admonition-title">Caution</p>
@@ -2550,12 +2822,12 @@
 </div>
 <div class="section" id="nigeria">
 <h2>Nigeria<a class="headerlink" href="#nigeria" title="Permalink to this headline">¶</a></h2>
-<p><strong>Account Transfer</strong></p>
+<p><strong>Account Transfer to Nigeria</strong></p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="32%" />
+<col width="27%" />
 <col width="12%" />
-<col width="56%" />
+<col width="61%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameter</th>
@@ -2564,21 +2836,52 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><td>first_name</td>
+<td>Conditional</td>
+<td>First name of the recipient as it appears of their bank account.</td>
+</tr>
+<tr class="row-odd"><td>last_name</td>
+<td>Conditional</td>
+<td>Last name of the recipient as it appears of their bank account.</td>
+</tr>
+<tr class="row-even"><td>business_name</td>
+<td>Conditional</td>
+<td><div class="first last line-block">
+<div class="line">If recipient is company, name of the business as it appears</div>
+<div class="line">on their bank account.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>bank</td>
+<td>Yes</td>
+<td>Bank code. See Banks section.</td>
+</tr>
+<tr class="row-even"><td>account_number</td>
+<td>Yes</td>
+<td>Account number of the recipient.</td>
+</tr>
+<tr class="row-odd"><td>mobile_number</td>
+<td>Yes</td>
+<td>Mobile number of the recipient if available.</td>
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<div class="last line-block">
+<div class="line"><strong>first_name</strong> and <strong>last_name</strong> are required for <strong>individual</strong> recipients.</div>
+<div class="line"><strong>business_name</strong> is required when recipient is a <strong>company</strong> or an <strong>organization</strong>.</div>
+</div>
+</div>
 </div>
 <div class="section" id="portugal">
 <h2>Portugal<a class="headerlink" href="#portugal" title="Permalink to this headline">¶</a></h2>
-<p><strong>Account Transfer</strong></p>
+<p><strong>Account Transfer to Portugal</strong></p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="32%" />
+<col width="27%" />
 <col width="12%" />
-<col width="56%" />
+<col width="61%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameter</th>
@@ -2587,21 +2890,52 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><td>first_name</td>
+<td>Conditional</td>
+<td>First name of the recipient as it appears of their bank account.</td>
+</tr>
+<tr class="row-odd"><td>last_name</td>
+<td>Conditional</td>
+<td>Last name of the recipient as it appears of their bank account.</td>
+</tr>
+<tr class="row-even"><td>business_name</td>
+<td>Conditional</td>
+<td><div class="first last line-block">
+<div class="line">If recipient is company, name of the business as it appears</div>
+<div class="line">on their bank account.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>bank</td>
+<td>Yes</td>
+<td>Complete bank name with no abbreviation.</td>
+</tr>
+<tr class="row-even"><td>iban</td>
+<td>Yes</td>
+<td>IBAN of the bank account.</td>
+</tr>
+<tr class="row-odd"><td>mobile_number</td>
+<td>No</td>
+<td>Mobile number of the recipient if available.</td>
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<div class="last line-block">
+<div class="line"><strong>first_name</strong> and <strong>last_name</strong> are required for <strong>individual</strong> recipients.</div>
+<div class="line"><strong>business_name</strong> is required when recipient is a <strong>company</strong> or an <strong>organization</strong>.</div>
+</div>
+</div>
 </div>
 <div class="section" id="senegal">
 <h2>Senegal<a class="headerlink" href="#senegal" title="Permalink to this headline">¶</a></h2>
-<p><strong>Account Transfer</strong></p>
+<p><strong>Account Transfer to Senegal</strong></p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="32%" />
+<col width="27%" />
 <col width="12%" />
-<col width="56%" />
+<col width="61%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameter</th>
@@ -2610,12 +2944,51 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><td>first_name</td>
+<td>Conditional</td>
+<td>First name of the recipient as it appears of their bank account.</td>
+</tr>
+<tr class="row-odd"><td>last_name</td>
+<td>Conditional</td>
+<td>Last name of the recipient as it appears of their bank account.</td>
+</tr>
+<tr class="row-even"><td>business_name</td>
+<td>Conditional</td>
+<td><div class="first last line-block">
+<div class="line">If recipient is company, name of the business as it appears</div>
+<div class="line">on their bank account.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>bank</td>
+<td>Yes</td>
+<td>Bank code. See Banks section for codes.</td>
+</tr>
+<tr class="row-even"><td>branch_code</td>
+<td>Yes</td>
+<td>Account’s branch code.</td>
+</tr>
+<tr class="row-odd"><td>account_number</td>
+<td>Yes</td>
+<td>Account number of the recipient.</td>
+</tr>
+<tr class="row-even"><td>rib_key</td>
+<td>Yes</td>
+<td>RIB Key</td>
+</tr>
+<tr class="row-odd"><td>mobile_number</td>
+<td>No</td>
+<td>Mobile number of recipient, if available</td>
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<div class="last line-block">
+<div class="line"><strong>first_name</strong> and <strong>last_name</strong> are required for <strong>individual</strong> recipients.</div>
+<div class="line"><strong>business_name</strong> is required when recipient is a <strong>company</strong> or an <strong>organization</strong>.</div>
+</div>
+</div>
 <p><strong>Cash Pickup to Senegal</strong></p>
 <div class="admonition caution">
 <p class="first admonition-title">Caution</p>
@@ -2674,9 +3047,9 @@
 <p><strong>Account Transfer</strong></p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="32%" />
+<col width="27%" />
 <col width="12%" />
-<col width="56%" />
+<col width="61%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameter</th>
@@ -2685,12 +3058,43 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><td>first_name</td>
+<td>Conditional</td>
+<td>First name of the recipient as it appears of their bank account.</td>
+</tr>
+<tr class="row-odd"><td>last_name</td>
+<td>Conditional</td>
+<td>Last name of the recipient as it appears of their bank account.</td>
+</tr>
+<tr class="row-even"><td>business_name</td>
+<td>Conditional</td>
+<td><div class="first last line-block">
+<div class="line">If recipient is company, name of the business as it appears</div>
+<div class="line">on their bank account.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>bank</td>
+<td>Yes</td>
+<td>Bank code. See Banks section.</td>
+</tr>
+<tr class="row-even"><td>account_number</td>
+<td>Yes</td>
+<td>Account number of the recipient.</td>
+</tr>
+<tr class="row-odd"><td>mobile_number</td>
+<td>No</td>
+<td>Mobile number of the recipient if available.</td>
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<div class="last line-block">
+<div class="line"><strong>first_name</strong> and <strong>last_name</strong> are required for <strong>individual</strong> recipients.</div>
+<div class="line"><strong>business_name</strong> is required when recipient is a <strong>company</strong> or an <strong>organization</strong>.</div>
+</div>
+</div>
 <p><strong>Cash Pickup to Sierra Leone</strong></p>
 <div class="admonition caution">
 <p class="first admonition-title">Caution</p>
@@ -2746,12 +3150,12 @@
 </div>
 <div class="section" id="slovakia">
 <h2>Slovakia<a class="headerlink" href="#slovakia" title="Permalink to this headline">¶</a></h2>
-<p><strong>Account Transfer</strong></p>
+<p><strong>Account Transfer to Slovakia</strong></p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="32%" />
+<col width="27%" />
 <col width="12%" />
-<col width="56%" />
+<col width="61%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameter</th>
@@ -2760,21 +3164,52 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><td>first_name</td>
+<td>Conditional</td>
+<td>First name of the recipient as it appears of their bank account.</td>
+</tr>
+<tr class="row-odd"><td>last_name</td>
+<td>Conditional</td>
+<td>Last name of the recipient as it appears of their bank account.</td>
+</tr>
+<tr class="row-even"><td>business_name</td>
+<td>Conditional</td>
+<td><div class="first last line-block">
+<div class="line">If recipient is company, name of the business as it appears</div>
+<div class="line">on their bank account.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>bank</td>
+<td>Yes</td>
+<td>Complete bank name with no abbreviation.</td>
+</tr>
+<tr class="row-even"><td>iban</td>
+<td>Yes</td>
+<td>IBAN of the bank account.</td>
+</tr>
+<tr class="row-odd"><td>mobile_number</td>
+<td>No</td>
+<td>Mobile number of the recipient if available.</td>
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<div class="last line-block">
+<div class="line"><strong>first_name</strong> and <strong>last_name</strong> are required for <strong>individual</strong> recipients.</div>
+<div class="line"><strong>business_name</strong> is required when recipient is a <strong>company</strong> or an <strong>organization</strong>.</div>
+</div>
+</div>
 </div>
 <div class="section" id="slovenia">
 <h2>Slovenia<a class="headerlink" href="#slovenia" title="Permalink to this headline">¶</a></h2>
-<p><strong>Account Transfer</strong></p>
+<p><strong>Account Transfer to Slovenia</strong></p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="32%" />
+<col width="27%" />
 <col width="12%" />
-<col width="56%" />
+<col width="61%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameter</th>
@@ -2783,21 +3218,52 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><td>first_name</td>
+<td>Conditional</td>
+<td>First name of the recipient as it appears of their bank account.</td>
+</tr>
+<tr class="row-odd"><td>last_name</td>
+<td>Conditional</td>
+<td>Last name of the recipient as it appears of their bank account.</td>
+</tr>
+<tr class="row-even"><td>business_name</td>
+<td>Conditional</td>
+<td><div class="first last line-block">
+<div class="line">If recipient is company, name of the business as it appears</div>
+<div class="line">on their bank account.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>bank</td>
+<td>Yes</td>
+<td>Complete bank name with no abbreviation.</td>
+</tr>
+<tr class="row-even"><td>iban</td>
+<td>Yes</td>
+<td>IBAN of the bank account.</td>
+</tr>
+<tr class="row-odd"><td>mobile_number</td>
+<td>No</td>
+<td>Mobile number of the recipient if available.</td>
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<div class="last line-block">
+<div class="line"><strong>first_name</strong> and <strong>last_name</strong> are required for <strong>individual</strong> recipients.</div>
+<div class="line"><strong>business_name</strong> is required when recipient is a <strong>company</strong> or an <strong>organization</strong>.</div>
+</div>
+</div>
 </div>
 <div class="section" id="spain">
 <h2>Spain<a class="headerlink" href="#spain" title="Permalink to this headline">¶</a></h2>
-<p><strong>Account Transfer</strong></p>
+<p><strong>Account Transfer to Spain</strong></p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="32%" />
+<col width="27%" />
 <col width="12%" />
-<col width="56%" />
+<col width="61%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameter</th>
@@ -2806,21 +3272,52 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><td>first_name</td>
+<td>Conditional</td>
+<td>First name of the recipient as it appears of their bank account.</td>
+</tr>
+<tr class="row-odd"><td>last_name</td>
+<td>Conditional</td>
+<td>Last name of the recipient as it appears of their bank account.</td>
+</tr>
+<tr class="row-even"><td>business_name</td>
+<td>Conditional</td>
+<td><div class="first last line-block">
+<div class="line">If recipient is company, name of the business as it appears</div>
+<div class="line">on their bank account.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>bank</td>
+<td>Yes</td>
+<td>Complete bank name with no abbreviation.</td>
+</tr>
+<tr class="row-even"><td>iban</td>
+<td>Yes</td>
+<td>IBAN of the bank account.</td>
+</tr>
+<tr class="row-odd"><td>mobile_number</td>
+<td>No</td>
+<td>Mobile number of the recipient if available.</td>
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<div class="last line-block">
+<div class="line"><strong>first_name</strong> and <strong>last_name</strong> are required for <strong>individual</strong> recipients.</div>
+<div class="line"><strong>business_name</strong> is required when recipient is a <strong>company</strong> or an <strong>organization</strong>.</div>
+</div>
+</div>
 </div>
 <div class="section" id="togo">
 <h2>Togo<a class="headerlink" href="#togo" title="Permalink to this headline">¶</a></h2>
-<p><strong>Account Transfer</strong></p>
+<p><strong>Account Transfer to Togo</strong></p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="32%" />
+<col width="27%" />
 <col width="12%" />
-<col width="56%" />
+<col width="61%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameter</th>
@@ -2829,12 +3326,51 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><td>first_name</td>
+<td>Conditional</td>
+<td>First name of the recipient as it appears of their bank account.</td>
+</tr>
+<tr class="row-odd"><td>last_name</td>
+<td>Conditional</td>
+<td>Last name of the recipient as it appears of their bank account.</td>
+</tr>
+<tr class="row-even"><td>business_name</td>
+<td>Conditional</td>
+<td><div class="first last line-block">
+<div class="line">If recipient is company, name of the business as it appears</div>
+<div class="line">on their bank account.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>bank</td>
+<td>Yes</td>
+<td>Bank code. See Banks section for codes.</td>
+</tr>
+<tr class="row-even"><td>branch_code</td>
+<td>Yes</td>
+<td>Account’s branch code.</td>
+</tr>
+<tr class="row-odd"><td>account_number</td>
+<td>Yes</td>
+<td>Account number of the recipient.</td>
+</tr>
+<tr class="row-even"><td>rib_key</td>
+<td>Yes</td>
+<td>RIB Key</td>
+</tr>
+<tr class="row-odd"><td>mobile_number</td>
+<td>No</td>
+<td>Mobile number of recipient, if available</td>
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<div class="last line-block">
+<div class="line"><strong>first_name</strong> and <strong>last_name</strong> are required for <strong>individual</strong> recipients.</div>
+<div class="line"><strong>business_name</strong> is required when recipient is a <strong>company</strong> or an <strong>organization</strong>.</div>
+</div>
+</div>
 <p><strong>Cash Pickup to Togo</strong></p>
 <div class="admonition caution">
 <p class="first admonition-title">Caution</p>
@@ -2890,12 +3426,12 @@
 </div>
 <div class="section" id="united-kingdom">
 <h2>United Kingdom<a class="headerlink" href="#united-kingdom" title="Permalink to this headline">¶</a></h2>
-<p><strong>Account Transfer</strong></p>
+<p><strong>Account Transfer to United Kingdom</strong></p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="32%" />
+<col width="27%" />
 <col width="12%" />
-<col width="56%" />
+<col width="61%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameter</th>
@@ -2904,12 +3440,47 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><td>first_name</td>
+<td>Conditional</td>
+<td>First name of the recipient as it appears of their bank account.</td>
+</tr>
+<tr class="row-odd"><td>last_name</td>
+<td>Conditional</td>
+<td>Last name of the recipient as it appears of their bank account.</td>
+</tr>
+<tr class="row-even"><td>business_name</td>
+<td>Conditional</td>
+<td><div class="first last line-block">
+<div class="line">If recipient is company, name of the business as it appears</div>
+<div class="line">on their bank account.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>bank</td>
+<td>Yes</td>
+<td>Bank code. See Banks section.</td>
+</tr>
+<tr class="row-even"><td>account_number</td>
+<td>Yes</td>
+<td>Account number of the recipient.</td>
+</tr>
+<tr class="row-odd"><td>sort_code</td>
+<td>Yes</td>
+<td>Sort code of recipient’s bank account.</td>
+</tr>
+<tr class="row-even"><td>mobile_number</td>
+<td>Yes</td>
+<td>Mobile number of the recipient if available.</td>
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<div class="last line-block">
+<div class="line"><strong>first_name</strong> and <strong>last_name</strong> are required for <strong>individual</strong> recipients.</div>
+<div class="line"><strong>business_name</strong> is required when recipient is a <strong>company</strong> or an <strong>organization</strong>.</div>
+</div>
+</div>
 <p><strong>Cash Pickup to United Kingdom</strong></p>
 <div class="admonition caution">
 <p class="first admonition-title">Caution</p>
@@ -2965,12 +3536,12 @@
 </div>
 <div class="section" id="united-states">
 <h2>United States<a class="headerlink" href="#united-states" title="Permalink to this headline">¶</a></h2>
-<p><strong>Account Transfer</strong></p>
+<p><strong>Account Transfer to United States</strong></p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="32%" />
+<col width="27%" />
 <col width="12%" />
-<col width="56%" />
+<col width="61%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameter</th>
@@ -2979,12 +3550,63 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><td>first_name</td>
+<td>Conditional</td>
+<td>First name of the recipient as it appears of their bank account.</td>
+</tr>
+<tr class="row-odd"><td>last_name</td>
+<td>Conditional</td>
+<td>Last name of the recipient as it appears of their bank account.</td>
+</tr>
+<tr class="row-even"><td>business_name</td>
+<td>Conditional</td>
+<td><div class="first last line-block">
+<div class="line">If recipient is company, name of the business as it appears</div>
+<div class="line">on their bank account.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>bank</td>
+<td>Yes</td>
+<td>Bank code. See Banks section.</td>
+</tr>
+<tr class="row-even"><td>account_number</td>
+<td>Yes</td>
+<td>Account number of the recipient.</td>
+</tr>
+<tr class="row-odd"><td>routing_code</td>
+<td>Yes</td>
+<td>Routing code of recipient’s bank account.</td>
+</tr>
+<tr class="row-even"><td>account_type</td>
+<td>Yes</td>
+<td>Any of SAVING OR CHECKING</td>
+</tr>
+<tr class="row-odd"><td>address</td>
+<td>Yes</td>
+<td>Address of the recipient.</td>
+</tr>
+<tr class="row-even"><td>city</td>
+<td>Yes</td>
+<td>City where recipient is located.</td>
+</tr>
+<tr class="row-odd"><td>region</td>
+<td>No</td>
+<td>Province/County/State/Region where recipient is located.</td>
+</tr>
+<tr class="row-even"><td>postcode</td>
+<td>No</td>
+<td>Postal code of area where recipient is located.</td>
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<div class="last line-block">
+<div class="line"><strong>first_name</strong> and <strong>last_name</strong> are required for <strong>individual</strong> recipients.</div>
+<div class="line"><strong>business_name</strong> is required when recipient is a <strong>company</strong> or an <strong>organization</strong>.</div>
+</div>
+</div>
 </div>
 </div>
 
@@ -2999,7 +3621,7 @@
         <a href="transactions.html" class="btn btn-neutral float-right" title="Transactions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="customers.html" class="btn btn-neutral" title="Customer Object" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="network.html" class="btn btn-neutral" title="Network" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Transaction Statuses &mdash; ATL Money Transfer 1.0 documentation</title>
+  <title>Network &mdash; ATL Money Transfer 1.0 documentation</title>
   
 
   
@@ -28,8 +28,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Resources" href="resources.html" />
-    <link rel="prev" title="Transactions" href="transactions.html" /> 
+    <link rel="next" title="Recipient Object" href="recipients.html" />
+    <link rel="prev" title="Customer Object" href="customers.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -90,10 +90,10 @@
 <li class="toctree-l1"><a class="reference internal" href="collection_points.html">Cash Collection Points</a></li>
 <li class="toctree-l1"><a class="reference internal" href="delivery_options.html">Delivery Options</a></li>
 <li class="toctree-l1"><a class="reference internal" href="customers.html">Customer Object</a></li>
-<li class="toctree-l1"><a class="reference internal" href="network.html">Network</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Network</a></li>
 <li class="toctree-l1"><a class="reference internal" href="recipients.html">Recipient Object</a></li>
 <li class="toctree-l1"><a class="reference internal" href="transactions.html">Transactions</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Transaction Statuses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statuses.html">Transaction Statuses</a></li>
 <li class="toctree-l1"><a class="reference internal" href="resources.html">Resources</a></li>
 </ul>
 
@@ -140,13 +140,13 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Transaction Statuses</li>
+      <li>Network</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/statuses.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/network.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -159,39 +159,237 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="transaction-statuses">
-<h1>Transaction Statuses<a class="headerlink" href="#transaction-statuses" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="network">
+<h1>Network<a class="headerlink" href="#network" title="Permalink to this headline">¶</a></h1>
 <table border="1" class="docutils">
 <colgroup>
-<col width="21%" />
-<col width="79%" />
+<col width="51%" />
+<col width="19%" />
+<col width="14%" />
+<col width="16%" />
 </colgroup>
 <thead valign="bottom">
-<tr class="row-odd"><th class="head">Status</th>
-<th class="head">Description</th>
+<tr class="row-odd"><th class="head">Country</th>
+<th class="head">Account Transfer</th>
+<th class="head">Cash Pickup</th>
+<th class="head">Mobile Wallet</th>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>AVAILABLE</td>
-<td>Transaction is available for payout.</td>
+<tr class="row-even"><td>Austria</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
 </tr>
-<tr class="row-odd"><td>HOLD</td>
-<td>Transaction is put on hold. Please contact compliance department.</td>
+<tr class="row-odd"><td>Belgium</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
 </tr>
-<tr class="row-even"><td>SENT-FOR-DELIVERY</td>
-<td>Transaction has been sent for payout.</td>
+<tr class="row-even"><td>Benin</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
 </tr>
-<tr class="row-odd"><td>PAIDOUT</td>
-<td>Transaction has been paidout. This is a final stage.</td>
+<tr class="row-odd"><td>Burkina Faso</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
 </tr>
-<tr class="row-even"><td>PAYOUT-REC-ERROR</td>
-<td>Payout has been failed due to recoverable errors.</td>
+<tr class="row-even"><td>Cameroon</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
 </tr>
-<tr class="row-odd"><td>PAYOUT-FAILED</td>
-<td>Payout Permanently Failed.</td>
+<tr class="row-odd"><td>Canada</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
 </tr>
-<tr class="row-even"><td>PAYMENT-CANCELLED</td>
-<td>Transaction has been cancelled. This is a final stage.</td>
+<tr class="row-even"><td>Central African Republic</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>Chad</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>Congo</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>Côte d’Ivoire</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr class="row-even"><td>Cyprus</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>Democratic Republic of the Congo</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr class="row-even"><td>Denmark</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>Equatorial Guinea</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>Estonia</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>Finland</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>France</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>Gabon</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>Gambia</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>Germany</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>Ghana</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr class="row-odd"><td>Greece</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>Guinea</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>Guinea-Bissau</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>Ireland</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>Italy</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>Latvia</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>Lithuania</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>Luxembourg</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>Mali</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>Malta</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>Netherlands</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>Niger</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>Nigeria</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>Portugal</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>Senegal</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>Sierra Leone</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>Slovakia</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>Slovenia</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>Spain</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>Togo</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>United Kingdom</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>United States</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
 </tr>
 </tbody>
 </table>
@@ -205,10 +403,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="resources.html" class="btn btn-neutral float-right" title="Resources" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="recipients.html" class="btn btn-neutral float-right" title="Recipient Object" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="transactions.html" class="btn btn-neutral" title="Transactions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="customers.html" class="btn btn-neutral" title="Customer Object" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

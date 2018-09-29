@@ -19,6 +19,7 @@ Welcome
    collection_points
    delivery_options
    customers
+   network
    recipients
    transactions
    statuses
