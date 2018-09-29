@@ -37,7 +37,7 @@ Creating New Recipient
 
 Create a new recipient under a customer.
 
-Endpoint: ``https://www.atlmoneytransfer.com/api/recipients/:customerId/:type/:country/:payoutMethod``
+Endpoint: ``https://www.atlmoneytransfer.com/api/recipients``
 
 Method: ``POST``
 
