@@ -1,5 +1,5 @@
-Network
-=======
+Payout Network
+==============
 
 +-----------------------------------------------+------------------+-------------+---------------+
 | Country                                       | Account Transfer | Cash Pickup | Mobile Wallet |
