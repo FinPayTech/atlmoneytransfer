@@ -21,6 +21,7 @@ Welcome
    customers
    network
    recipients
+   recipient_object
    transactions
    statuses
    resources

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Getting Started &mdash; ATL Money Transfer 1.0 documentation</title>
+  <title>Recipient Object &mdash; ATL Money Transfer 1.0 documentation</title>
   
 
   
@@ -28,8 +28,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Authentication" href="authentication.html" />
-    <link rel="prev" title="Welcome" href="index.html" /> 
+    <link rel="next" title="Transactions" href="transactions.html" />
+    <link rel="prev" title="Country Payout Configuration" href="recipients.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -80,7 +80,7 @@
             
               <p class="caption"><span class="caption-text">Table of Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authentication.html">Authentication</a></li>
 <li class="toctree-l1"><a class="reference internal" href="errors.html">Errors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rates.html">Settlement Rates</a></li>
@@ -92,7 +92,12 @@
 <li class="toctree-l1"><a class="reference internal" href="customers.html">Customer Object</a></li>
 <li class="toctree-l1"><a class="reference internal" href="network.html">Payout Network</a></li>
 <li class="toctree-l1"><a class="reference internal" href="recipients.html">Country Payout Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="recipient_object.html">Recipient Object</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Recipient Object</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#creating-new-recipient">Creating New Recipient</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#get-all-recipients">Get all Recipients</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#update-recipient">Update Recipient</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="transactions.html">Transactions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="statuses.html">Transaction Statuses</a></li>
 <li class="toctree-l1"><a class="reference internal" href="resources.html">Resources</a></li>
@@ -141,13 +146,13 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Getting Started</li>
+      <li>Recipient Object</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/getting_started.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/recipient_object.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -160,22 +165,54 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="getting-started">
-<h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
-<p>The ATL Money Transfer API referred here as ATLMT API is organized around REST. Our API has predictable, resource-oriented URLs, and uses HTTP response codes to indicate API errors. We use built-in HTTP features, like HTTP authentication and HTTP verbs, which are understood by off-the-shelf HTTP clients. We support cross-origin resource sharing, allowing you to interact securely with our API from a client-side web application (though you should never expose your secret API key in any public website’s client-side code). JSON is returned by all API responses, including errors, although our API libraries convert responses to appropriate language-specific objects.</p>
-<p>To make the API as explorable as possible, accounts have test mode and live mode API keys. There is no “switch” for changing between modes, just use the appropriate key to perform a live or test transaction. Requests made with test mode credentials never hit the banking networks and incur no cost.</p>
-<p><strong>Example HTTP Request</strong></p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">GET /api HTTP/1.1</span>
-<span class="go">Host: www.atlmoneytransfer.com</span>
-<span class="go">Authorization: Bearer sandbox_5ba9df637e1cd5baxxxxxxxxxx</span>
-</pre></div>
+  <div class="section" id="recipient-object">
+<h1>Recipient Object<a class="headerlink" href="#recipient-object" title="Permalink to this headline">¶</a></h1>
+<p>The recipient object varies for each corridor and payout method.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="31%" />
+<col width="69%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>id</td>
+<td>Unique identifier for recipient on ATL Money Transfer platform.</td>
+</tr>
+<tr class="row-odd"><td>full_name</td>
+<td>Full name of the recipient.</td>
+</tr>
+<tr class="row-even"><td>recipient_type</td>
+<td>IND for Individual Recipient and BIZ for Business Recipient.</td>
+</tr>
+<tr class="row-odd"><td>param_1</td>
+<td>Please see Country Payout Configuration.</td>
+</tr>
+<tr class="row-even"><td>param_2</td>
+<td>Please see Country Payout Configuration.</td>
+</tr>
+<tr class="row-odd"><td>param_n</td>
+<td>Please see Country Payout Configuration.</td>
+</tr>
+<tr class="row-even"><td>created_on</td>
+<td>Date when the recipient record was created.</td>
+</tr>
+<tr class="row-odd"><td>updated_on</td>
+<td>Date when the recipient record was last modified.</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="creating-new-recipient">
+<h2>Creating New Recipient<a class="headerlink" href="#creating-new-recipient" title="Permalink to this headline">¶</a></h2>
 </div>
-<p><strong>Response</strong></p>
-<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Server is Reachable&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;mode&quot;</span><span class="p">:</span> <span class="s2">&quot;sandbox&quot;</span>
-<span class="p">}</span>
-</pre></div>
+<div class="section" id="get-all-recipients">
+<h2>Get all Recipients<a class="headerlink" href="#get-all-recipients" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="update-recipient">
+<h2>Update Recipient<a class="headerlink" href="#update-recipient" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
@@ -187,10 +224,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="authentication.html" class="btn btn-neutral float-right" title="Authentication" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="transactions.html" class="btn btn-neutral float-right" title="Transactions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral" title="Welcome" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="recipients.html" class="btn btn-neutral" title="Country Payout Configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

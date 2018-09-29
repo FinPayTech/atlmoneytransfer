@@ -1,7 +1,5 @@
-Recipient Object
-================
-
-The recipient object varies for each corridor and payout method.
+Country Payout Configuration
+============================
 
 Austria
 -------
