@@ -18,9 +18,9 @@ Welcome
    banks
    collection_points
    delivery_options
-   customers
    network
    recipients
+   customers
    recipient_object
    transactions
    statuses
