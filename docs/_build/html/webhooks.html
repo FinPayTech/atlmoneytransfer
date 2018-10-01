@@ -196,11 +196,17 @@
 <tr class="row-even"><td>from_currency</td>
 <td>The source currency of transfer.</td>
 </tr>
-<tr class="row-odd"><td>to_country</td>
+<tr class="row-odd"><td>send_amount</td>
+<td>The source amount of transfer.</td>
+</tr>
+<tr class="row-even"><td>to_country</td>
 <td>The destination country of transfer.</td>
 </tr>
-<tr class="row-even"><td>to_currency</td>
+<tr class="row-odd"><td>to_currency</td>
 <td>The payout currency of transfer.</td>
+</tr>
+<tr class="row-even"><td>payout_amount</td>
+<td>The payout amount of transfer.</td>
 </tr>
 <tr class="row-odd"><td>payout_method</td>
 <td>The payout method for transfer.</td>
@@ -210,6 +216,18 @@
 </tr>
 <tr class="row-odd"><td>fees</td>
 <td>Transfer cost on partner’s platform.</td>
+</tr>
+<tr class="row-even"><td>settlement_currency</td>
+<td>Currency code which payout amount was settled with ATL Money Transfer.</td>
+</tr>
+<tr class="row-odd"><td>settlement_amount</td>
+<td>Payout amount converted from <code class="docutils literal notranslate"><span class="pre">settlement_currency</span></code> to <code class="docutils literal notranslate"><span class="pre">to_currency</span></code>.</td>
+</tr>
+<tr class="row-even"><td>commission</td>
+<td>ATL Money Transfer’s Commission.</td>
+</tr>
+<tr class="row-odd"><td>total_settlement</td>
+<td>Total settlement amount with ATL Money Transfer including commission.</td>
 </tr>
 <tr class="row-even"><td>customer</td>
 <td>Unique Identifier of customer.</td>
@@ -222,6 +240,12 @@
 </tr>
 <tr class="row-odd"><td>third_party_reference</td>
 <td>Transaction reference on partner’s platform.</td>
+</tr>
+<tr class="row-even"><td>purpose</td>
+<td>Purpose code of the transfer.</td>
+</tr>
+<tr class="row-odd"><td>message</td>
+<td>Message for recipient. If any</td>
 </tr>
 <tr class="row-even"><td>status</td>
 <td>Transfer status for which notification was sent. See Transaction Statuses</td>
