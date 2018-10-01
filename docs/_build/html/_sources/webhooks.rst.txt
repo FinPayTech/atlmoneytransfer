@@ -83,8 +83,8 @@ We recommend tolerance of five minutes between the timestamp and the current tim
 ATL Money Transfer generates the timestamp and signature each time we send a notification to your endpoint. If ATL Money Transfer retries an event (e.g., your endpoint previously replied with a non-200 status code), then we generate a new signature and timestamp for the new delivery attempt.
 
 
-Verifying signatures manually
------------------------------
+Verifying Signatures
+--------------------
 
 The ATLMoney-Signature header contains a timestamp and one or more signatures. The timestamp is prefixed by t=, and signature is prefixed by s=.
 

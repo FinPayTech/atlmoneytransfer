@@ -102,7 +102,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#best-practices">Best practices</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#notification-signatures">Notification Signatures</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#preventing-replay-attacks">Preventing replay attacks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#verifying-signatures-manually">Verifying signatures manually</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#verifying-signatures">Verifying Signatures</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="resources.html">Resources</a></li>
@@ -261,8 +261,8 @@
 <p>We recommend tolerance of five minutes between the timestamp and the current time. We also recommend that you use Network Time Protocol (NTP) to ensure that your server’s clock is accurate and synchronizes with the time on ATL Money Transfer’s servers.</p>
 <p>ATL Money Transfer generates the timestamp and signature each time we send a notification to your endpoint. If ATL Money Transfer retries an event (e.g., your endpoint previously replied with a non-200 status code), then we generate a new signature and timestamp for the new delivery attempt.</p>
 </div>
-<div class="section" id="verifying-signatures-manually">
-<h2>Verifying signatures manually<a class="headerlink" href="#verifying-signatures-manually" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="verifying-signatures">
+<h2>Verifying Signatures<a class="headerlink" href="#verifying-signatures" title="Permalink to this headline">¶</a></h2>
 <p>The ATLMoney-Signature header contains a timestamp and one or more signatures. The timestamp is prefixed by t=, and signature is prefixed by s=.</p>
 <div class="highlight-console notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="go">ATLMoney-Signature: t=1492774577,</span>
