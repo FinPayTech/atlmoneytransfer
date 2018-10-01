@@ -95,7 +95,16 @@
 <li class="toctree-l1"><a class="reference internal" href="recipient_object.html">Recipient Object</a></li>
 <li class="toctree-l1"><a class="reference internal" href="transactions.html">Transactions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="statuses.html">Transaction Statuses</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">HTTP Notifications</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">HTTP Notifications</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#the-notification-object">The Notification Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#receiving-http-notifications-with-an-https-server">Receiving HTTP Notifications with an HTTPS server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#responding-to-a-http-notifications">Responding to a HTTP Notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#best-practices">Best practices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#notification-signatures">Notification Signatures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#preventing-replay-attacks">Preventing replay attacks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#verifying-signatures-manually">Verifying signatures manually</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="resources.html">Resources</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
 </ul>
@@ -164,6 +173,120 @@
             
   <div class="section" id="http-notifications">
 <h1>HTTP Notifications<a class="headerlink" href="#http-notifications" title="Permalink to this headline">¶</a></h1>
+<p>ATL Money Transfer can send HTTP Notifications that notify your application any time an event happens on your transaction. This is especially useful for events—like transaction paid or transaction payout failed. This mechanism is also useful for services that are not directly responsible for making an API request, but still need to know the response from that request.</p>
+<div class="section" id="the-notification-object">
+<h2>The Notification Object<a class="headerlink" href="#the-notification-object" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="76%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>id</td>
+<td>The transaction number on ATLMT Platform this notification belongs to.</td>
+</tr>
+<tr class="row-odd"><td>from_country</td>
+<td>The source country of transfer.</td>
+</tr>
+<tr class="row-even"><td>from_currency</td>
+<td>The source currency of transfer.</td>
+</tr>
+<tr class="row-odd"><td>to_country</td>
+<td>The destination country of transfer.</td>
+</tr>
+<tr class="row-even"><td>to_currency</td>
+<td>The payout currency of transfer.</td>
+</tr>
+<tr class="row-odd"><td>payout_method</td>
+<td>The payout method for transfer.</td>
+</tr>
+<tr class="row-even"><td>exchange_rate</td>
+<td>Exchange rate applied <code class="docutils literal notranslate"><span class="pre">from_currency</span></code> to <code class="docutils literal notranslate"><span class="pre">to_currency</span></code>.</td>
+</tr>
+<tr class="row-odd"><td>fees</td>
+<td>Transfer cost on partner’s platform.</td>
+</tr>
+<tr class="row-even"><td>customer</td>
+<td>Unique Identifier of customer.</td>
+</tr>
+<tr class="row-odd"><td>recipient</td>
+<td>Unique Identifier of recipient.</td>
+</tr>
+<tr class="row-even"><td>delivery_reference</td>
+<td>Collection PIN or Delivery Reference for the transfer.</td>
+</tr>
+<tr class="row-odd"><td>third_party_reference</td>
+<td>Transaction reference on partner’s platform.</td>
+</tr>
+<tr class="row-even"><td>status</td>
+<td>Transfer status for which notification was sent. See Transaction Statuses</td>
+</tr>
+<tr class="row-odd"><td>environment</td>
+<td><code class="docutils literal notranslate"><span class="pre">live</span></code> or <code class="docutils literal notranslate"><span class="pre">sandbox</span></code> according to environment used for creating the transaction.</td>
+</tr>
+<tr class="row-even"><td>timestamp</td>
+<td>Notification timestamp.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="receiving-http-notifications-with-an-https-server">
+<h2>Receiving HTTP Notifications with an HTTPS server<a class="headerlink" href="#receiving-http-notifications-with-an-https-server" title="Permalink to this headline">¶</a></h2>
+<p>If you use an HTTPS URL for your HTTP Notification endpoint, ATL Money Transfer will validate that the connection to your server is secure before sending your notification data. For this to work, your server must be correctly configured to support HTTPS with a valid server certificate.</p>
+</div>
+<div class="section" id="responding-to-a-http-notifications">
+<h2>Responding to a HTTP Notifications<a class="headerlink" href="#responding-to-a-http-notifications" title="Permalink to this headline">¶</a></h2>
+<p>To acknowledge receipt of a HTTP Notification, your endpoint should return a <code class="docutils literal notranslate"><span class="pre">200</span></code> HTTP status code. All response codes apart from this, including 3xx codes, will indicate to ATL Money Transfer that you did not receive the HTTP Notification. This does mean that a URL redirection or a “Not Modified” response will be treated as a failure. ATL Money Transfer will ignore any other information returned in the request headers or request body.</p>
+<p>In live mode, we will attempt to deliver your HTTP Notification for up to three days with an exponential back off. In test mode, we retry three times over a few hours. HTTP Notifications can be manually retried after this time, though you can query for the transaction to reconcile your data with any missed notifications.</p>
+<p>When viewing a specific event information through the Dashboard, you can check how many times we’ve attempted to send an event to an endpoint by clicking on that endpoint URL in the HTTP Push Notifications section. This will show you the latest response we received from your endpoint, along with a number of attempted notifications and the respective HTTP status codes we received.</p>
+</div>
+<div class="section" id="best-practices">
+<h2>Best practices<a class="headerlink" href="#best-practices" title="Permalink to this headline">¶</a></h2>
+<p>Before going live, test that your HTTP Notification endpoint is working properly.</p>
+<p>If your HTTP Notification endpoint script performs complex logic, or makes network calls, it’s possible that the script would time out before ATL Money Transfer sees its complete execution. For that reason, you might want to have your HTTP Notification endpoint immediately acknowledge receipt by returning a <code class="docutils literal notranslate"><span class="pre">200</span></code> HTTP status code, and then perform the rest of its duties.</p>
+<p>HTTP Notification endpoints might occasionally receive the same event more than once. We advise you to guard against duplicated event receipts by making your event processing idempotent. One way of doing this is logging the events you’ve processed, and then not processing already-logged events. Additionally, we recommend verifying HTTP Notification signatures to confirm that received events are being sent from ATL Money Transfer.</p>
+</div>
+<div class="section" id="notification-signatures">
+<h2>Notification Signatures<a class="headerlink" href="#notification-signatures" title="Permalink to this headline">¶</a></h2>
+<p>ATL Money Transfers signs all HTTP Notifications it sends to your endpoints. We do so by including a signature in each event’s ATLMoney-Signature header. This allows you to validate that the notification were sent by ATL Money Transfer, not by a third party. We recommend that you should always validate the signature of the notification.</p>
+</div>
+<div class="section" id="preventing-replay-attacks">
+<h2>Preventing replay attacks<a class="headerlink" href="#preventing-replay-attacks" title="Permalink to this headline">¶</a></h2>
+<p>A replay attack is when an attacker intercepts a valid payload and its signature, then re-transmits them. To mitigate such attacks, ATL Money Transfer includes a timestamp in the ATLMoney-Signature header. Because this timestamp is part of the signed payload, it is also verified by the signature, so an attacker cannot change the timestamp without invalidating the signature. If the signature is valid but the timestamp is too old, you can have your application reject the payload.</p>
+<p>We recommend tolerance of five minutes between the timestamp and the current time. We also recommend that you use Network Time Protocol (NTP) to ensure that your server’s clock is accurate and synchronizes with the time on ATL Money Transfer’s servers.</p>
+<p>ATL Money Transfer generates the timestamp and signature each time we send a notification to your endpoint. If ATL Money Transfer retries an event (e.g., your endpoint previously replied with a non-200 status code), then we generate a new signature and timestamp for the new delivery attempt.</p>
+</div>
+<div class="section" id="verifying-signatures-manually">
+<h2>Verifying signatures manually<a class="headerlink" href="#verifying-signatures-manually" title="Permalink to this headline">¶</a></h2>
+<p>The ATLMoney-Signature header contains a timestamp and one or more signatures. The timestamp is prefixed by t=, and signature is prefixed by s=.</p>
+<div class="highlight-console notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="go">ATLMoney-Signature: t=1492774577,</span>
+<span class="go">  s=123abcd456efgh789ijklmnopqrst</span>
+</pre></div>
+</td></tr></table></div>
+<p>Note that newlines have been added in the example above for clarity, but a real ATLMoney-Signature header will be all one line.</p>
+<p>ATL Money Transfer generates signatures using a hash-based message authentication code (HMAC) with SHA-256. To prevent downgrade attacks, you should ignore all schemes that are not s.</p>
+<p><strong>Step 1: Extract the timestamp and signatures from the header</strong></p>
+<p>Split the header, using the , character as the separator, to get a list of elements. Then split each element, using the = character as the separator, to get a prefix and value pair.</p>
+<p>The value for the prefix t corresponds to the timestamp, and s corresponds to the signature. You can discard all other elements.</p>
+<p><strong>Step 2: Prepare the payload_signature string</strong></p>
+<p>You achieve this by concatenating:</p>
+<ul class="simple">
+<li>The timestamp (as a string)</li>
+<li>The character .</li>
+<li>The actual JSON payload (i.e., the request’s body)</li>
+</ul>
+<p><strong>Step 3: Determine the expected signature</strong></p>
+<p>Compute an HMAC with the SHA256 hash function. Use the endpoint’s signing secret as the key, and use the payload_signature string as the message.</p>
+<p><strong>Step 4: Compare signatures</strong></p>
+<p>Compare the signature(s) in the header to the expected signature. If a signature matches, compute the difference between the current timestamp and the received timestamp, then decide if the difference is within your tolerance.</p>
+<p>To protect against timing attacks, use a constant-time string comparison to compare the expected signature to each of the received signatures.</p>
+</div>
 </div>
 
 
