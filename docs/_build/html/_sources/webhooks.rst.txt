@@ -118,6 +118,6 @@ Compute an HMAC with the SHA256 hash function. Use the endpoint’s signing secr
 
 **Step 4: Compare signatures**
 
-Compare the signature(s) in the header to the expected signature. If a signature matches, compute the difference between the current timestamp and the received timestamp, then decide if the difference is within your tolerance.
+Compare the signature in the header to the expected signature. If a signature matches, compute the difference between the current timestamp and the received timestamp, then decide if the difference is within your tolerance.
 
 To protect against timing attacks, use a constant-time string comparison to compare the expected signature to each of the received signatures.

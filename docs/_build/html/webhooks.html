@@ -284,7 +284,7 @@
 <p><strong>Step 3: Determine the expected signature</strong></p>
 <p>Compute an HMAC with the SHA256 hash function. Use the endpoint’s signing secret as the key, and use the payload_signature string as the message.</p>
 <p><strong>Step 4: Compare signatures</strong></p>
-<p>Compare the signature(s) in the header to the expected signature. If a signature matches, compute the difference between the current timestamp and the received timestamp, then decide if the difference is within your tolerance.</p>
+<p>Compare the signature in the header to the expected signature. If a signature matches, compute the difference between the current timestamp and the received timestamp, then decide if the difference is within your tolerance.</p>
 <p>To protect against timing attacks, use a constant-time string comparison to compare the expected signature to each of the received signatures.</p>
 </div>
 </div>
