@@ -109,6 +109,8 @@ Some :red:`4xx` errors that could be handled programmatically (e.g., request con
 +-----------------------------------+-----------------------------------------------------------------------------------+
 | processing_error                  | An error occurred while processing the request.                                   |
 +-----------------------------------+-----------------------------------------------------------------------------------+
+| insufficient_funds                | Insufficient funds to perform the transaction.                                    |
++-----------------------------------+-----------------------------------------------------------------------------------+
 | sandbox_transactions_only         | | Your account has not been activated for live transactions.                      |
 |                                   | | Contact your account manager.                                                   |
 +-----------------------------------+-----------------------------------------------------------------------------------+
