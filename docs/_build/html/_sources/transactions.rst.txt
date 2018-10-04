@@ -105,88 +105,88 @@ Endpoint: ``https://www.atlmoneytransfer.com/api/transactions``
 
 Method: ``POST``
 
-+------------------------------+-------------------------------------------------------------------------------------+
-| Parameter                    | Description                                                                         |
-+==============================+=====================================================================================+
-| from_country                 | The source country of transfer.                                                     |
-+------------------------------+-------------------------------------------------------------------------------------+
-| from_currency                | The source currency of transfer.                                                    |
-+------------------------------+-------------------------------------------------------------------------------------+
-| send_amount                  | The source amount of transfer.                                                      |
-+------------------------------+-------------------------------------------------------------------------------------+
-| to_country                   | The destination country of transfer.                                                |
-+------------------------------+-------------------------------------------------------------------------------------+
-| to_currency                  | The payout currency of transfer.                                                    |
-+------------------------------+-------------------------------------------------------------------------------------+
-| payout_amount                | The payout amount of transfer.                                                      |
-+------------------------------+-------------------------------------------------------------------------------------+
-| payout_method                | The payout method for transfer.                                                     |
-+------------------------------+-------------------------------------------------------------------------------------+
-| payout_partner               | The payout partner for Cash Pickup transfers.                                       |
-+------------------------------+-------------------------------------------------------------------------------------+
-| exchange_rate                | Exchange rate applied ``from_currency`` to ``to_currency``.                         |
-+------------------------------+-------------------------------------------------------------------------------------+
-| fees                         | Transfer cost on partner's platform.                                                |
-+------------------------------+-------------------------------------------------------------------------------------+
-| third_party_reference        | Transaction reference on partner's platform.                                        |
-+------------------------------+-------------------------------------------------------------------------------------+
-| customer.id                  | Global unique identifier for customer.                                              |
-+------------------------------+-------------------------------------------------------------------------------------+
-| customer.first_name          | First name of the customer this transaction belongs to.                             |
-+------------------------------+-------------------------------------------------------------------------------------+
-| customer.middle_name         | Middle name of the customer this transaction belongs to.                            |
-+------------------------------+-------------------------------------------------------------------------------------+
-| customer.last_name           | Last name of the customer this transaction belongs to.                              |
-+------------------------------+-------------------------------------------------------------------------------------+
-| customer.date_of_birth       | Date of birth of the customer.                                                      |
-+------------------------------+-------------------------------------------------------------------------------------+
-| customer.birth_city          | Birth city of the customer.                                                         |
-+------------------------------+-------------------------------------------------------------------------------------+
-| customer.birth_country       | Birth country of the customer.                                                      |
-+------------------------------+-------------------------------------------------------------------------------------+
-| customer.nationality         | Current nationality of the customer.                                                |
-+------------------------------+-------------------------------------------------------------------------------------+
-| customer.birth_nationality   | Nationality of the customer at the time of birth.                                   |
-+------------------------------+-------------------------------------------------------------------------------------+
-| customer.address             | Address of the customer.                                                            |
-+------------------------------+-------------------------------------------------------------------------------------+
-| customer.city                | City where the customer is located.                                                 |
-+------------------------------+-------------------------------------------------------------------------------------+
-| customer.region              | State/Province/Region where the customer is located.                                |
-+------------------------------+-------------------------------------------------------------------------------------+
-| customer.postcode            | Postcode of the area where the customer is located.                                 |
-+------------------------------+-------------------------------------------------------------------------------------+
-| customer.country             | Country where the customer is located.                                              |
-+------------------------------+-------------------------------------------------------------------------------------+
-| customer.phone_number        | Phone number of the customer.                                                       |
-+------------------------------+-------------------------------------------------------------------------------------+
-| customer.mobile_number       | Mobile number of the customer.                                                      |
-+------------------------------+-------------------------------------------------------------------------------------+
-| customer.email_address       | Email address of the customer.                                                      |
-+------------------------------+-------------------------------------------------------------------------------------+
-| recipient.id                 | Unique Identification Number for recipient on ATLMT.                                |
-+------------------------------+-------------------------------------------------------------------------------------+
-| recipient.full_name          | Full name of the recipient.                                                         |
-+------------------------------+-------------------------------------------------------------------------------------+
-| recipient.type               | IND for Individual Recipient and BIZ for Business Recipient.                        |
-+------------------------------+-------------------------------------------------------------------------------------+
-| recipient.param_1            | Please see Country Payout Configuration.                                            |
-+------------------------------+-------------------------------------------------------------------------------------+
-| recipient.param_2            | Please see Country Payout Configuration.                                            |
-+------------------------------+-------------------------------------------------------------------------------------+
-| recipient.param_n            | Please see Country Payout Configuration.                                            |
-+------------------------------+-------------------------------------------------------------------------------------+
-| recipient.relation           | Relation with recipient. See Resources > Relation Types                             |
-+------------------------------+-------------------------------------------------------------------------------------+
-| purpose                      | Purpose code of the transfer.                                                       |
-+------------------------------+-------------------------------------------------------------------------------------+
-| message                      | Message for recipient. If any                                                       |
-+------------------------------+-------------------------------------------------------------------------------------+
++------------------------------+-------------+-------------------------------------------------------------------------+
+| Parameter                    | Mandatory   | Description                                                             |
++==============================+=============+=========================================================================+
+| from_country                 | Yes         | The source country of transfer.                                         |
++------------------------------+-------------+-------------------------------------------------------------------------+
+| from_currency                | Yes         | The source currency of transfer.                                        |
++------------------------------+-------------+-------------------------------------------------------------------------+
+| send_amount                  | Yes         | The source amount of transfer.                                          |
++------------------------------+-------------+-------------------------------------------------------------------------+
+| to_country                   | Yes         | The destination country of transfer.                                    |
++------------------------------+-------------+-------------------------------------------------------------------------+
+| to_currency                  | Yes         | The payout currency of transfer.                                        |
++------------------------------+-------------+-------------------------------------------------------------------------+
+| payout_amount                | Yes         | The payout amount of transfer.                                          |
++------------------------------+-------------+-------------------------------------------------------------------------+
+| payout_method                | Yes         | The payout method for transfer.                                         |
++------------------------------+-------------+-------------------------------------------------------------------------+
+| payout_partner               | Conditional | The payout partner for Cash Pickup transfers.                           |
++------------------------------+-------------+-------------------------------------------------------------------------+
+| exchange_rate                | Yes         | Exchange rate applied ``from_currency`` to ``to_currency``.             |
++------------------------------+-------------+-------------------------------------------------------------------------+
+| fees                         | Yes         | Transfer cost on partner's platform.                                    |
++------------------------------+-------------+-------------------------------------------------------------------------+
+| third_party_reference        | Yes         | Transaction reference on partner's platform.                            |
++------------------------------+-------------+-------------------------------------------------------------------------+
+| customer[id]                 | No          | Customer Unique Identifier on ATL Money Transfer.                       |
++------------------------------+-------------+-------------------------------------------------------------------------+
+| customer[first_name]         | Conditional | Required if ``customer[id]`` is not provided.                           |
++------------------------------+-------------+-------------------------------------------------------------------------+
+| customer[middle_name]        | No          |                                                                         |
++------------------------------+-------------+-------------------------------------------------------------------------+
+| customer[last_name]          | Conditional | Required if ``customer[id]`` is not provided.                           |
++------------------------------+-------------+-------------------------------------------------------------------------+
+| customer[date_of_birth]      | Conditional | Required if ``customer[id]`` is not provided.                           |
++------------------------------+-------------+-------------------------------------------------------------------------+
+| customer[birth_city]         | No          |                                                                         |
++------------------------------+-------------+-------------------------------------------------------------------------+
+| customer[birth_country]      | No          |                                                                         |
++------------------------------+-------------+-------------------------------------------------------------------------+
+| customer[nationality]        | Conditional | Required if ``customer[id]`` is not provided.                           |
++------------------------------+-------------+-------------------------------------------------------------------------+
+| customer[birth_nationality]  | No          |                                                                         |
++------------------------------+-------------+-------------------------------------------------------------------------+
+| customer[address]            | Conditional | Required if ``customer[id]`` is not provided.                           |
++------------------------------+-------------+-------------------------------------------------------------------------+
+| customer[city]               | Conditional | Required if ``customer[id]`` is not provided.                           |
++------------------------------+-------------+-------------------------------------------------------------------------+
+| customer[region]             | No          |                                                                         |
++------------------------------+-------------+-------------------------------------------------------------------------+
+| customer[postcode]           | No          |                                                                         |
++------------------------------+-------------+-------------------------------------------------------------------------+
+| customer[country]            | Conditional | Required if ``customer[id]`` is not provided.                           |
++------------------------------+-------------+-------------------------------------------------------------------------+
+| customer[phone_number]       | No          |                                                                         |
++------------------------------+-------------+-------------------------------------------------------------------------+
+| customer[mobile_number]      | Conditional | Required if ``customer[id]`` is not provided.                           |
++------------------------------+-------------+-------------------------------------------------------------------------+
+| customer[email_address]      | No          |                                                                         |
++------------------------------+-------------+-------------------------------------------------------------------------+
+| recipient[id]                | No          | Unique Identification Number for recipient on ATLMT.                    |
++------------------------------+-------------+-------------------------------------------------------------------------+
+| recipient[type]              | Conditional | Required if ``recipient[id]`` is not provided.                          |
++------------------------------+-------------+-------------------------------------------------------------------------+
+| recipient[param_1]           | Conditional | Optional if ``recipient[id]`` is provided.                              |
++------------------------------+-------------+-------------------------------------------------------------------------+
+| recipient[param_2]           | Conditional | Optional if ``recipient[id]`` is provided.                              |
++------------------------------+-------------+-------------------------------------------------------------------------+
+| recipient[param_n]           | Conditional | Optional if ``recipient[id]`` is provided.                              |
++------------------------------+-------------+-------------------------------------------------------------------------+
+| recipient[relation]          | Conditional | Optional if ``recipient[id]`` is provided.                              |
++------------------------------+-------------+-------------------------------------------------------------------------+
+| purpose                      | Yes         | Purpose code of the transfer.                                           |
++------------------------------+-------------+-------------------------------------------------------------------------+
+| message                      | No          | Message for recipient. If any                                           |
++------------------------------+-------------+-------------------------------------------------------------------------+
 
 
 .. HINT::
    Since a resource is being created, HTTP response code ``201`` will be returned if the transaction is successfully created.
 
+.. WARNING::
+   Since sending new transfer require necessary network calls to various payout partners we recommend that you set a minimum **150 seconds** as request time-out value for your HTTP Client.
 
 **Request**
 
@@ -388,13 +388,82 @@ Method: ``GET``
 Get Single Transaction
 ----------------------
 
-Endpoint:
+Endpoint: ``https://www.atlmoneytransfer.com/api/transactions/:id``
 
-Method:
+Method: ``GET``
 
 **Request**
 
+.. code-block:: console
+
+  GET /api/transactions/88800001 HTTP/1.1
+  Host: www.atlmoneytransfer.com
+  Authorization: Bearer sandbox_5ba9df637e1cd5baxxxxxxxxxx
+
+
 **Response**
+
+.. code-block:: JSON
+
+  {
+      "message": "success",
+      "transaction": {
+          "id": "88800001",
+          "from_country": "GB",
+          "from_currency": "GBP",
+          "send_amount": 4000,
+          "to_country": "SL",
+          "to_currency": "SLL",
+          "payout_amount": 41600000,
+          "payout_method": "CP",
+          "payout_partner": "BCXSL",
+          "exchange_rate": "10400.000000",
+          "fees": 200,
+          "settlement_currency": "GBP",
+          "settlement_amount": 3961.9,
+          "commission": 39.62,
+          "total_settlement": 4001.52,
+          "delivery_reference": 12864909190,
+          "third_party_reference": "K00001",
+          "customer": {
+              "id": 5765370763,
+              "first_name": "John",
+              "middle_name": "",
+              "last_name": "Smith",
+              "date_of_birth": "1990-01-01",
+              "birth_city": "London",
+              "birth_country": "GB",
+              "nationality": "GB",
+              "birth_nationality": "GB",
+              "address": "128 Peckham Hill Street",
+              "city": "London",
+              "region": "England",
+              "postcode": "SE15 5JT",
+              "country": "GB",
+              "mobile_number": "9876543210",
+              "phone_number": "1234567890",
+              "email_address": "support@atlmoneytransfer.com"
+          },
+          "recipient": {
+              "id": 4065250109,
+              "full_name": "Mary Smith",
+              "type": "IND",
+              "first_name": "Mary",
+              "last_name": "Smith",
+              "mobile_number": "147852369",
+              "address": "50 Siaka Stevens Street",
+              "city": "Freetown",
+              "region": "",
+              "postcode": "",
+              "email": "support@atlmoneytransfer.com",
+              "relation": "FAM"
+          },
+          "status": "AVAILABLE",
+          "purpose": "FS",
+          "message": "Happy Birthday",
+          "created_on": "2018-10-04T12:21:21+00:00"
+      }
+  }
 
 Cancel Transaction
 ------------------

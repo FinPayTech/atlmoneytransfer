@@ -329,123 +329,158 @@
 <table border="1" class="docutils">
 <colgroup>
 <col width="26%" />
-<col width="74%" />
+<col width="11%" />
+<col width="63%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Mandatory</th>
 <th class="head">Description</th>
 </tr>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>from_country</td>
+<td>Yes</td>
 <td>The source country of transfer.</td>
 </tr>
 <tr class="row-odd"><td>from_currency</td>
+<td>Yes</td>
 <td>The source currency of transfer.</td>
 </tr>
 <tr class="row-even"><td>send_amount</td>
+<td>Yes</td>
 <td>The source amount of transfer.</td>
 </tr>
 <tr class="row-odd"><td>to_country</td>
+<td>Yes</td>
 <td>The destination country of transfer.</td>
 </tr>
 <tr class="row-even"><td>to_currency</td>
+<td>Yes</td>
 <td>The payout currency of transfer.</td>
 </tr>
 <tr class="row-odd"><td>payout_amount</td>
+<td>Yes</td>
 <td>The payout amount of transfer.</td>
 </tr>
 <tr class="row-even"><td>payout_method</td>
+<td>Yes</td>
 <td>The payout method for transfer.</td>
 </tr>
 <tr class="row-odd"><td>payout_partner</td>
+<td>Conditional</td>
 <td>The payout partner for Cash Pickup transfers.</td>
 </tr>
 <tr class="row-even"><td>exchange_rate</td>
+<td>Yes</td>
 <td>Exchange rate applied <code class="docutils literal notranslate"><span class="pre">from_currency</span></code> to <code class="docutils literal notranslate"><span class="pre">to_currency</span></code>.</td>
 </tr>
 <tr class="row-odd"><td>fees</td>
+<td>Yes</td>
 <td>Transfer cost on partner’s platform.</td>
 </tr>
 <tr class="row-even"><td>third_party_reference</td>
+<td>Yes</td>
 <td>Transaction reference on partner’s platform.</td>
 </tr>
-<tr class="row-odd"><td>customer.id</td>
-<td>Global unique identifier for customer.</td>
+<tr class="row-odd"><td>customer[id]</td>
+<td>No</td>
+<td>Customer Unique Identifier on ATL Money Transfer.</td>
 </tr>
-<tr class="row-even"><td>customer.first_name</td>
-<td>First name of the customer this transaction belongs to.</td>
+<tr class="row-even"><td>customer[first_name]</td>
+<td>Conditional</td>
+<td>Required if <code class="docutils literal notranslate"><span class="pre">customer[id]</span></code> is not provided.</td>
 </tr>
-<tr class="row-odd"><td>customer.middle_name</td>
-<td>Middle name of the customer this transaction belongs to.</td>
+<tr class="row-odd"><td>customer[middle_name]</td>
+<td>No</td>
+<td>&#160;</td>
 </tr>
-<tr class="row-even"><td>customer.last_name</td>
-<td>Last name of the customer this transaction belongs to.</td>
+<tr class="row-even"><td>customer[last_name]</td>
+<td>Conditional</td>
+<td>Required if <code class="docutils literal notranslate"><span class="pre">customer[id]</span></code> is not provided.</td>
 </tr>
-<tr class="row-odd"><td>customer.date_of_birth</td>
-<td>Date of birth of the customer.</td>
+<tr class="row-odd"><td>customer[date_of_birth]</td>
+<td>Conditional</td>
+<td>Required if <code class="docutils literal notranslate"><span class="pre">customer[id]</span></code> is not provided.</td>
 </tr>
-<tr class="row-even"><td>customer.birth_city</td>
-<td>Birth city of the customer.</td>
+<tr class="row-even"><td>customer[birth_city]</td>
+<td>No</td>
+<td>&#160;</td>
 </tr>
-<tr class="row-odd"><td>customer.birth_country</td>
-<td>Birth country of the customer.</td>
+<tr class="row-odd"><td>customer[birth_country]</td>
+<td>No</td>
+<td>&#160;</td>
 </tr>
-<tr class="row-even"><td>customer.nationality</td>
-<td>Current nationality of the customer.</td>
+<tr class="row-even"><td>customer[nationality]</td>
+<td>Conditional</td>
+<td>Required if <code class="docutils literal notranslate"><span class="pre">customer[id]</span></code> is not provided.</td>
 </tr>
-<tr class="row-odd"><td>customer.birth_nationality</td>
-<td>Nationality of the customer at the time of birth.</td>
+<tr class="row-odd"><td>customer[birth_nationality]</td>
+<td>No</td>
+<td>&#160;</td>
 </tr>
-<tr class="row-even"><td>customer.address</td>
-<td>Address of the customer.</td>
+<tr class="row-even"><td>customer[address]</td>
+<td>Conditional</td>
+<td>Required if <code class="docutils literal notranslate"><span class="pre">customer[id]</span></code> is not provided.</td>
 </tr>
-<tr class="row-odd"><td>customer.city</td>
-<td>City where the customer is located.</td>
+<tr class="row-odd"><td>customer[city]</td>
+<td>Conditional</td>
+<td>Required if <code class="docutils literal notranslate"><span class="pre">customer[id]</span></code> is not provided.</td>
 </tr>
-<tr class="row-even"><td>customer.region</td>
-<td>State/Province/Region where the customer is located.</td>
+<tr class="row-even"><td>customer[region]</td>
+<td>No</td>
+<td>&#160;</td>
 </tr>
-<tr class="row-odd"><td>customer.postcode</td>
-<td>Postcode of the area where the customer is located.</td>
+<tr class="row-odd"><td>customer[postcode]</td>
+<td>No</td>
+<td>&#160;</td>
 </tr>
-<tr class="row-even"><td>customer.country</td>
-<td>Country where the customer is located.</td>
+<tr class="row-even"><td>customer[country]</td>
+<td>Conditional</td>
+<td>Required if <code class="docutils literal notranslate"><span class="pre">customer[id]</span></code> is not provided.</td>
 </tr>
-<tr class="row-odd"><td>customer.phone_number</td>
-<td>Phone number of the customer.</td>
+<tr class="row-odd"><td>customer[phone_number]</td>
+<td>No</td>
+<td>&#160;</td>
 </tr>
-<tr class="row-even"><td>customer.mobile_number</td>
-<td>Mobile number of the customer.</td>
+<tr class="row-even"><td>customer[mobile_number]</td>
+<td>Conditional</td>
+<td>Required if <code class="docutils literal notranslate"><span class="pre">customer[id]</span></code> is not provided.</td>
 </tr>
-<tr class="row-odd"><td>customer.email_address</td>
-<td>Email address of the customer.</td>
+<tr class="row-odd"><td>customer[email_address]</td>
+<td>No</td>
+<td>&#160;</td>
 </tr>
-<tr class="row-even"><td>recipient.id</td>
+<tr class="row-even"><td>recipient[id]</td>
+<td>No</td>
 <td>Unique Identification Number for recipient on ATLMT.</td>
 </tr>
-<tr class="row-odd"><td>recipient.full_name</td>
-<td>Full name of the recipient.</td>
+<tr class="row-odd"><td>recipient[type]</td>
+<td>Conditional</td>
+<td>Required if <code class="docutils literal notranslate"><span class="pre">recipient[id]</span></code> is not provided.</td>
 </tr>
-<tr class="row-even"><td>recipient.type</td>
-<td>IND for Individual Recipient and BIZ for Business Recipient.</td>
+<tr class="row-even"><td>recipient[param_1]</td>
+<td>Conditional</td>
+<td>Optional if <code class="docutils literal notranslate"><span class="pre">recipient[id]</span></code> is provided.</td>
 </tr>
-<tr class="row-odd"><td>recipient.param_1</td>
-<td>Please see Country Payout Configuration.</td>
+<tr class="row-odd"><td>recipient[param_2]</td>
+<td>Conditional</td>
+<td>Optional if <code class="docutils literal notranslate"><span class="pre">recipient[id]</span></code> is provided.</td>
 </tr>
-<tr class="row-even"><td>recipient.param_2</td>
-<td>Please see Country Payout Configuration.</td>
+<tr class="row-even"><td>recipient[param_n]</td>
+<td>Conditional</td>
+<td>Optional if <code class="docutils literal notranslate"><span class="pre">recipient[id]</span></code> is provided.</td>
 </tr>
-<tr class="row-odd"><td>recipient.param_n</td>
-<td>Please see Country Payout Configuration.</td>
+<tr class="row-odd"><td>recipient[relation]</td>
+<td>Conditional</td>
+<td>Optional if <code class="docutils literal notranslate"><span class="pre">recipient[id]</span></code> is provided.</td>
 </tr>
-<tr class="row-even"><td>recipient.relation</td>
-<td>Relation with recipient. See Resources &gt; Relation Types</td>
-</tr>
-<tr class="row-odd"><td>purpose</td>
+<tr class="row-even"><td>purpose</td>
+<td>Yes</td>
 <td>Purpose code of the transfer.</td>
 </tr>
-<tr class="row-even"><td>message</td>
+<tr class="row-odd"><td>message</td>
+<td>No</td>
 <td>Message for recipient. If any</td>
 </tr>
 </tbody>
@@ -453,6 +488,10 @@
 <div class="admonition hint">
 <p class="first admonition-title">Hint</p>
 <p class="last">Since a resource is being created, HTTP response code <code class="docutils literal notranslate"><span class="pre">201</span></code> will be returned if the transaction is successfully created.</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Since sending new transfer require necessary network calls to various payout partners we recommend that you set a minimum <strong>150 seconds</strong> as request time-out value for your HTTP Client.</p>
 </div>
 <p><strong>Request</strong></p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">POST /api/transactions HTTP/1.1</span>
@@ -658,10 +697,76 @@
 </div>
 <div class="section" id="get-single-transaction">
 <h2>Get Single Transaction<a class="headerlink" href="#get-single-transaction" title="Permalink to this headline">¶</a></h2>
-<p>Endpoint:</p>
-<p>Method:</p>
+<p>Endpoint: <code class="docutils literal notranslate"><span class="pre">https://www.atlmoneytransfer.com/api/transactions/:id</span></code></p>
+<p>Method: <code class="docutils literal notranslate"><span class="pre">GET</span></code></p>
 <p><strong>Request</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">GET /api/transactions/88800001 HTTP/1.1</span>
+<span class="go">Host: www.atlmoneytransfer.com</span>
+<span class="go">Authorization: Bearer sandbox_5ba9df637e1cd5baxxxxxxxxxx</span>
+</pre></div>
+</div>
 <p><strong>Response</strong></p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;success&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;transaction&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;88800001&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;from_country&quot;</span><span class="p">:</span> <span class="s2">&quot;GB&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;from_currency&quot;</span><span class="p">:</span> <span class="s2">&quot;GBP&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;send_amount&quot;</span><span class="p">:</span> <span class="mi">4000</span><span class="p">,</span>
+        <span class="nt">&quot;to_country&quot;</span><span class="p">:</span> <span class="s2">&quot;SL&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;to_currency&quot;</span><span class="p">:</span> <span class="s2">&quot;SLL&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;payout_amount&quot;</span><span class="p">:</span> <span class="mi">41600000</span><span class="p">,</span>
+        <span class="nt">&quot;payout_method&quot;</span><span class="p">:</span> <span class="s2">&quot;CP&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;payout_partner&quot;</span><span class="p">:</span> <span class="s2">&quot;BCXSL&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;exchange_rate&quot;</span><span class="p">:</span> <span class="s2">&quot;10400.000000&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;fees&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+        <span class="nt">&quot;settlement_currency&quot;</span><span class="p">:</span> <span class="s2">&quot;GBP&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;settlement_amount&quot;</span><span class="p">:</span> <span class="mf">3961.9</span><span class="p">,</span>
+        <span class="nt">&quot;commission&quot;</span><span class="p">:</span> <span class="mf">39.62</span><span class="p">,</span>
+        <span class="nt">&quot;total_settlement&quot;</span><span class="p">:</span> <span class="mf">4001.52</span><span class="p">,</span>
+        <span class="nt">&quot;delivery_reference&quot;</span><span class="p">:</span> <span class="mi">12864909190</span><span class="p">,</span>
+        <span class="nt">&quot;third_party_reference&quot;</span><span class="p">:</span> <span class="s2">&quot;K00001&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;customer&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">5765370763</span><span class="p">,</span>
+            <span class="nt">&quot;first_name&quot;</span><span class="p">:</span> <span class="s2">&quot;John&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;middle_name&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;last_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Smith&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;date_of_birth&quot;</span><span class="p">:</span> <span class="s2">&quot;1990-01-01&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;birth_city&quot;</span><span class="p">:</span> <span class="s2">&quot;London&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;birth_country&quot;</span><span class="p">:</span> <span class="s2">&quot;GB&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;nationality&quot;</span><span class="p">:</span> <span class="s2">&quot;GB&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;birth_nationality&quot;</span><span class="p">:</span> <span class="s2">&quot;GB&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;address&quot;</span><span class="p">:</span> <span class="s2">&quot;128 Peckham Hill Street&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;city&quot;</span><span class="p">:</span> <span class="s2">&quot;London&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;region&quot;</span><span class="p">:</span> <span class="s2">&quot;England&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;postcode&quot;</span><span class="p">:</span> <span class="s2">&quot;SE15 5JT&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;GB&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;mobile_number&quot;</span><span class="p">:</span> <span class="s2">&quot;9876543210&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;phone_number&quot;</span><span class="p">:</span> <span class="s2">&quot;1234567890&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;email_address&quot;</span><span class="p">:</span> <span class="s2">&quot;support@atlmoneytransfer.com&quot;</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;recipient&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">4065250109</span><span class="p">,</span>
+            <span class="nt">&quot;full_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Mary Smith&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;IND&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;first_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Mary&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;last_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Smith&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;mobile_number&quot;</span><span class="p">:</span> <span class="s2">&quot;147852369&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;address&quot;</span><span class="p">:</span> <span class="s2">&quot;50 Siaka Stevens Street&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;city&quot;</span><span class="p">:</span> <span class="s2">&quot;Freetown&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;region&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;postcode&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;support@atlmoneytransfer.com&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;relation&quot;</span><span class="p">:</span> <span class="s2">&quot;FAM&quot;</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;AVAILABLE&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;purpose&quot;</span><span class="p">:</span> <span class="s2">&quot;FS&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Happy Birthday&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;created_on&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-10-04T12:21:21+00:00&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="cancel-transaction">
 <h2>Cancel Transaction<a class="headerlink" href="#cancel-transaction" title="Permalink to this headline">¶</a></h2>
