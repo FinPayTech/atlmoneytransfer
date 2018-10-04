@@ -241,20 +241,8 @@
 <tr class="row-odd"><td>third_party_reference</td>
 <td>Transaction reference on partner’s platform.</td>
 </tr>
-<tr class="row-even"><td>purpose</td>
-<td>Purpose code of the transfer.</td>
-</tr>
-<tr class="row-odd"><td>message</td>
-<td>Message for recipient. If any</td>
-</tr>
 <tr class="row-even"><td>status</td>
 <td>Transfer status for which notification was sent. See Transaction Statuses</td>
-</tr>
-<tr class="row-odd"><td>environment</td>
-<td><code class="docutils literal notranslate"><span class="pre">live</span></code> or <code class="docutils literal notranslate"><span class="pre">sandbox</span></code> according to environment used for creating the transaction.</td>
-</tr>
-<tr class="row-even"><td>timestamp</td>
-<td>Notification timestamp.</td>
 </tr>
 </tbody>
 </table>
@@ -302,7 +290,7 @@
 <p>You achieve this by concatenating:</p>
 <ul class="simple">
 <li>The timestamp (as a string)</li>
-<li>The character .</li>
+<li>The character <code class="docutils literal notranslate"><span class="pre">.</span></code></li>
 <li>The actual JSON payload (i.e., the request’s body)</li>
 </ul>
 <p><strong>Step 3: Determine the expected signature</strong></p>

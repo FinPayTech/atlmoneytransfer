@@ -46,16 +46,9 @@ The Notification Object
 +---------------------------+-------------------------------------------------------------------------------------+
 | third_party_reference     | Transaction reference on partner's platform.                                        |
 +---------------------------+-------------------------------------------------------------------------------------+
-| purpose                   | Purpose code of the transfer.                                                       |
-+---------------------------+-------------------------------------------------------------------------------------+
-| message                   | Message for recipient. If any                                                       |
-+---------------------------+-------------------------------------------------------------------------------------+
 | status                    | Transfer status for which notification was sent. See Transaction Statuses           |
 +---------------------------+-------------------------------------------------------------------------------------+
-| environment               | ``live`` or ``sandbox`` according to environment used for creating the transaction. |
-+---------------------------+-------------------------------------------------------------------------------------+
-| timestamp                 | Notification timestamp.                                                             |
-+---------------------------+-------------------------------------------------------------------------------------+
+
 
 
 Receiving HTTP Notifications with an HTTPS server
@@ -125,7 +118,7 @@ The value for the prefix t corresponds to the timestamp, and s corresponds to th
 You achieve this by concatenating:
 
 - The timestamp (as a string)
-- The character .
+- The character ``.``
 - The actual JSON payload (i.e., the request’s body)
 
 **Step 3: Determine the expected signature**
