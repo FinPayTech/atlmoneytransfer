@@ -60,7 +60,7 @@ If you use an HTTPS URL for your HTTP Notification endpoint, ATL Money Transfer 
 Responding to a HTTP Notifications
 ----------------------------------
 
-To acknowledge receipt of a HTTP Notification, your endpoint should return a ``200`` HTTP status code. All response codes apart from this, including 3xx codes, will indicate to ATL Money Transfer that you did not receive the HTTP Notification. This does mean that a URL redirection or a "Not Modified" response will be treated as a failure. ATL Money Transfer will ignore any other information returned in the request headers or request body.
+To acknowledge receipt of a HTTP Notification, your endpoint should return a ``200`` HTTP status code. All response codes apart from this, including ``3xx`` codes, will indicate to ATL Money Transfer that you did not receive the HTTP Notification. This does mean that a URL redirection or a "Not Modified" response will be treated as a failure. ATL Money Transfer will ignore any other information returned in the request headers or request body.
 
 In live mode, we will attempt to deliver your HTTP Notification for up to three days with an exponential back off. In test mode, we retry three times over a few hours. HTTP Notifications can be manually retried after this time, though you can query for the transaction to reconcile your data with any missed notifications.
 
