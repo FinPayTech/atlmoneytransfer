@@ -188,7 +188,7 @@ Method: ``POST``
 +------------------------------+-------------+-------------------------------------------------------------------------+
 | message                      | No          | Message for recipient. If any                                           |
 +------------------------------+-------------+-------------------------------------------------------------------------+
-| poi_document                 | Conditional | Document of the uploaded Proof of ID (POI). Eg. PAS or DRV etc.         |
+| poi_document                 | Conditional | Document of the uploaded Proof of ID (POI). Eg. PAS.                    |
 +------------------------------+-------------+-------------------------------------------------------------------------+
 | poi_id_number                | Conditional | Document ID Number of uploaded POI.                                     |
 +------------------------------+-------------+-------------------------------------------------------------------------+
@@ -473,9 +473,9 @@ Method: ``GET``
 Cancel Transaction
 ------------------
 
-Endpoint:
+Endpoint: ``https://www.atlmoneytransfer.com/api/transactions/cancel/:id``
 
-Method:
+Method: ``POST``
 
 **Request**
 
