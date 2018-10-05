@@ -1,9 +1,7 @@
 Welcome
 =======
 
-.. WARNING::
-
-  | This project is still into ``development mode``, things might change during development cycle. If you're interested about our apis please email us at support@atlmoneytransfer.com. We will notify you once we go live.
+Welcome to ATL Money Transfer's API Documentation. If you're interested about our apis please send your request to integration@atlmoneytransfer.com. we will come back to you within 2 working days.
 
 .. toctree::
    :maxdepth: 2
