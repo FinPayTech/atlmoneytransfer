@@ -313,6 +313,18 @@
 <tr class="row-even"><td>message</td>
 <td>Message for recipient. If any</td>
 </tr>
+<tr class="row-odd"><td>poi_document</td>
+<td>Document of the uploaded Proof of ID (POI). Eg. PAS or DRV etc.</td>
+</tr>
+<tr class="row-even"><td>poi_id_number</td>
+<td>Document ID Number of uploaded POI.</td>
+</tr>
+<tr class="row-odd"><td>poi_valid_from</td>
+<td>Document valid from date of the uploaded POI.</td>
+</tr>
+<tr class="row-even"><td>poi_expiry</td>
+<td>Document expiry date of the uploaded POI.</td>
+</tr>
 <tr class="row-odd"><td>status</td>
 <td>Current transaction status. See Transaction Statuses</td>
 </tr>
@@ -483,6 +495,26 @@
 <td>No</td>
 <td>Message for recipient. If any</td>
 </tr>
+<tr class="row-even"><td>poi_document</td>
+<td>Conditional</td>
+<td>Document of the uploaded Proof of ID (POI). Eg. PAS or DRV etc.</td>
+</tr>
+<tr class="row-odd"><td>poi_id_number</td>
+<td>Conditional</td>
+<td>Document ID Number of uploaded POI.</td>
+</tr>
+<tr class="row-even"><td>poi_valid_from</td>
+<td>Conditional</td>
+<td>Document valid from date of the uploaded POI.</td>
+</tr>
+<tr class="row-odd"><td>poi_expiry</td>
+<td>Conditional</td>
+<td>Document expiry date of the uploaded POI.</td>
+</tr>
+<tr class="row-even"><td>poi_file</td>
+<td>Conditional</td>
+<td>File to be uploaded. Only images and pdf are accepted.</td>
+</tr>
 </tbody>
 </table>
 <div class="admonition hint">
@@ -494,79 +526,120 @@
 <p class="last">Since sending new transfer require necessary network calls to various payout partners we recommend that you set a minimum <strong>150 seconds</strong> as request time-out value for your HTTP Client.</p>
 </div>
 <p><strong>Request</strong></p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">POST /api/transactions HTTP/1.1</span>
-<span class="go">Host: www.atlmoneytransfer.com</span>
-<span class="go">Authorization: Bearer sandbox_5ba9df637e1cd5baxxxxxxxxxx</span>
-<span class="go">Content-Type: application/x-www-form-urlencoded</span>
-
-<span class="go">from_country=GB</span>
-<span class="go">&amp;from_currency=GBP</span>
-<span class="go">&amp;send_amount=4000</span>
-<span class="go">&amp;to_country=SL</span>
-<span class="go">&amp;to_currency=SLL</span>
-<span class="go">&amp;payout_amount=41600000</span>
-<span class="go">&amp;payout_method=CP</span>
-<span class="go">&amp;payout_partner=BCXSL</span>
-<span class="go">&amp;exchange_rate=10400</span>
-<span class="go">&amp;fees=200</span>
-<span class="go">&amp;third_party_reference=K00001</span>
-<span class="go">&amp;customer%5Bfirst_name%5D=James</span>
-<span class="go">&amp;customer%5Bmiddle_name%5D=</span>
-<span class="go">&amp;customer%5Blast_name%5D=Anderson</span>
-<span class="go">&amp;customer%5Bdate_of_birth%5D=1990-01-01</span>
-<span class="go">&amp;customer%5Bbirth_city%5D=London</span>
-<span class="go">&amp;customer%5Bbirth_country%5D=GB</span>
-<span class="go">&amp;customer%5Bnationality%5D=GB</span>
-<span class="go">&amp;customer%5Bbirth_nationality%5D=GB</span>
-<span class="go">&amp;customer%5Baddress%5D=128+Peckham+Hill+Street</span>
-<span class="go">&amp;customer%5Bcity%5D=London</span>
-<span class="go">&amp;customer%5Bregion%5D=England</span>
-<span class="go">&amp;customer%5Bpostcode%5D=SE15+5JT</span>
-<span class="go">&amp;customer%5Bcountry%5D=GB</span>
-<span class="go">&amp;customer%5Bphone_number%5D=1234567890</span>
-<span class="go">&amp;customer%5Bmobile_number%5D=9876543210&amp;</span>
-<span class="go">customer%5Bemail_address%5D=support%40atlmoneytransfer.com</span>
-<span class="go">&amp;recipient%5Btype%5D=IND</span>
-<span class="go">&amp;recipient%5Bfirst_name%5D=Maria</span>
-<span class="go">&amp;recipient%5Blast_name%5D=Anderson</span>
-<span class="go">&amp;recipient%5Baddress%5D=50+Siaka+Stevens+Street</span>
-<span class="go">&amp;recipient%5Bcity%5D=Freetown</span>
-<span class="go">&amp;recipient%5Bregion%5D=</span>
-<span class="go">&amp;recipient%5Bpostcode%5D=</span>
-<span class="go">&amp;recipient%5Bmobile_number%5D=147852369</span>
-<span class="go">&amp;recipient%5Bemail%5D=support%40atlmoneytransfer.com</span>
-<span class="go">&amp;recipient%5Brelation%5D=FAM</span>
-<span class="go">&amp;purpose=FS</span>
-<span class="go">&amp;message=Happy+Birthday</span>
+<div class="highlight-console notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="go">curl -X POST \</span>
+<span class="go">https://www.atlmoneytransfer.com/api/transactions \</span>
+<span class="go">-H &#39;Authorization: Bearer sandbox_5ba9df637e1cd5baxxxxxxxxxx&#39; \</span>
+<span class="go">-F from_country=GB \</span>
+<span class="go">-F from_currency=GBP \</span>
+<span class="go">-F send_amount=500 \</span>
+<span class="go">-F to_country=SL \</span>
+<span class="go">-F to_currency=SLL \</span>
+<span class="go">-F payout_amount=5000000 \</span>
+<span class="go">-F payout_method=CP \</span>
+<span class="go">-F payout_partner=BCXSL \</span>
+<span class="go">-F exchange_rate=10000 \</span>
+<span class="go">-F fees=20 \</span>
+<span class="go">-F purpose=INVST \</span>
+<span class="go">-F &#39;message=Invoice Payment #100001&#39; \</span>
+<span class="go">-F &#39;customer[first_name]=John&#39; \</span>
+<span class="go">-F &#39;customer[last_name]=Doe&#39; \</span>
+<span class="go">-F &#39;customer[date_of_birth]=1980-09-01&#39; \</span>
+<span class="go">-F &#39;customer[nationality]=GB&#39; \</span>
+<span class="go">-F &#39;customer[birth_nationality]=GB&#39; \</span>
+<span class="go">-F &#39;customer[birth_city]=London&#39; \</span>
+<span class="go">-F &#39;customer[birth_country]=GB&#39; \</span>
+<span class="go">-F &#39;customer[address]=128 Peckham Hill Street&#39; \</span>
+<span class="go">-F &#39;customer[city]=London&#39; \</span>
+<span class="go">-F &#39;customer[region]=England&#39; \</span>
+<span class="go">-F &#39;customer[postcode]=SE15 5JT&#39; \</span>
+<span class="go">-F &#39;customer[country]=GB&#39; \</span>
+<span class="go">-F &#39;customer[mobile_number]=1234567890&#39; \</span>
+<span class="go">-F &#39;customer[email]=support@atlmoneytransfer.com&#39; \</span>
+<span class="go">-F poi_document=PAS \</span>
+<span class="go">-F poi_id_number=P12345678 \</span>
+<span class="go">-F poi_valid_from=2008-10-06 \</span>
+<span class="go">-F poi_expiry=2018-10-05 \</span>
+<span class="go">-F poi_file=@/home/appdevd/Downloads/Passport.jpg \</span>
+<span class="go">-F &#39;recipient[type]=IND&#39; \</span>
+<span class="go">-F &#39;recipient[relation]=BIZ&#39; \</span>
+<span class="go">-F &#39;recipient[first_name]=Richard&#39; \</span>
+<span class="go">-F &#39;recipient[last_name]=AMOAH&#39; \</span>
+<span class="go">-F &#39;recipient[address]=Freetown&#39; \</span>
+<span class="go">-F &#39;recipient[city]=Freetown&#39; \</span>
+<span class="go">-F &#39;recipient[region]=Freetown&#39; \</span>
+<span class="go">-F &#39;recipient[mobile_number]=123456789&#39; \</span>
+<span class="go">-F third_party_reference=K00001</span>
 </pre></div>
-</div>
+</td></tr></table></div>
 <p><strong>Response</strong></p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;success&quot;</span><span class="p">,</span>
   <span class="nt">&quot;transaction&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;88800002&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;88800001&quot;</span><span class="p">,</span>
       <span class="nt">&quot;from_country&quot;</span><span class="p">:</span> <span class="s2">&quot;GB&quot;</span><span class="p">,</span>
       <span class="nt">&quot;from_currency&quot;</span><span class="p">:</span> <span class="s2">&quot;GBP&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;send_amount&quot;</span><span class="p">:</span> <span class="mi">4000</span><span class="p">,</span>
+      <span class="nt">&quot;send_amount&quot;</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
       <span class="nt">&quot;to_country&quot;</span><span class="p">:</span> <span class="s2">&quot;SL&quot;</span><span class="p">,</span>
       <span class="nt">&quot;to_currency&quot;</span><span class="p">:</span> <span class="s2">&quot;SLL&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;payout_amount&quot;</span><span class="p">:</span> <span class="mi">41600000</span><span class="p">,</span>
+      <span class="nt">&quot;payout_amount&quot;</span><span class="p">:</span> <span class="mi">5000000</span><span class="p">,</span>
       <span class="nt">&quot;payout_method&quot;</span><span class="p">:</span> <span class="s2">&quot;CP&quot;</span><span class="p">,</span>
       <span class="nt">&quot;payout_partner&quot;</span><span class="p">:</span> <span class="s2">&quot;BCXSL&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;exchange_rate&quot;</span><span class="p">:</span> <span class="s2">&quot;10400.000000&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;fees&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+      <span class="nt">&quot;exchange_rate&quot;</span><span class="p">:</span> <span class="s2">&quot;10000.000000&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;fees&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
       <span class="nt">&quot;settlement_currency&quot;</span><span class="p">:</span> <span class="s2">&quot;GBP&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;settlement_amount&quot;</span><span class="p">:</span> <span class="mf">3961.9</span><span class="p">,</span>
-      <span class="nt">&quot;commission&quot;</span><span class="p">:</span> <span class="mf">39.62</span><span class="p">,</span>
-      <span class="nt">&quot;total_settlement&quot;</span><span class="p">:</span> <span class="mf">4001.52</span><span class="p">,</span>
-      <span class="nt">&quot;delivery_reference&quot;</span><span class="p">:</span> <span class="mi">12855396338</span><span class="p">,</span>
+      <span class="nt">&quot;settlement_amount&quot;</span><span class="p">:</span> <span class="mf">476.19</span><span class="p">,</span>
+      <span class="nt">&quot;commission&quot;</span><span class="p">:</span> <span class="mf">4.76</span><span class="p">,</span>
+      <span class="nt">&quot;total_settlement&quot;</span><span class="p">:</span> <span class="mf">480.95</span><span class="p">,</span>
+      <span class="nt">&quot;delivery_reference&quot;</span><span class="p">:</span> <span class="mi">12879511712</span><span class="p">,</span>
       <span class="nt">&quot;third_party_reference&quot;</span><span class="p">:</span> <span class="s2">&quot;K00001&quot;</span><span class="p">,</span>
       <span class="nt">&quot;customer&quot;</span><span class="p">:</span> <span class="p">{</span>
-          <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">9010307060</span><span class="p">,</span>
-          <span class="nt">&quot;first_name&quot;</span><span class="p">:</span> <span class="s2">&quot;James&quot;</span><span class="p">,</span>
-          <span class="nt">&quot;middle_name&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-          <span class="nt">&quot;last_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Anderson&quot;</span><span class="p">,</span>
-          <span class="nt">&quot;date_of_birth&quot;</span><span class="p">:</span> <span class="s2">&quot;1990-01-01&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">7209673523</span><span class="p">,</span>
+          <span class="nt">&quot;first_name&quot;</span><span class="p">:</span> <span class="s2">&quot;John&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;middle_name&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+          <span class="nt">&quot;last_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Doe&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;date_of_birth&quot;</span><span class="p">:</span> <span class="s2">&quot;1980-09-01&quot;</span><span class="p">,</span>
           <span class="nt">&quot;birth_city&quot;</span><span class="p">:</span> <span class="s2">&quot;London&quot;</span><span class="p">,</span>
           <span class="nt">&quot;birth_country&quot;</span><span class="p">:</span> <span class="s2">&quot;GB&quot;</span><span class="p">,</span>
           <span class="nt">&quot;nationality&quot;</span><span class="p">:</span> <span class="s2">&quot;GB&quot;</span><span class="p">,</span>
@@ -576,28 +649,32 @@
           <span class="nt">&quot;region&quot;</span><span class="p">:</span> <span class="s2">&quot;England&quot;</span><span class="p">,</span>
           <span class="nt">&quot;postcode&quot;</span><span class="p">:</span> <span class="s2">&quot;SE15 5JT&quot;</span><span class="p">,</span>
           <span class="nt">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;GB&quot;</span><span class="p">,</span>
-          <span class="nt">&quot;mobile_number&quot;</span><span class="p">:</span> <span class="s2">&quot;9876543210&quot;</span><span class="p">,</span>
-          <span class="nt">&quot;phone_number&quot;</span><span class="p">:</span> <span class="s2">&quot;1234567890&quot;</span><span class="p">,</span>
-          <span class="nt">&quot;email_address&quot;</span><span class="p">:</span> <span class="s2">&quot;support@atlmoneytransfer.com&quot;</span>
+          <span class="nt">&quot;mobile_number&quot;</span><span class="p">:</span> <span class="s2">&quot;1234567890&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;phone_number&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+          <span class="nt">&quot;email_address&quot;</span><span class="p">:</span> <span class="kc">null</span>
       <span class="p">},</span>
       <span class="nt">&quot;recipient&quot;</span><span class="p">:</span> <span class="p">{</span>
-          <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">5109069783</span><span class="p">,</span>
-          <span class="nt">&quot;full_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Maria Anderson&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2531137994</span><span class="p">,</span>
+          <span class="nt">&quot;full_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Richard AMOAH&quot;</span><span class="p">,</span>
           <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;IND&quot;</span><span class="p">,</span>
-          <span class="nt">&quot;first_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Maria&quot;</span><span class="p">,</span>
-          <span class="nt">&quot;last_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Anderson&quot;</span><span class="p">,</span>
-          <span class="nt">&quot;mobile_number&quot;</span><span class="p">:</span> <span class="s2">&quot;147852369&quot;</span><span class="p">,</span>
-          <span class="nt">&quot;address&quot;</span><span class="p">:</span> <span class="s2">&quot;50 Siaka Stevens Street&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;first_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Richard&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;last_name&quot;</span><span class="p">:</span> <span class="s2">&quot;AMOAH&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;mobile_number&quot;</span><span class="p">:</span> <span class="s2">&quot;123456789&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;address&quot;</span><span class="p">:</span> <span class="s2">&quot;Freetown&quot;</span><span class="p">,</span>
           <span class="nt">&quot;city&quot;</span><span class="p">:</span> <span class="s2">&quot;Freetown&quot;</span><span class="p">,</span>
-          <span class="nt">&quot;region&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-          <span class="nt">&quot;postcode&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-          <span class="nt">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;support@atlmoneytransfer.com&quot;</span><span class="p">,</span>
-          <span class="nt">&quot;relation&quot;</span><span class="p">:</span> <span class="s2">&quot;FAM&quot;</span>
+          <span class="nt">&quot;region&quot;</span><span class="p">:</span> <span class="s2">&quot;Freetown&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;postcode&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+          <span class="nt">&quot;email&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+          <span class="nt">&quot;relation&quot;</span><span class="p">:</span> <span class="s2">&quot;BIZ&quot;</span>
       <span class="p">},</span>
-      <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;AVAILABLE&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;purpose&quot;</span><span class="p">:</span> <span class="s2">&quot;FS&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Happy Birthday&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;created_on&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-10-04T12:29:24+00:00&quot;</span>
+      <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;HOLD&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;purpose&quot;</span><span class="p">:</span> <span class="s2">&quot;INVST&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;poi_document&quot;</span><span class="p">:</span> <span class="s2">&quot;PAS&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;poi_id_number&quot;</span><span class="p">:</span> <span class="s2">&quot;P12345678&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;poi_valid_from&quot;</span><span class="p">:</span> <span class="s2">&quot;2008-10-06&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;poi_expiry&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-10-05&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Invoice Payment #100001&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;created_on&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-10-05T10:43:33+00:00&quot;</span>
   <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -642,55 +719,34 @@
 </div>
 <p><strong>Response</strong></p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;success&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;transactions&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;88800001&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;from_country&quot;</span><span class="p">:</span> <span class="s2">&quot;GB&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;from_currency&quot;</span><span class="p">:</span> <span class="s2">&quot;GBP&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;send_amount&quot;</span><span class="p">:</span> <span class="mi">4000</span><span class="p">,</span>
-            <span class="nt">&quot;to_country&quot;</span><span class="p">:</span> <span class="s2">&quot;SL&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;to_currency&quot;</span><span class="p">:</span> <span class="s2">&quot;SLL&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;payout_amount&quot;</span><span class="p">:</span> <span class="mi">41600000</span><span class="p">,</span>
-            <span class="nt">&quot;payout_method&quot;</span><span class="p">:</span> <span class="s2">&quot;CP&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;payout_partner&quot;</span><span class="p">:</span> <span class="s2">&quot;BCXSL&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;exchange_rate&quot;</span><span class="p">:</span> <span class="s2">&quot;10400.000000&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;fees&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
-            <span class="nt">&quot;settlement_currency&quot;</span><span class="p">:</span> <span class="s2">&quot;GBP&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;settlement_amount&quot;</span><span class="p">:</span> <span class="mf">3961.9</span><span class="p">,</span>
-            <span class="nt">&quot;commission&quot;</span><span class="p">:</span> <span class="mf">39.62</span><span class="p">,</span>
-            <span class="nt">&quot;total_settlement&quot;</span><span class="p">:</span> <span class="mf">4001.52</span><span class="p">,</span>
-            <span class="nt">&quot;delivery_reference&quot;</span><span class="p">:</span> <span class="mi">12864909190</span><span class="p">,</span>
-            <span class="nt">&quot;third_party_reference&quot;</span><span class="p">:</span> <span class="s2">&quot;K00001&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;AVAILABLE&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;created_on&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-10-04T12:21:21+00:00&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;88800002&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;from_country&quot;</span><span class="p">:</span> <span class="s2">&quot;GB&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;from_currency&quot;</span><span class="p">:</span> <span class="s2">&quot;GBP&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;send_amount&quot;</span><span class="p">:</span> <span class="mi">4000</span><span class="p">,</span>
-            <span class="nt">&quot;to_country&quot;</span><span class="p">:</span> <span class="s2">&quot;SL&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;to_currency&quot;</span><span class="p">:</span> <span class="s2">&quot;SLL&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;payout_amount&quot;</span><span class="p">:</span> <span class="mi">41600000</span><span class="p">,</span>
-            <span class="nt">&quot;payout_method&quot;</span><span class="p">:</span> <span class="s2">&quot;CP&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;payout_partner&quot;</span><span class="p">:</span> <span class="s2">&quot;BCXSL&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;exchange_rate&quot;</span><span class="p">:</span> <span class="s2">&quot;10400.000000&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;fees&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
-            <span class="nt">&quot;settlement_currency&quot;</span><span class="p">:</span> <span class="s2">&quot;GBP&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;settlement_amount&quot;</span><span class="p">:</span> <span class="mf">3961.9</span><span class="p">,</span>
-            <span class="nt">&quot;commission&quot;</span><span class="p">:</span> <span class="mf">39.62</span><span class="p">,</span>
-            <span class="nt">&quot;total_settlement&quot;</span><span class="p">:</span> <span class="mf">4001.52</span><span class="p">,</span>
-            <span class="nt">&quot;delivery_reference&quot;</span><span class="p">:</span> <span class="mi">12855396338</span><span class="p">,</span>
-            <span class="nt">&quot;third_party_reference&quot;</span><span class="p">:</span> <span class="s2">&quot;K00001&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;AVAILABLE&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;created_on&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-10-04T12:29:24+00:00&quot;</span>
-        <span class="p">}</span>
-    <span class="p">],</span>
-    <span class="nt">&quot;current_transactions&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-    <span class="nt">&quot;total_transactions&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-    <span class="nt">&quot;page&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-    <span class="nt">&quot;total_pages&quot;</span><span class="p">:</span> <span class="mi">1</span>
+  <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;success&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;transactions&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+          <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;88800001&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;from_country&quot;</span><span class="p">:</span> <span class="s2">&quot;GB&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;from_currency&quot;</span><span class="p">:</span> <span class="s2">&quot;GBP&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;send_amount&quot;</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
+          <span class="nt">&quot;to_country&quot;</span><span class="p">:</span> <span class="s2">&quot;SL&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;to_currency&quot;</span><span class="p">:</span> <span class="s2">&quot;SLL&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;payout_amount&quot;</span><span class="p">:</span> <span class="mi">5000000</span><span class="p">,</span>
+          <span class="nt">&quot;payout_method&quot;</span><span class="p">:</span> <span class="s2">&quot;CP&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;payout_partner&quot;</span><span class="p">:</span> <span class="s2">&quot;BCXSL&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;exchange_rate&quot;</span><span class="p">:</span> <span class="s2">&quot;10000.000000&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;fees&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+          <span class="nt">&quot;settlement_currency&quot;</span><span class="p">:</span> <span class="s2">&quot;GBP&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;settlement_amount&quot;</span><span class="p">:</span> <span class="mf">476.19</span><span class="p">,</span>
+          <span class="nt">&quot;commission&quot;</span><span class="p">:</span> <span class="mf">4.76</span><span class="p">,</span>
+          <span class="nt">&quot;total_settlement&quot;</span><span class="p">:</span> <span class="mf">480.95</span><span class="p">,</span>
+          <span class="nt">&quot;delivery_reference&quot;</span><span class="p">:</span> <span class="mi">12879511712</span><span class="p">,</span>
+          <span class="nt">&quot;third_party_reference&quot;</span><span class="p">:</span> <span class="s2">&quot;K00001&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;HOLD&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;created_on&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-10-05T10:43:33+00:00&quot;</span>
+      <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;current_transactions&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="nt">&quot;total_transactions&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="nt">&quot;page&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="nt">&quot;total_pages&quot;</span><span class="p">:</span> <span class="mi">1</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -707,63 +763,67 @@
 </div>
 <p><strong>Response</strong></p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;success&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;transaction&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;88800001&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;from_country&quot;</span><span class="p">:</span> <span class="s2">&quot;GB&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;from_currency&quot;</span><span class="p">:</span> <span class="s2">&quot;GBP&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;send_amount&quot;</span><span class="p">:</span> <span class="mi">4000</span><span class="p">,</span>
-        <span class="nt">&quot;to_country&quot;</span><span class="p">:</span> <span class="s2">&quot;SL&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;to_currency&quot;</span><span class="p">:</span> <span class="s2">&quot;SLL&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;payout_amount&quot;</span><span class="p">:</span> <span class="mi">41600000</span><span class="p">,</span>
-        <span class="nt">&quot;payout_method&quot;</span><span class="p">:</span> <span class="s2">&quot;CP&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;payout_partner&quot;</span><span class="p">:</span> <span class="s2">&quot;BCXSL&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;exchange_rate&quot;</span><span class="p">:</span> <span class="s2">&quot;10400.000000&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;fees&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
-        <span class="nt">&quot;settlement_currency&quot;</span><span class="p">:</span> <span class="s2">&quot;GBP&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;settlement_amount&quot;</span><span class="p">:</span> <span class="mf">3961.9</span><span class="p">,</span>
-        <span class="nt">&quot;commission&quot;</span><span class="p">:</span> <span class="mf">39.62</span><span class="p">,</span>
-        <span class="nt">&quot;total_settlement&quot;</span><span class="p">:</span> <span class="mf">4001.52</span><span class="p">,</span>
-        <span class="nt">&quot;delivery_reference&quot;</span><span class="p">:</span> <span class="mi">12864909190</span><span class="p">,</span>
-        <span class="nt">&quot;third_party_reference&quot;</span><span class="p">:</span> <span class="s2">&quot;K00001&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;customer&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">5765370763</span><span class="p">,</span>
-            <span class="nt">&quot;first_name&quot;</span><span class="p">:</span> <span class="s2">&quot;John&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;middle_name&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;last_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Smith&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;date_of_birth&quot;</span><span class="p">:</span> <span class="s2">&quot;1990-01-01&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;birth_city&quot;</span><span class="p">:</span> <span class="s2">&quot;London&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;birth_country&quot;</span><span class="p">:</span> <span class="s2">&quot;GB&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;nationality&quot;</span><span class="p">:</span> <span class="s2">&quot;GB&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;birth_nationality&quot;</span><span class="p">:</span> <span class="s2">&quot;GB&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;address&quot;</span><span class="p">:</span> <span class="s2">&quot;128 Peckham Hill Street&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;city&quot;</span><span class="p">:</span> <span class="s2">&quot;London&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;region&quot;</span><span class="p">:</span> <span class="s2">&quot;England&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;postcode&quot;</span><span class="p">:</span> <span class="s2">&quot;SE15 5JT&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;GB&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;mobile_number&quot;</span><span class="p">:</span> <span class="s2">&quot;9876543210&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;phone_number&quot;</span><span class="p">:</span> <span class="s2">&quot;1234567890&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;email_address&quot;</span><span class="p">:</span> <span class="s2">&quot;support@atlmoneytransfer.com&quot;</span>
-        <span class="p">},</span>
-        <span class="nt">&quot;recipient&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">4065250109</span><span class="p">,</span>
-            <span class="nt">&quot;full_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Mary Smith&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;IND&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;first_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Mary&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;last_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Smith&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;mobile_number&quot;</span><span class="p">:</span> <span class="s2">&quot;147852369&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;address&quot;</span><span class="p">:</span> <span class="s2">&quot;50 Siaka Stevens Street&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;city&quot;</span><span class="p">:</span> <span class="s2">&quot;Freetown&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;region&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;postcode&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;support@atlmoneytransfer.com&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;relation&quot;</span><span class="p">:</span> <span class="s2">&quot;FAM&quot;</span>
-        <span class="p">},</span>
-        <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;AVAILABLE&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;purpose&quot;</span><span class="p">:</span> <span class="s2">&quot;FS&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Happy Birthday&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;created_on&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-10-04T12:21:21+00:00&quot;</span>
-    <span class="p">}</span>
+  <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;success&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;transaction&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;88800001&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;from_country&quot;</span><span class="p">:</span> <span class="s2">&quot;GB&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;from_currency&quot;</span><span class="p">:</span> <span class="s2">&quot;GBP&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;send_amount&quot;</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
+      <span class="nt">&quot;to_country&quot;</span><span class="p">:</span> <span class="s2">&quot;SL&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;to_currency&quot;</span><span class="p">:</span> <span class="s2">&quot;SLL&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;payout_amount&quot;</span><span class="p">:</span> <span class="mi">5000000</span><span class="p">,</span>
+      <span class="nt">&quot;payout_method&quot;</span><span class="p">:</span> <span class="s2">&quot;CP&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;payout_partner&quot;</span><span class="p">:</span> <span class="s2">&quot;BCXSL&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;exchange_rate&quot;</span><span class="p">:</span> <span class="s2">&quot;10000.000000&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;fees&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+      <span class="nt">&quot;settlement_currency&quot;</span><span class="p">:</span> <span class="s2">&quot;GBP&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;settlement_amount&quot;</span><span class="p">:</span> <span class="mf">476.19</span><span class="p">,</span>
+      <span class="nt">&quot;commission&quot;</span><span class="p">:</span> <span class="mf">4.76</span><span class="p">,</span>
+      <span class="nt">&quot;total_settlement&quot;</span><span class="p">:</span> <span class="mf">480.95</span><span class="p">,</span>
+      <span class="nt">&quot;delivery_reference&quot;</span><span class="p">:</span> <span class="mi">12879511712</span><span class="p">,</span>
+      <span class="nt">&quot;third_party_reference&quot;</span><span class="p">:</span> <span class="s2">&quot;K00001&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;customer&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">7209673523</span><span class="p">,</span>
+          <span class="nt">&quot;first_name&quot;</span><span class="p">:</span> <span class="s2">&quot;John&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;middle_name&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+          <span class="nt">&quot;last_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Doe&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;date_of_birth&quot;</span><span class="p">:</span> <span class="s2">&quot;1980-09-01&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;birth_city&quot;</span><span class="p">:</span> <span class="s2">&quot;London&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;birth_country&quot;</span><span class="p">:</span> <span class="s2">&quot;GB&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;nationality&quot;</span><span class="p">:</span> <span class="s2">&quot;GB&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;birth_nationality&quot;</span><span class="p">:</span> <span class="s2">&quot;GB&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;address&quot;</span><span class="p">:</span> <span class="s2">&quot;128 Peckham Hill Street&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;city&quot;</span><span class="p">:</span> <span class="s2">&quot;London&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;region&quot;</span><span class="p">:</span> <span class="s2">&quot;England&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;postcode&quot;</span><span class="p">:</span> <span class="s2">&quot;SE15 5JT&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;GB&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;mobile_number&quot;</span><span class="p">:</span> <span class="s2">&quot;1234567890&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;phone_number&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+          <span class="nt">&quot;email_address&quot;</span><span class="p">:</span> <span class="kc">null</span>
+      <span class="p">},</span>
+      <span class="nt">&quot;recipient&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2531137994</span><span class="p">,</span>
+          <span class="nt">&quot;full_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Richard AMOAH&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;IND&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;first_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Richard&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;last_name&quot;</span><span class="p">:</span> <span class="s2">&quot;AMOAH&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;mobile_number&quot;</span><span class="p">:</span> <span class="s2">&quot;123456789&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;address&quot;</span><span class="p">:</span> <span class="s2">&quot;Freetown&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;city&quot;</span><span class="p">:</span> <span class="s2">&quot;Freetown&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;region&quot;</span><span class="p">:</span> <span class="s2">&quot;Freetown&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;postcode&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+          <span class="nt">&quot;email&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+          <span class="nt">&quot;relation&quot;</span><span class="p">:</span> <span class="s2">&quot;BIZ&quot;</span>
+      <span class="p">},</span>
+      <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;HOLD&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;purpose&quot;</span><span class="p">:</span> <span class="s2">&quot;INVST&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;poi_document&quot;</span><span class="p">:</span> <span class="s2">&quot;PAS&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;poi_id_number&quot;</span><span class="p">:</span> <span class="s2">&quot;P12345678&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;poi_valid_from&quot;</span><span class="p">:</span> <span class="s2">&quot;2008-10-06&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;poi_expiry&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-10-05&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Invoice Payment #100001&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;created_on&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-10-05T10:43:33+00:00&quot;</span>
+  <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
