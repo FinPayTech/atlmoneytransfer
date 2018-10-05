@@ -479,4 +479,76 @@ Method: ``POST``
 
 **Request**
 
+.. code-block:: console
+
+  POST /api/transactions/cancel/88800001 HTTP/1.1
+  Host: www.atlmoneytransfer.com
+  Authorization: Bearer sandbox_5ba9df637e1cd5baxxxxxxxxxx
+
 **Response**
+
+.. code-block:: JSON
+
+  {
+    "message": "success",
+    "transaction": {
+        "id": "88800001",
+        "from_country": "GB",
+        "from_currency": "GBP",
+        "send_amount": 500,
+        "to_country": "SL",
+        "to_currency": "SLL",
+        "payout_amount": 5000000,
+        "payout_method": "CP",
+        "payout_partner": "BCXSL",
+        "exchange_rate": "10000.000000",
+        "fees": 20,
+        "settlement_currency": "GBP",
+        "settlement_amount": 0,
+        "commission": 0,
+        "total_settlement": 0,
+        "delivery_reference": 12879511712,
+        "third_party_reference": "K00001",
+        "customer": {
+            "id": 7209673523,
+            "first_name": "John",
+            "middle_name": null,
+            "last_name": "Doe",
+            "date_of_birth": "1980-09-01",
+            "birth_city": "London",
+            "birth_country": "GB",
+            "nationality": "GB",
+            "birth_nationality": "GB",
+            "address": "128 Peckham Hill Street",
+            "city": "London",
+            "region": "England",
+            "postcode": "SE15 5JT",
+            "country": "GB",
+            "mobile_number": "1234567890",
+            "phone_number": null,
+            "email_address": null
+        },
+        "recipient": {
+            "id": 2531137994,
+            "full_name": "Richard AMOAH",
+            "type": "IND",
+            "first_name": "Richard",
+            "last_name": "AMOAH",
+            "mobile_number": "123456789",
+            "address": "Freetown",
+            "city": "Freetown",
+            "region": "Freetown",
+            "postcode": null,
+            "email": null,
+            "relation": "BIZ"
+        },
+        "status": "PAYMENT-CANCELLED",
+        "purpose": "INVST",
+        "poi_document": "PAS",
+        "poi_id_number": "P12345678",
+        "poi_valid_from": "2008-10-06",
+        "poi_expiry": "2018-10-05",
+        "message": "Invoice Payment #100001",
+        "created_on": "2018-10-05T10:43:33+00:00"
+    }
+  }

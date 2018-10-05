@@ -833,7 +833,77 @@
 <p>Endpoint: <code class="docutils literal notranslate"><span class="pre">https://www.atlmoneytransfer.com/api/transactions/cancel/:id</span></code></p>
 <p>Method: <code class="docutils literal notranslate"><span class="pre">POST</span></code></p>
 <p><strong>Request</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">POST /api/transactions/cancel/88800001 HTTP/1.1</span>
+<span class="go">Host: www.atlmoneytransfer.com</span>
+<span class="go">Authorization: Bearer sandbox_5ba9df637e1cd5baxxxxxxxxxx</span>
+</pre></div>
+</div>
 <p><strong>Response</strong></p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;success&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;transaction&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;88800001&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;from_country&quot;</span><span class="p">:</span> <span class="s2">&quot;GB&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;from_currency&quot;</span><span class="p">:</span> <span class="s2">&quot;GBP&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;send_amount&quot;</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
+      <span class="nt">&quot;to_country&quot;</span><span class="p">:</span> <span class="s2">&quot;SL&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;to_currency&quot;</span><span class="p">:</span> <span class="s2">&quot;SLL&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;payout_amount&quot;</span><span class="p">:</span> <span class="mi">5000000</span><span class="p">,</span>
+      <span class="nt">&quot;payout_method&quot;</span><span class="p">:</span> <span class="s2">&quot;CP&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;payout_partner&quot;</span><span class="p">:</span> <span class="s2">&quot;BCXSL&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;exchange_rate&quot;</span><span class="p">:</span> <span class="s2">&quot;10000.000000&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;fees&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+      <span class="nt">&quot;settlement_currency&quot;</span><span class="p">:</span> <span class="s2">&quot;GBP&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;settlement_amount&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="nt">&quot;commission&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="nt">&quot;total_settlement&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="nt">&quot;delivery_reference&quot;</span><span class="p">:</span> <span class="mi">12879511712</span><span class="p">,</span>
+      <span class="nt">&quot;third_party_reference&quot;</span><span class="p">:</span> <span class="s2">&quot;K00001&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;customer&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">7209673523</span><span class="p">,</span>
+          <span class="nt">&quot;first_name&quot;</span><span class="p">:</span> <span class="s2">&quot;John&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;middle_name&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+          <span class="nt">&quot;last_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Doe&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;date_of_birth&quot;</span><span class="p">:</span> <span class="s2">&quot;1980-09-01&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;birth_city&quot;</span><span class="p">:</span> <span class="s2">&quot;London&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;birth_country&quot;</span><span class="p">:</span> <span class="s2">&quot;GB&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;nationality&quot;</span><span class="p">:</span> <span class="s2">&quot;GB&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;birth_nationality&quot;</span><span class="p">:</span> <span class="s2">&quot;GB&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;address&quot;</span><span class="p">:</span> <span class="s2">&quot;128 Peckham Hill Street&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;city&quot;</span><span class="p">:</span> <span class="s2">&quot;London&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;region&quot;</span><span class="p">:</span> <span class="s2">&quot;England&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;postcode&quot;</span><span class="p">:</span> <span class="s2">&quot;SE15 5JT&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;GB&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;mobile_number&quot;</span><span class="p">:</span> <span class="s2">&quot;1234567890&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;phone_number&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+          <span class="nt">&quot;email_address&quot;</span><span class="p">:</span> <span class="kc">null</span>
+      <span class="p">},</span>
+      <span class="nt">&quot;recipient&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2531137994</span><span class="p">,</span>
+          <span class="nt">&quot;full_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Richard AMOAH&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;IND&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;first_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Richard&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;last_name&quot;</span><span class="p">:</span> <span class="s2">&quot;AMOAH&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;mobile_number&quot;</span><span class="p">:</span> <span class="s2">&quot;123456789&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;address&quot;</span><span class="p">:</span> <span class="s2">&quot;Freetown&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;city&quot;</span><span class="p">:</span> <span class="s2">&quot;Freetown&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;region&quot;</span><span class="p">:</span> <span class="s2">&quot;Freetown&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;postcode&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+          <span class="nt">&quot;email&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+          <span class="nt">&quot;relation&quot;</span><span class="p">:</span> <span class="s2">&quot;BIZ&quot;</span>
+      <span class="p">},</span>
+      <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;PAYMENT-CANCELLED&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;purpose&quot;</span><span class="p">:</span> <span class="s2">&quot;INVST&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;poi_document&quot;</span><span class="p">:</span> <span class="s2">&quot;PAS&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;poi_id_number&quot;</span><span class="p">:</span> <span class="s2">&quot;P12345678&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;poi_valid_from&quot;</span><span class="p">:</span> <span class="s2">&quot;2008-10-06&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;poi_expiry&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-10-05&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Invoice Payment #100001&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;created_on&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-10-05T10:43:33+00:00&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </div>
 </div>
 
