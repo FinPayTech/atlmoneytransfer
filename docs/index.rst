@@ -24,4 +24,3 @@ Welcome to ATL Money Transfer's API Documentation. If you're interested about ou
    statuses
    webhooks
    resources
-   examples
